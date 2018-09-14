@@ -61,9 +61,9 @@ It will be useful to install
 
     Create a `api.json` file with the next content
 
-    <details>
-    <summary>api.json (click to expand)</summary>
-    <p>
+<details>
+<summary>api.json (click to expand)</summary>
+<p>
 
 ```json
 {
@@ -190,18 +190,16 @@ It will be useful to install
 }
 ```
 
-    </p>
-    </details>
-
-
-
+</p>
+</details>
+<br/>
     Start JSON Server
 
-```bash
-    json-server --watch db.json
-```
+    ```
+    $ json-server --watch db.json
+    ```
 
-    Now if you go to [http://localhost:3000/](http://localhost:3000/), you'll get the fake API working.
+   Now if you go to [http://localhost:3000/](http://localhost:3000/), you'll get the fake API working.
 
 
 5. Download and install React Developer Tools
