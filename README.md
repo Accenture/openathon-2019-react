@@ -197,10 +197,10 @@ It will be useful to install
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start JSON Server
          
 ```sh
-$ npm install json-server -g
+$ json-server api.json
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now go to [http://localhost:3000/](http://localhost:3000/), to check that your new API is working.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now go to [http://localhost:3000/](http://localhost:3000/) to check that your new API is working.
 
 
 5. Download and install React Developer Tools
