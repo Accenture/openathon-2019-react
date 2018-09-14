@@ -59,11 +59,11 @@ It will be useful to install
     JSON Server is a Node Module that you can use to create demo rest json webservice in less than a minute. All you need is a JSON file for sample data. https://github.com/typicode/json-server
     
 
-Create a `api.json` file with the next content
+    Create a `api.json` file with the next content
 
-  <details>
-  <summary>api.json (click to expand)</summary>
-<p>
+    <details>
+    <summary>api.json (click to expand)</summary>
+    <p>
 
 ```json
 {
@@ -190,16 +190,16 @@ Create a `api.json` file with the next content
 }
 ```
 
-</p>
-</details>
+    </p>
+    </details>
 
 
 
     Start JSON Server
 
-    ```bash
+```bash
     json-server --watch db.json
-    ```
+```
 
     Now if you go to [http://localhost:3000/](http://localhost:3000/), you'll get the fake API working.
 
