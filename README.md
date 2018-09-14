@@ -58,7 +58,7 @@ It will be useful to install
 
     JSON Server is a Node Module that you can use to create demo rest json webservice in less than a minute. All you need is a JSON file for sample data. https://github.com/typicode/json-server
 
-    Create a `api.json` file with the next content
+    Create a `api.json` file with the next content:
 
 <details>
 <summary>api.json (click to expand)</summary>
@@ -193,13 +193,14 @@ It will be useful to install
 </details>
 
 <br/>
-Start JSON Server
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start JSON Server
+         
 ```sh
-$ json-server --watch api.json
+$ npm install json-server -g
 ```
 
-Now go to [http://localhost:3000/](http://localhost:3000/), to check that your new API is working.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now go to [http://localhost:3000/](http://localhost:3000/), to check that your new API is working.
 
 
 5. Download and install React Developer Tools
