@@ -270,9 +270,14 @@ Add a new button inside Menu render method and a click handler:
 </div>
 ```
 
-Add a custom method that changes the expandedMenu state of Menu component:
+Add a custom method that changes the expandedMenu state of Menu component and bind this in the component constructor:
 
 ```js
+constructor(props){
+    ...
+    this.toggleMenu = this.toggleMenu.bind(this);
+}
+
 toggleMenu() {
     this.setState({ expandedMenu: !this.state.expandedMenu });
 }

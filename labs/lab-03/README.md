@@ -107,7 +107,7 @@ class Fetch extends React.Component {
         };
     }
 
-    fetchData(){}
+    fetchData() {}
 
     componentDidMount() {}
 
@@ -135,12 +135,11 @@ Use **Async/Await** or **Javascript Promises** to resolve the asynchronous respo
 fetchData = async () => {
   this.setState({ loading: true });
   try {
-      const data = await (await fetch(this.props.path, this.props.options)).json();
-      this.setState({ data });
+    const data = await (await fetch(this.props.url, this.props.options)).json();
+    this.setState({ data, loading: false});
   } catch (error) {
-      this.setState({ error });
+    this.setState({ error, loading: false});
   }
-  this.setState({ loading: false });
 }
 ```
 
@@ -172,7 +171,7 @@ Invoke _fetchData_ method in _componentDidMount()_. This is the best place to pu
 
 ```js
 componentDidMount() {
-  this.fetchData(this.props.path, this.props.options);
+  this.fetchData();
 }
 ```
 
@@ -180,20 +179,7 @@ Finally, return the children elements (_this.props.children_) into the render me
 
 ```js
 render() {
-  const {
-    state: { data, loading, error },
-    props: { children },
-    fetchData
-  } = this;
-
-  return children(
-    {
-      data,
-      loading,
-      error,
-      fetchData
-    }
-  );
+  return this.props.children(this.state);
 }
 ```
 
@@ -218,11 +204,18 @@ const FETCH_OPTIONS = {
 render() {
   return (
     <div className="App">
-      <Fetch path={'general'} fetchOptions={FETCH_OPTIONS}>
-        {({ data }) => {
+      <Fetch url={'general'} options={FETCH_OPTIONS}>
+         ({ data, loading, error }) => {
+          if (error) {
+            return <p>{error.message}</p>;
+          }
+          if (loading) {
+            return <p>Loading ...</p>;
+          }
           if (data && data.logo) {
             return <Header logo={data.logo} />
           }
+          return <p>No data yet ...</p>;
         }}
       </Fetch>
       <p className="Main">
