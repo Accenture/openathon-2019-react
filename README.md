@@ -44,7 +44,7 @@ It will be useful to install
     This installation also will install **npm**, the package manager for Node.js and the world’s largest software registry. 
 
 3. Install **webpack**
-    ```
+    ```sh
     $ npm install webpack -g
     ```
     
@@ -57,7 +57,6 @@ It will be useful to install
     ```
 
     JSON Server is a Node Module that you can use to create demo rest json webservice in less than a minute. All you need is a JSON file for sample data. https://github.com/typicode/json-server
-    
 
     Create a `api.json` file with the next content
 
@@ -192,14 +191,15 @@ It will be useful to install
 
 </p>
 </details>
+
 <br/>
-    Start JSON Server
+Start JSON Server
 
-    ```
-    $ json-server --watch db.json
-    ```
+```sh
+$ json-server --watch api.json
+```
 
-   Now if you go to [http://localhost:3000/](http://localhost:3000/), you'll get the fake API working.
+Now go to [http://localhost:3000/](http://localhost:3000/), to check that your new API is working.
 
 
 5. Download and install React Developer Tools
