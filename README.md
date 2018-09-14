@@ -7,26 +7,50 @@ As you already knows, this time we will learn to develop a **FrontEnd web applic
 React’s strongest capability is the creation of web interfaces based on reusable components, so we are going to create and reuse our own components while learning how to manage their life cycle, the management of props and the JSX syntax while exercising our knowledge of JavaScript (ES6).
 
 
+
+# What we are going to do
+We will learn how to develop a web application using React, playing with **props**, **JSX**, **Virtual DOM**, **components**, routing, REST API consumption, components reuse… and applying some of the recommended good practises like **Single responsibility principle**, **Isolation**, **functional programming**, **prototypal inheritance**…
+
+1. The web application will consist on a Main and two detail pages:
+
+<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/web%20map.png" width="315">
+
+2. With the next React components hierarchy:
+<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20use.png" width="608">
+
+3. Using a fake REST API emulating [Accenture site](https://www.accenture.com/us-en/company) data services:
+<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20and%20API.png" width="456">
+
+4. Having this simulated estructure (Main page)
+<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/main%20page%20mockup.png" width="756">
+
+
+
 # Prerequisites
 
 It will be useful to install 
 
-1. Install **Node.js** for your current Operating System: 
+1. Install **Visual Studio Code** for your current Operating System: 
+    [Click here](https://code.visualstudio.com/) to download.
+
+    **Visual Studio Code** is a source code editor with support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.
+
+2. Install **Node.js** for your current Operating System: 
 
     [Click here](https://nodejs.org/en/download/) to download.
 
-    **Node.js** is an open source server environment, free, that runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)  usin JavaScript runtime built on Chrome's V8 JavaScript engine.
+    **Node.js** is an open source server environment, free, that runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)  using JavaScript runtime built on Chrome's V8 JavaScript engine.
 
     This installation also will install **npm**, the package manager for Node.js and the world’s largest software registry. 
 
-2. Install **webpack**
+3. Install **webpack**
     ```
     $ npm install webpack -g
     ```
     
     **webpack** is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging ... [More info](https://webpack.js.org/).
 
-3. Install ***json-server***
+4. Install ***json-server***
     
     ```sh
     $ npm install json-server -g
@@ -45,20 +69,3 @@ It will be useful to install
 
     By selecting one of the components in the tree, you can inspect and edit its current props and state in the panel on the right. In the breadcrumbs you can inspect the selected component, the component that created it, the component that created that one, and so on.
 
-# What we are going to do
-
-Labs target description here
-
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/web%20map.png" width="315">
-
-# Components & API
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20and%20API.png" width="456">
-
-# Components Use
-
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20use.png" width="608">
-
-Final appareance 
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/main%20page%20mockup.png" width="756">
-
-***To continue...
