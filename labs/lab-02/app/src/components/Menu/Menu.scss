@@ -1,0 +1,29 @@
+@import 'assets/styles/common/variables';
+
+.Menu{
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    button{
+        margin-left: $space-s;
+    }
+
+    nav{
+        ul{
+            margin: 0;
+            li{
+                float: left;
+                margin: 0 $space-s;
+                list-style: none;
+                a{
+                    color: $text-color;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

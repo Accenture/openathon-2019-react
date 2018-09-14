@@ -1,0 +1,11 @@
+/***** TYPOGRAPHY *****/
+
+/* Text alignment */
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* Text selection */
+::selection { background:$main-color; color:#fff; }
+::-moz-selection { background:$main-color; color: #fff; }

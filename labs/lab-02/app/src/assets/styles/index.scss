@@ -1,0 +1,16 @@
+@import 'assets/styles/common/normalize';
+@import 'assets/styles/common/variables';
+@import 'assets/styles/common/typography';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    color: $text-color;
+    -webkit-font-smoothing: antialiased;
+}
+

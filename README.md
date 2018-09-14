@@ -4,7 +4,7 @@ You are welcomed to a new **Openathon** edition organised for the **Accenture Te
 
 As you already knows, this time we will learn to develop a **FrontEnd web application using React** applying some of the recommended best practices such as routing, asynchronous REST API access, reusable components and state management.
 
-Reactâ€™s strongest capability is the creation of web interfaces based on reusable components, so we are going to create and reuse our own components while learning how to manage their life cycle, the management of props and the JSX syntax while exercising our knowledge of JavaScript (ES6).
+React’s strongest capability is the creation of web interfaces based on reusable components, so we are going to create and reuse our own components while learning how to manage their life cycle, the management of props and the JSX syntax while exercising our knowledge of JavaScript (ES6).
 
 
 # Prerequisites
@@ -17,7 +17,7 @@ It will be useful to install
 
     **Node.js** is an open source server environment, free, that runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)  usin JavaScript runtime built on Chrome's V8 JavaScript engine.
 
-    This installation also will install **npm**, the package manager for Node.js and the worldâ€™s largest software registry. 
+    This installation also will install **npm**, the package manager for Node.js and the world’s largest software registry. 
 
 2. Install **webpack**
     ```
