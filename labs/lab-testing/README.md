@@ -38,6 +38,10 @@ In this Lab we are going to address **Unit Testing**.
 
 > For more information, here is an interesting article about [JavaScript testing](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
 
+![Software Testing Club](https://c1.staticflickr.com/5/4137/4742972042_aa69882a59_z.jpg)
+
+[Source](https://www.flickr.com/photos/softwaretestingclub/4742972042/sizes/l)
+
 ## Unit Testing 
 
 Essentially, a Unit Test is:
@@ -56,4 +60,84 @@ A typical Unit Test contains 3 phases also known as **AAA**: **Arrange**, **Act*
 * *Assert*: Observes the resulting behaviour. 
     * If the observed behaviour is consistent with the expectations, the unit test passes.
     * Otherwise, it fails, indicating that there is a problem somewhere in the system under test. 
+
+### Unit Test Principles
+**F.I.R.S.T.**
+* **Fast**. We may have thousands of tests in the entire project.
+
+* **Isolated/Independent**. A test method should do AAA => Arrange, Act, Assert.
+
+* **Repeatable**. NOT depend on any data, should setup or arrange it's own data, should yield the same results every time and at every location where they run, no dependency on date/time or random functions output.
+
+* **Self-Validating**. No manual inspection required to check whether the test has passed or failed.
+
+* **Thorough**. Should cover every use case scenario and NOT just aim for 100% coverage, corner/edge/boundary values, large data sets, security, large values, exceptions and errors, illegal arguments or bad inputs…
+
+
+### Jest Testing Framework
+
+In *JavaScript* world there are a lot of testing frameworks, runner frameworks,  that allow writing and executing tests (not only unit tests) like:
+
+* [Karma](https://karma-runner.github.io/2.0/index.html)
+* [Mocha](https://mochajs.org/)
+* [Jasmine](https://jasmine.github.io/)
+* [Protractor](https://www.protractortest.org/#/)
+* [Jest](https://jestjs.io/)
+* [Enzyme](https://github.com/airbnb/enzyme)
+
+And a lot more... 
+
+When we use *create-react-app* a default testing framework is included: **Jest**.
+
+<img src="https://d3vv6lp55qjaqc.cloudfront.net/items/2D2K45312x0M1q2C0a3P/jest-logo.svg" width="200">
+
+**Jest** it's an Open Source project maintained by Facebook (like React) and it's especially well suited for React code testing, although not limited to that: it can test any JavaScript code.
+
+**Jest** is defined as a **Zero configuration testing platform** that covers:
+* Unit testing
+* Code Coverage reports
+* Mocking library
+
+Jest strengths are:
+
+* it’s fast
+* it can perform snapshot testing
+* it’s opinionated, and provides everything out of the box without requiring you to make choices
+
+### Installation
+As mentioned above, Jest is automatically installed in *create-react-app*, so we don’t need to install Jest, but just in case we don't have it already:
+
+```sh
+$ npm install --save-dev jest
+```
+
+Notice how we instruct both to put Jest in the devDependencies part of the `package.json file`, so that it will only be installed in the development environment and not in production.
+
+Also we need to add this line to the scripts part of our `package.json` file:
+
+```json
+{
+  "scripts": {
+    "test": "jest"
+  }
+}
+```
+
+### Running tests
+Open now a terminal/console and run the already existing tests:
+
+```sh
+$ npm run test
+```
+
+or
+
+```sh
+$ npm test
+```
+
+You can see that all *.test.js* files have been executed by Jest with a summary of the results, execution time and warnings.
+
+## Creating my first Unit Test
+
 
