@@ -3,12 +3,9 @@
 
 ## Table of Contents
 
-- [Creating my first React Component](#creating-my-first-react-component)
-- [How to export your Component](#how-to-export-your-component)
-- [Composing Components](#composing-components)
-- [Components and Props](#components-and-props)
-- [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
-- [Stateless Components _versus_ Pure Components](#stateless-components-versus-puro-components)
+- [Why Testing?](#why-testing?)
+- [The different types of tests](#the-different-types-of-test)
+- [Unit Testing](#unit-testing)
 
 ## Why Testing?
 
@@ -21,7 +18,7 @@ At a high level, we need to make the distinction between manual and automated te
 
 * **Automated tests**, on the other hand, are performed by a machine that executes a test script that has been written in advance. These tests can vary a lot in complexity, from checking a single method in a class to making sure that performing a sequence of complex actions in the UI leads to the same results. It's much more robust and reliable than automated tests – but the quality of your automated tests depends on how well your test scripts have been written.
 
-### The different types of tests
+## The different types of tests
 
 There are many different types of testing that you can use to make sure that changes to your code are working as expected. 
 This subject is too complex but it's worth mention some of them:
@@ -41,15 +38,22 @@ In this Lab we are going to address **Unit Testing**.
 
 > For more information, here is an interesting article about [JavaScript testing](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
 
-## Unit Testing - Introduction 
+## Unit Testing 
 
 Essentially, a Unit Test is:
-* a *method* that instantiates a **small section** of our application
-* and **verifies** its behaviour independently from other parts. 
+* a **method** that instantiates a **small section of code** of our application
+* and **verifies** its behaviour **independently** from other parts. 
 
-Unit test **is not about finding bugs**, but it's useful for refactoring (restructuring code without changing its behaviour) to notice (the unit test will fail) if changes have broken what we already had working.
+Unit test **is not about finding bugs**, but it's useful for *refactoring* (restructuring code without changing its behaviour) to notice (the unit test will fail) if changes have broken what we already had working.
 
-Also **it's not about demonstrating that different parts of a system work together** in the real-life environment, that is *Integration Test*.
+>The purpose of a **Unit Test** is to **verify the behaviour** of a relatively small piece of software, independently from other parts.
 
->The purpose of a **Unit Test** is to **verify the behaviour** of a relatively small piece of software, independently from other parts.`
+
+A typical Unit Test contains 3 phases also known as **AAA**: **Arrange**, **Act** and **Assert**:
+
+* *Arrange*: Initializes a small piece of an application it wants to test (also known as the System Under Test, or SUT).
+* *Act*: Applies some stimulus to the system under test, usually by calling a method on it.
+* *Assert*: Observes the resulting behaviour. 
+    * If the observed behaviour is consistent with the expectations, the unit test passes.
+    * Otherwise, it fails, indicating that there is a problem somewhere in the system under test. 
 
