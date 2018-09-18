@@ -1,5 +1,5 @@
 
-# Lab 02
+# Lab Unit Testing
 
 ## Table of Contents
 
@@ -10,365 +10,46 @@
 - [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
 - [Stateless Components _versus_ Pure Components](#stateless-components-versus-puro-components)
 
-## Creating my first React Component 
+## Why Testing?
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
+>Because it’s important to find any issue that could potentially go wrong before our product/solution/website/mobile app goes live to the public.  
 
-As a general rule, keep components inside the dedicated components directory. Create a new folder for each component and place all the component files inside. 
+For example, for a website, by testing, issues like basic functionality, accessibility to users or the site’s ability to adapt to responsive devices (like smart phones, tablets, and desktop devices) can be addressed and fixed before our website is launched.
 
-**Naming conventions**
-Extensions: Use .jsx extension for React components.
-Filename: Use PascalCase for filenames. E.g., ListDetail.jsx.
+At a high level, we need to make the distinction between manual and automated tests:
+* **Manual testing** is done in person, by clicking through the application or interacting with the software and APIs with the appropriate tooling. This is very expensive as it requires someone to set up an environment and execute the tests themselves, and it can be prone to human error as the tester might make typos or omit steps in the test script.
 
-### Create a .jsx file
+* **Automated tests**, on the other hand, are performed by a machine that executes a test script that has been written in advance. These tests can vary a lot in complexity, from checking a single method in a class to making sure that performing a sequence of complex actions in the UI leads to the same results. It's much more robust and reliable than automated tests – but the quality of your automated tests depends on how well your test scripts have been written.
 
-Create a new Header folder in components directory and place a new Header.jsx file inside.
+### The different types of tests
 
->JSX is a syntax extension for JavaScript. It was written to be used with React. JSX is not valid JavaScript. Before a .jx file reaches a web browser, a JSX compiler will translate any JSX into regular JavaScript. More info about [JXS Syntax](https://reactjs.org/docs/introducing-jsx.html)
+There are many different types of testing that you can use to make sure that changes to your code are working as expected. 
+This subject is too complex but it's worth mention some of them:
+* Unit Testing
+* Integration Testing
+* Functional Testing
+* System Testing
+* Stress Testing
+* Performance Testing
+* Usability Testing
+* Acceptance Testing
+* Regression Testing
+* Beta Testing  
+* and more...
 
-### Import the React library
+In this Lab we are going to address **Unit Testing**.
 
-Get the React library via ```import```
+> For more information, here is an interesting article about [JavaScript testing](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
 
-```js
-import React from 'react';
-```
+## Unit Testing - Introduction 
 
-### Create a Component Class
+Essentially, a Unit Test is:
+* a *method* that instantiates a **small section** of our application
+* and **verifies** its behaviour independently from other parts. 
 
-To create a new Header component you can use ES6 classes and extend the React.Component class:
+Unit test **is not about finding bugs**, but it's useful for refactoring (restructuring code without changing its behaviour) to notice (the unit test will fail) if changes have broken what we already had working.
 
-```js
-class Header extends React.Component {
-  // Instructions go here
-}
-```
-Include a **_render()_** method in your instructions. A render method is a property whose name is render, and whose value is a function that returns a JSX expression.
+Also **it's not about demonstrating that different parts of a system work together** in the real-life environment, that is *Integration Test*.
 
-```js
-class Header extends React.Component {
-  render() {
-    return (
-      //JSX expression
-    );
-  }
-}
-```
-Inside of the render method's body, write a return statement that returns the logo, the title and the menu of the App.
+>The purpose of a **Unit Test** is to **verify the behaviour** of a relatively small piece of software, independently from other parts.`
 
-```js
-class Header extends React.Component {
-  render() {
-    return (
-      <div className="Header">
-          <div className="Header-logo">
-            <img alt="Accenture Logo"
-              src="https://www.accenture.com/t20180820T081710Z__w__/us-en/_acnmedia/Accenture/Dev/Redesign/Acc_Logo_Black_Purple_RGB.PNG"
-            />
-          </div>
-          <h1 className="Header-title">Accenture - II OPENATHON Custom Open Cloud</h1>
-          <div className="Header-menu">
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#innovation"></a>Innovation</li>
-                    <li><a href="#guestbook">Guestbook</a></li>
-                </ul>
-            </nav>
-          </div>
-      </div>
-    );
-  }
-}
-```
-### Adding styles to your Component
-
-Add a new .scss file to your component folder and import the processed .css file in our component:
-
-```js
-import './Header.css';
-```
-
-## How to export your Component
-
-At the end of your Header.jsx file add:
-
-```js
-export default Header;
-```
-
-## Composing Components
-Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components. 
-
-Create an App component that renders Header components:
-
-1. Move App folder from ```components``` directory to a new folder ```controllers``` and delete unnecessary .scss file.
-
-2. Add ```import { Header } from '../../components'```
-
-3. Add your Header component inside the render method.
-
-```js
-render() {
-    return (
-      <div className="App">
-        <Header />
-        <p className="Main">
-          Main content
-        </p>
-      </div>
-    );
-  }
-```
-
-In the same way, we can split components into smaller components.
-
-Remove all the following JSX statement from the Header render method and create a new Menu component that renders it:
-
-```js
-<div className="Header-menu">
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#innovation">Innovation</a></li>
-            <li><a href="#guestbook">Guestbook</a></li>
-        </ul>
-    </nav>
-</div>
-```
-
-```js
-import React from 'react';
-import './Menu.css';
-
-class Menu extends React.Component {
-    render() {
-        return (
-          <div className="Menu">
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#innovation">Innovation</a></li>
-                    <li><a href="#guestbook">Guestbook</a></li>
-                </ul>
-            </nav>
-          </div>
-        );
-    }
-}
-
-export default Menu;
-```
-
-Replace the removed code in Header.jsx file by the new Menu component:
-
-```js
-import React from 'react';
-import { Menu } from '../../components'
-import './Header.css';
-
-class Header extends React.Component {
-    render() {
-        return (
-            <div className="Header">
-                <div className="Header-logo">
-                <img alt="Accenture Logo"
-                    src={this.props.logo}
-                />
-                </div>
-                <h1 className="Header-title">Accenture - II OPENATHON Custom Open Cloud</h1>
-                <Menu />
-            </div>
-        );
-    }
-}
-
-export default Header;
-```
-
-## Components and Props
-
-Another way that components can interact is passing information from one component to another. This information is known as "props."
-
-In the App.jsx render method, add a new "logo" attribute to the Header instance:
-
-```js
-render() {
-    return (
-      <div className="App">
-        <Header logo="https://www.accenture.com/t20180820T081710Z__w__/us-en/_acnmedia/Accenture/Dev/Redesign/Acc_Logo_Black_Purple_RGB.PNG"/>
-        <p className="Main">
-          Main content
-        </p>
-        <p className="Main">
-          Main content
-        </p>
-      </div>
-    );
-  }
-```
-
-This prop will be received by our Header component and can be acceses via ```this.props.propName```:
-
-```js
-render() {
-        return (
-            <div className="Header">
-                <div className="Header-logo">
-                <img alt="Accenture Logo"
-                    src={this.props.logo}
-                />
-                ...
-```
-
-Conceptually, components are like JavaScript functions. They accept arbitrary inputs (“props”) and return React elements describing what should appear on the screen. At the same time, we can pass props from a component to a different component.
-
-**Props are Read-Only**, so all React components must act like pure functions with respect to their props.
-
->More info about [Props](https://reactjs.org/docs/components-and-props.html)
-
-## State Management and Event Handling in Components
-
-React components will often need dynamic information _(information that can change)_ in order to render. Unlike props, a component's state is not passed in from the outside and each component decides its own state.
-
-To make a component have state, give the component a initial state property. Declare a new State inside of a **_constructor(props)_** method in Menu component:
-
-```js
-constructor(props){
-    super(props);
-    this.state = {
-        expandedMenu: true
-    };
-}
-```
-A component can read its own state ```this.state.stateName``` and also it can change its value by calling the function **_this.setState()_**. This function takes an object and merges it with the component's current state.
-
-The most common way to change a current state is to call a custom function when a **event** is triggered, for example by clicking on a button.
-
-Handling events with React elements is very similar to handling events on DOM elements, with two syntactic differences:
-1. React events are named using camelCase, rather than lowercase.
-2. With JSX you pass a function as the event handler, rather than a string.
-
-Add a new button inside Menu render method and a click handler:
-
-```js
-<div className="Menu">
-  <nav>
-      <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#innovation">Innovation</a></li>
-          <li><a href="#guestbook">Guestbook</a></li>
-      </ul>
-  </nav>
-  <button onClick={this.toggleMenu}>
-  Menu
-  </button>
-</div>
-```
-
-Add a custom method that changes the expandedMenu state of Menu component and bind this in the component constructor:
-
-```js
-constructor(props){
-    ...
-    this.toggleMenu = this.toggleMenu.bind(this);
-}
-
-toggleMenu() {
-    this.setState({ expandedMenu: !this.state.expandedMenu });
-}
-```
-
-Add a condition that checks _expandedMenu_ state to render or not the navigation:
-
-```js
-{this.state.expandedMenu &&
-  <nav>
-    ...
-  </nav>
-}
-```
-
-Finally, update the Menu styles in Header.scss and Menu.scss:
-
-```css
-.Menu{
-    display: flex;
-    flex: 0 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-
-    button{
-        margin-left: $space-s;
-    }
-
-    nav{
-        ul{
-            margin: 0;
-            li{
-                float: left;
-                margin: 0 $space-s;
-                list-style: none;
-                a{
-                    color: $text-color;
-                    text-decoration: none;
-                }
-            }
-        }
-    }
-}
-```
-
-## Stateless Components _versus_ Pure Components
-
-A Stateless Component is declared as a function that has no state and returns the same markup given the same props:
-
-```js
-HelloWorld = () => {
-  return <h1>HelloWorld</h1>;
-}
-```
-
-A Pure Component is one of the most significant ways to optimize React applications. The usage of Pure Component gives a considerable increase in performance because it reduces the number of render operation in the application:
-
-```js
-class HelloWorld extends React.PureComponent {  
-  render() {
-    return <h1>HelloWorld</h1>
-  }
-}
-```
-
-Create a new Footer component as a Pure Component and add a default prop:  
-
-```js
-import React from 'react';
-import './Footer.css';
-
-const defaultProps = {
-    footerInfo: 'Copyright 2001-2018 Accenture. All rights reserved. Accenture Confidential. For internal use only.'
-};
-
-class Footer extends React.PureComponent {
-    render() {
-        return (
-        <div className="Footer">
-            <p className="Footer-info">
-                {this.props.footerInfo}
-            </p>
-        </div>
-        );
-    }
-}
-
-Footer.defaultProps = defaultProps;
-export default Footer;
-```
-
-> If you want certain props to have default values if nothing is provided, you can do this by defining defaultProps.
