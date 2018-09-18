@@ -11,13 +11,15 @@
     border-bottom: 1px solid $border-color;
 
     &-logo{
+        flex-basis: 20%;
         img{
             max-width: 150px;
         }
     }
-    
+
     &-title{
+        flex-basis: 40%;
         font-size: 1rem;
-        text-align: left;
+        text-align: center;
     }
 }

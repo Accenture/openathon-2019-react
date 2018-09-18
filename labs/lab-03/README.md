@@ -8,9 +8,13 @@
 - [Fetching Data: Part 2](#fetching-data:-part-2)
 - [Validating Data: PropTypes](#validating-data:-proptypes)
 
+<br/>  
+
 ## Getting a full fake REST API with json-server
 
 JSON Server is a Node Module that you can use to create a demo REST Json webservice in less than a minute. All you need is a JSON file for sample data. https://github.com/typicode/json-server
+
+<br/>  
 
 ### Install JSON Server
 
@@ -20,49 +24,60 @@ JSON Server is a Node Module that you can use to create a demo REST Json webserv
 npm install -g json-server
 ```
 
+<br/>  
+
 ### Proxying server requests
 
 It’s common to serve the front-end and back-end of your app in the same server and port. However, you cannot do this at development time since Create React App runs the app in its own development server.
 
-Add a proxy field to your package.json file:
+1. Add a proxy field to your package.json file:
 
-```json
-"scripts": {
-    ...
-},
-"proxy": "http://localhost:3001/"
-```
+    ```json
+    "scripts": {
+        ...
+    },
+    "proxy": "http://localhost:3001/"
+    ```
 
 Instead of making a request like this :
 
-```js
-fetch('http://localhost:5000/endpoint').then()
+```javascript
+fetch('http://localhost:3001/endpoint').then()
 ```
 
 You should make them like this:
 
-```js
-fetch('/endpoint').then()
+```javascript
+fetch('endpoint').then()
 ```
+
+<br/>  
 
 ### Adding mocked data to your project
 
 Copy and paste the api.json file from the ```\server``` folder into a new ```\src\mockeddata``` directory
 
->More info about available endpoints and methods in ```server\public\index.html```
+>You can find more information about the available endpoints and methods in the repository: ```server\public\index.html```
+
+Go to http://localhost:3001/general and inspect the returned data from the ```general``` endpoint.
+
+<br/>  
 
 ## Fetching Data: Part 1
 
 React doesn't prescribe a specific approach to data fetching, but people commonly use either the fetch() API provided by the browser or a library like axios. (_In the current lab we are going to use the fetch() API and we will implement the axios library in a next optional lab_)
 
-React components have many useful lifecycle hooks in order to initiate a component with remote data.
+To initiate a component with remote data, React components have many useful lifecycle hooks...
 
-It's time for a break.
-Let's know all these methods first.
+It's time for a break. Let's know all these methods first.
+
+<br/>  
 
 ## React Lifecycle Methods
 
 On the component class we can declare special hooks called “lifecycle methods” to run some code when a component mounts, unmounts, renders new values,...
+
+<br/>  
 
 ### Commonly Used Lifecycle Methods
 
@@ -83,39 +98,57 @@ On the component class we can declare special hooks called “lifecycle methods�
 * __*UNSAFE_componentWillReceiveProps()*__ is invoked before a mounted component receives new props
 * __*UNSAFE_componentWillUpdate()*__ is invoked just before rendering when new props or state are being received
 
-[See a React Lifecycle method diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+> See a [React Lifecycle method diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+<br/>  
 
 ## Fetching Data: Part 2
 
-Because React uses components, it’s easy to fetch data from an api and store the result in one component. Then we can import the entire component to the app or another component.
+Because React uses components, it’s easy to fetch data from an API and store the result in one component. Then, we can import the entire component to the App or another component.
+
+<br/>  
 
 ### Creating a new Fetch component
 
-Create a new **Fetch** component in ```src\services\api``` including a constructor —with three initial states: data, loading and error— a fetchData method, a componentDidMount lifecycle method and a render.
+1. Create a new **Fetch** component in ```src\services\api``` including a constructor _—with three initial states: data, loading and error—_ a fetchData method, a componentDidMount lifecycle method and a render.
 
-```js
-import React from 'react';
+    ```javascript
+    import React from 'react';
 
-class Fetch extends React.Component {
+    class Fetch extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            data: null,
-            loading: false,
-            error: null
-        };
+        constructor(props){
+            super(props);
+            this.state = {
+                data: null,
+                loading: false,
+                error: null
+            };
+        }
+
+        fetchData() {}
+
+        componentDidMount() {}
+
+        render() {}
     }
 
-    fetchData() {}
+    export default Fetch;
+    ```
 
-    componentDidMount() {}
+<br/>  
+2. Create a index.js file in ```ser\services\api``` to export your Fetch component:
 
-    render() {}
-}
+    ```javascript
+    import Fetch from './Fetch/Fetch';
 
-export default Fetch;
-```
+    export {
+        Fetch
+    };
+
+    ```
+
+<br/>  
 
 ### Using Fetch API
 
@@ -127,109 +160,133 @@ fetch(path, options);
 
 >Learn more about the [JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [how to use it](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
-Use **Async/Await** or **Javascript Promises** to resolve the asynchronous response. When the data is fetched successfully, store it in the local state with React’s _this.setState()_ method. 
+1. Use **Async/Await** or **Javascript Promises** to resolve the asynchronous response. When the data is fetched successfully, store it in the local state with React’s _this.setState()_ method. 
 
->Using Async/Await rather than Promises has several advantages: makes our code more readable and clean, with the same construct allows to handle both synchronous and asynchronous errors and it’s much easier to debug. Use _setState()_ to store the returned data/error.
+    ```javascript
+    fetchData = async () => {
+        this.setState({ loading: true });
+        try {
+            const data = await (await fetch(this.props.path, this.props.options)).json();
+            this.setState({ data, loading: false});
+        } catch (error) {
+            this.setState({ error, loading: false});
+        }
+    }
+    ```
 
-```js
-fetchData = async () => {
-  this.setState({ loading: true });
-  try {
-    const data = await (await fetch(this.props.url, this.props.options)).json();
-    this.setState({ data, loading: false});
-  } catch (error) {
-    this.setState({ error, loading: false});
-  }
-}
-```
+    >Using Async/Await rather than Promises has several advantages: makes our code more readable and clean, with the same construct allows to handle both synchronous and asynchronous errors and it’s much easier to debug. Use _setState()_ to store the returned data/error.
 
-Example using Promises:
+    Example using Promises:
 
-```js
-fetchData() {
-  this.setState({ loading: true });
-  fetch(this.props.path, this.props.options)
-    .then(response => response.json())
-    .then(
-      (data) => {
-        this.setState({data});
-      },
-      (error) => {
-        this.setState({error});
-      }
-      this.setState({ loading: false });
-    )
-}
-```
+    ```javascript
+    fetchData() {
+        this.setState({ loading: true });
+        fetch(this.props.path, this.props.options)
+            .then(response => response.json())
+            .then(
+                (data) => {
+                    this.setState({data});
+                },
+                (error) => {
+                    this.setState({error});
+                }
+            this.setState({ loading: false });
+            )
+    }
+    ```
 
->Learn more about the [JavaScript Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) and [Async Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+    >Learn more about the [JavaScript Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) and [Async Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
-Invoke _fetchData_ method in _componentDidMount()_. This is the best place to put calls to fetch data by default for two reasons:
+    <br/>  
+2. Invoke _fetchData_ method in _componentDidMount()_.
 
-1. The data won’t be loaded until after the initial render and reminds you to set up initial state properly. 
-2. Let you handle the case where the data to be rendered is empty.
+    ```javascript
+    componentDidMount() {
+        this.fetchData();
+    }
+    ```
 
-```js
-componentDidMount() {
-  this.fetchData();
-}
-```
+    This is the best place to put calls to fetch data by default for two reasons:
 
-Finally, return the children elements (_this.props.children_) into the render method:
+    * The data won’t be loaded until after the initial render and reminds you to set up initial state properly. 
+    * Let you handle the case where the data to be rendered is empty.
 
-```js
-render() {
-  return this.props.children(this.state);
-}
-```
+    <br/>  
+3. Finally, return the children elements (_this.props.children_) into the render method:
 
->The concept of children as a function or **render props** is one of the advanced patterns in React. The term refers to a simple technique to share code between React components using a prop whose value is a function. Learn more about [Render Props](https://reactjs.org/docs/render-props.html).
+    ```javascript
+    render() {
+        return this.props.children(this.state);
+    }
+    ```
+
+    >The concept of children as a function or **render props** is one of the advanced patterns in React. The term refers to a simple technique to share code between React components using a prop whose value is a function. Learn more about [Render Props](https://reactjs.org/docs/render-props.html).
+
+<br/>  
 
 ### Using Fetch Component
 
-You can retrieve the logo url from the fake REST API json-server. 
+You can retrieve the logo url from the fake REST API json-server. To do this:
 
-To do this, add in the Fetch component to the App render method and replace the logo attribute with the data.logo returned:
+1. Add the Fetch component into the App render method and replace the logo attribute with the data.logo returned:
 
-```js
-import { Fetch } from '../../services/api'
+    ```javascript
+    import { Fetch } from '../../services/api'
 
-...
+    ...
 
-const FETCH_OPTIONS = {
-  method: 'GET',
-  headers: {}
-};
+    const FETCH_OPTIONS = {
+        method: 'GET',
+        headers: {}
+    };
 
-render() {
-  return (
-    <div className="App">
-      <Fetch url={'general'} options={FETCH_OPTIONS}>
-         ({ data, loading, error }) => {
-          if (error) {
-            return <p>{error.message}</p>;
-          }
-          if (loading) {
-            return <p>Loading ...</p>;
-          }
-          if (data && data.logo) {
-            return <Header logo={data.logo} />
-          }
-          return <p>No data yet ...</p>;
-        }}
-      </Fetch>
-      <p className="Main">
-        Main content
-      </p>
-      <Footer />
-    </div>
-  );
-}
-```
+    render() {
+        return (
+            <div className="App">
+                <Fetch path={'general'} options={FETCH_OPTIONS}>
+                    ({ data, loading, error }) => {
+                        if (error) {
+                            return <p>{error.message}</p>;
+                        }
+                        if (loading) {
+                            return <p>Loading ...</p>;
+                        }
+                        if (data && data.logo) {
+                            return <Header logo={data.logo} />
+                        }
+                        return <p>No data yet ...</p>;
+                    }}
+                </Fetch>
+                <p className="Main">
+                    Main content
+                </p>
+                <Footer />
+            </div>
+        );
+    }
+    ```
+
+<br/>  
+
+### Creating a Loader Component - Optional
+
+Create a Loader component to show an animation while your Fetch component is retrieving data.
+
+1. Create a new Loader component
+
+<br/>  
+
+### Creating a Notification Component - Optional
+
+Create a Notification component to provide short information to your users about events in your application, for example, when a error occurs retrieving data.
+
+1. Create a new Notification component
+
+<br/>  
 
 ## Validating data type: PropTypes
 
-React PropTypes are a good way to help you catching bugs by validating data types of values passed through props. If props are missing, or if they're present but they aren't what you're expecting, then a warning will print in the console.
+**React PropTypes** are a good way to help you catching bugs by validating data types of values passed through props. If props are missing, or if they're present but they aren't what you're expecting, then a warning will print in the console.
 
 They also offer possibilities to flag props as mandatory or set default values and serve as a handy documentation on how a component has to be used in terms of passing props.
 
@@ -242,65 +299,65 @@ PropTypes exports a range of validators that can be used to make sure the data y
 
 You can declare that a prop is a specific JS type. By default, this basic data types are all optional:
 
-```js
+```javascript
 CustomComponent.propTypes = {
-  optionalArray: PropTypes.array,
-  optionalBool: PropTypes.bool,
-  optionalFunc: PropTypes.func,
-  optionalNumber: PropTypes.number,
-  optionalObject: PropTypes.object,
-  optionalString: PropTypes.string,
-  optionalSymbol: PropTypes.symbol,
+    optionalArray: PropTypes.array,
+    optionalBool: PropTypes.bool,
+    optionalFunc: PropTypes.func,
+    optionalNumber: PropTypes.number,
+    optionalObject: PropTypes.object,
+    optionalString: PropTypes.string,
+    optionalSymbol: PropTypes.symbol,
 }
 ```
 
-Add a PropType to the logo prop after the close of the component declaration in Header.jsx 
+1. Import the library in to your Header component and add a PropType to the logo prop after the close of the component declaration:
 
-```js
+    ```javascript
 
-import propTypes from 'prop-types';
-...
+    import propTypes from 'prop-types';
+    ...
 
-Header.propTypes = {
-    logo: propTypes.string,
-}
+    Header.propTypes = {
+        logo: propTypes.string,
+    }
 
-```
+    ```
 
 Complex Data Types:
 
-```js
+```javascript
 CustomComponent.propTypes = {
-  // Anything that can be rendered: numbers, strings, elements or an array (or fragment) containing these types.
-  optionalNode: PropTypes.node,
+    // Anything that can be rendered: numbers, strings, elements or an array (or fragment) containing these types.
+    optionalNode: PropTypes.node,
 
-  // A React element.
-  optionalElement: PropTypes.element,
+    // A React element.
+    optionalElement: PropTypes.element,
 
-  // You can also declare that a prop is an instance of a class. This uses JS's instanceof operator.
-  optionalMessage: PropTypes.instanceOf(Message),
+    // You can also declare that a prop is an instance of a class. This uses JS's instanceof operator.
+    optionalMessage: PropTypes.instanceOf(Message),
 
-  // You can ensure that your prop is limited to specific values by treating it as an enum.
-  optionalEnum: PropTypes.oneOf(['News', 'Photos']),
+    // You can ensure that your prop is limited to specific values by treating it as an enum.
+    optionalEnum: PropTypes.oneOf(['News', 'Photos']),
 
-  // An object that could be one of many types
-  optionalUnion: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.instanceOf(Message)
-  ]),
+    // An object that could be one of many types
+    optionalUnion: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.instanceOf(Message)
+    ]),
 
-  // An array of a certain type
-  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
+    // An array of a certain type
+    optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
 
-  // An object with property values of a certain type
-  optionalObjectOf: PropTypes.objectOf(PropTypes.number),
+    // An object with property values of a certain type
+    optionalObjectOf: PropTypes.objectOf(PropTypes.number),
 
-  // An object taking on a particular shape
-  optionalObjectWithShape: PropTypes.shape({
-    color: PropTypes.string,
-    fontSize: PropTypes.number
-  })
+    // An object taking on a particular shape
+    optionalObjectWithShape: PropTypes.shape({
+      color: PropTypes.string,
+      fontSize: PropTypes.number
+    })
 };
 ```
 
@@ -308,12 +365,13 @@ If you want to require anyone who uses your component to always pass a certain p
 
 ```js
 CustomComponent.propTypes = {
-  // You can chain any of the above with `isRequired` to make sure a warning
-  // is shown if the prop isn't provided.
-  requiredString: PropTypes.string.isRequired,
+    // You can chain any of the above with `isRequired` to make sure a warning
+    // is shown if the prop isn't provided.
+    requiredString: PropTypes.string.isRequired,
 
-  // A value of any data type
-  requiredAny: PropTypes.any.isRequired
+    // A value of any data type
+    requiredAny: PropTypes.any.isRequired
 }
 ```
+
 >More info about [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html).

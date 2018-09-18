@@ -13,17 +13,20 @@ class Header extends React.Component {
         return (
             <div className="Header">
                 <div className="Header-logo">
-                    {/*
-                    // TODO: Fetching in React Router Loop
+                    {
                     <Fetch path={'general'} options={FETCH_OPTIONS}>
                         {({ data, loading, error }) => {
                             if (data && data.logo) {
-                                return <Header logo={data.logo} />
+                                return (
+                                    <img alt="Accenture Logo"
+                                        src={data.logo}
+                                    />
+                                );
                             }
                             return <p>No data yet ...</p>;
                         }}
                     </Fetch>
-                    */}
+                    }
                 </div>
                 <h1 className="Header-title">Accenture - II OPENATHON Custom Open Cloud</h1>
                 <Menu />

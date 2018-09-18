@@ -6,16 +6,15 @@
 - [Creating a new React Project](#creating-a-new-react-project)
 - [Folder Structure](#folder-structure)
 - [Adding a CSS Preprocessor Structure](#adding-a-CSS-preprocessor)
-- [Adding React Router](#adding-react-router)
 - [Displaying ESLint Output in the Editor](#displaying-eslint-output-in-the-editor)
+
+<br/>  
 
 ## Creating a new React Project
 
 It is possible to manually create a React app, but Facebook has created a node module **create-react-app** to generate a boilerplate version of a React application
 
-    https://github.com/facebook/create-react-app/
-
-**You’ll need to have Node >= 6 on your local development machine** (but it’s not required on the server). You can use [nvm](https://github.com/creationix/nvm#installation) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) to easily switch Node versions between different projects.
+>**You’ll need to have Node >= 6 on your local development machine** (but it’s not required on the server). You can use [nvm](https://github.com/creationix/nvm#installation) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) to easily switch Node versions between different projects.
 
 To create a new app, you may choose one of the following methods:
 
@@ -33,6 +32,17 @@ npx create-react-app <name-of-app>
 npm init react-app <name-of-app>
 ```
 `npm init <initializer>` is available in npm 6+*
+
+>More information about [create-react-app](https://github.com/facebook/create-react-app/)
+
+Inside the newly created project (_name-of-app_), you can run some built-in commands:
+
+```npm start``` **Runs the app in development mode**. In your browse, open http://localhost:3000 to view your running react application.
+
+The page will automatically reload if you make changes to the code.
+You will see the build errors and lint warnings in the console.
+
+<br/>  
 
 ## Folder structure
 
@@ -88,9 +98,13 @@ my-app/
     index.js
 ```
 
+<br/>  
+
 ## Adding a CSS Preprocessor
 
-We will integrate a CSS preprocessor. In this lab, we will be using **Sass**, but you can also use Less, or another alternative.)
+We will integrate a CSS preprocessor. _In this lab, we will be using **Sass**, but you can also use Less, or another alternative_.
+
+Install node-sass:
 
 ```sh
 npm install node-sass --save-dev
@@ -111,13 +125,19 @@ Then in package.json, add the following lines to scripts:
 
 To use a different preprocessor, replace `sass:watch` and `sass:build` commands according to your preprocessor’s documentation.
 
-Now you can create a new file `App.scss` and run `npm run sass:watch`. The watcher will find every Sass file in `src` subdirectories, and create a corresponding CSS file next to it, in our case overwriting `App.css`. Since `App.js` still imports `App.css`, the styles become a part of your application. You can now edit `App.scss`, and `App.css` will be regenerated.
+_Before run new commands, remember to stop the ejecution of previous jobs: Ctrl + C_.
+
+Now you can create a new file `App.scss`, copy and pasthe the content from the .css file to the new .scss and run `npm run sass:watch`. The watcher will find every Sass file in `src` subdirectories, and create a corresponding CSS file next to it, in our case overwriting `App.css`. Since `App.js` still imports `App.css`, the styles become a part of your application.
+
+You can now make some changes in `App.scss` and the `App.css` file will be regenerated.
+
+<br/>  
 
 ## How to run multiple concurrently
 
 The usual way to run multiple commands concurrently is ```npm run script01 && npm run script02```. That's fine but it's hard to keep on track of different outputs. Also if one process fails, others still keep running and you won't even notice the difference. Another option would be to just run all commands in separate terminals.
 
-To make it easy, we will use: **concurrently**.
+To make it easy, we will use the library: **concurrently**.
 
 To install it, run:
 
@@ -131,34 +151,30 @@ Then in package.json, replace the following lines:
 "scripts": {
     "build": "concurrently --kill-others \"npm run sass:build\" \"react-scripts build\"",
     "eject": "react-scripts eject",
-    "sass watch": "node-sass -w src -o src --output-style compressed",
-    "sass build": "node-sass src -o src --output-style compressed",
+    "sass:watch": "node-sass -w src -o src --output-style compressed",
+    "sass:build": "node-sass src -o src --output-style compressed",
     "start": "concurrently --kill-others \"npm run sass:build\" \"react-scripts start\"",
     "test": "react-scripts test --env=jsdom"
   },
 ```
 
-## Adding React Router
+Now, stop the previous job in your terminal and run ```npm start```. If you make changes in your `App.scss` file, your app will be automatically reloaded and all the changes are visibles in the browser. _You can test adding a ```color:red```property to the ```.App``` class and saving the changes. After check that is working properly, remove this property_.
 
-Create React App doesn't prescribe a specific routing solution, but React Router is the most popular one.
-
-To add it, run:
-
-```sh
-npm install react-router-dom --save
-```
-
-We will use it and explain it in more detail later in our project.
+<br/>  
 
 ## Displaying ESLint Output in the Editor
 
-Some editors, including Sublime Text, Atom, and Visual Studio Code, provide plugins for ESLint.
+Some editors, including Sublime Text, Atom, and Visual Studio Code, provide plugins for ESLint whereby you should see the linter output right in your terminal as well as the browser console.
 
-They are not required for linting. You should see the linter output right in your terminal as well as the browser console. However, if you prefer the lint results to appear right in your editor, there are some extra steps you can do.
+However, if you prefer the lint results to appear right in your editor, there are some extra steps you can follow:
 
-You would need to install an ESLint plugin for your editor first. Then, add a file called `.eslintrc` to the project root:
+You would need to install an ESLint plugin for your editor first.
 
-```js
+[Download](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ESLint plugin for Visual Studio Code.
+
+Then, add a file called `.eslintrc` to the project root:
+
+```javascript
 {
   "extends": "react-app"
 }
@@ -166,4 +182,6 @@ You would need to install an ESLint plugin for your editor first. Then, add a fi
 
 Now your editor should report the linting warnings.
 
-This feature is available with `react-scripts@0.2.0` and higher. It also only works with npm 3 or higher.
+>This feature is available with `react-scripts@0.2.0` and higher. It also only works with npm 3 or higher. More information about the [ESLint package in Create React App](https://github.com/facebook/create-react-app/blob/26f701fd60cece427d0e6c5a0ae98a5c79993640/packages/eslint-config-react-app/README.md)
+
+>Lear more about [ESLint](https://eslint.org/docs/user-guide/getting-started)

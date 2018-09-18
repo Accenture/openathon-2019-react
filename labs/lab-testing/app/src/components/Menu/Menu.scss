@@ -3,7 +3,6 @@
 .Menu{
     display: flex;
     flex: 0 1 auto;
-    flex-basis: 40%;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
@@ -12,7 +11,7 @@
     button{
         margin-left: $space-s;
     }
-
+    
     nav{
         ul{
             margin: 0;
