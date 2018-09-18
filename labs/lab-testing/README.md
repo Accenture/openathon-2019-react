@@ -272,4 +272,5 @@ This case is simple, we test two possible options but think on more complex case
   
 To sum up, those are very simple tests but it's the way to start with. Another test could be to check that not only the state is changed but also all menu links are rendered and in the way (styles for example) you expect to be rendered.
 
+> Do you want to learn more? Start with [Jest - Getting Started](https://jestjs.io/docs/en/getting-started)
 
