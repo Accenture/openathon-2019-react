@@ -39,8 +39,7 @@ In this Lab we are going to address **Unit Testing**.
 > For more information, here is an interesting article about [JavaScript testing](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3)
 
 ![Software Testing Club](https://c1.staticflickr.com/5/4137/4742972042_aa69882a59_z.jpg)
-
-[Source](https://www.flickr.com/photos/softwaretestingclub/4742972042/sizes/l)
+[Image source](https://www.flickr.com/photos/softwaretestingclub/4742972042/sizes/l)
 
 ## Unit Testing 
 
@@ -104,7 +103,7 @@ Jest strengths are:
 * it can perform snapshot testing
 * it’s opinionated, and provides everything out of the box without requiring you to make choices
 
-### Installation
+### Jest Installation
 As mentioned above, Jest is automatically installed in *create-react-app*, so we don’t need to install Jest, but just in case we don't have it already:
 
 ```sh
@@ -123,7 +122,37 @@ Also we need to add this line to the scripts part of our `package.json` file:
 }
 ```
 
-### Running tests
+### Enzyme Installation
+We also will use **Enzyme** that is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
+
+```sh
+$ npm i --save-dev enzyme enzyme-adapter-react-16
+```
+
+
+## Creating my first Unit Test
+Create `Menu.test.js` file in the same folder as `Menu.js`. This file will be used to write the different tests that Jest is going to execute for us.
+
+Add the next code where the main point is to import our Menu component `import Menu from './Menu';` and remember that **a unit test _tests_ an isolated portion of code, not the application**.
+
+```js
+import React from 'react';
+import Menu from './Menu';
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
+```
+
+We’ll write a proper test shortly, but for now, put in this dummy test, which will let us check everything’s working correctly and we have Jest configured:
+```js
+describe('Addition', () => {
+    it('knows that 2 and 3 make 5', () => {
+        expect(2 + 3).toBe(5);
+    });
+});
+```
+
 Open now a terminal/console and run the already existing tests:
 
 ```sh
@@ -136,8 +165,111 @@ or
 $ npm test
 ```
 
-You can see that all *.test.js* files have been executed by Jest with a summary of the results, execution time and warnings.
+```
+PASS  src/components/Menu/Menu.test.js  
+    ✓ renders without crashing (2ms)
+  Addition
+    ✓ knows that 2 and 3 make 5 (1ms)
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.365s, estimated 1s
+Ran all test suites.
+```
+You can see that all *.test.js* files have been executed by Jest (currently only one) with a summary of the results, execution time and warnings. Also notice the render of our test descriptions:
+```
+Addition
+    ✓ knows that 2 and 3 make 5 (1ms)
+```
 
-## Creating my first Unit Test
+In our dummy test code, Jest lets us use `describe` and `it` to nest tests as we need to. How much nesting you use is up to the requirements but a best practise is to nest in a way that **all the descriptive strings passed to _describe_ and _it_ read almost as a sentence**. This way the test describes itself!
+
+When it comes to making actual assertions, we wrap the thing we want to test within an **expect()** call, before then calling an assertion on it. In this case, we’ve used **toBe**. You can find a list of all the available assertions in the [Jest documentation](https://jestjs.io/docs/en/api). 
+
+**toBe** checks that the given value matches the value under test, using === to do so.
+
+### Testing Business Logic
+Now we’ve seen Jest work on a dummy test, let’s get it running on a real one.
+We’re going to test that when the Menu button is pressed *expandedMenu* state is changed by *toggleMenu* method that swaps it from true to false, or vice-versa.
+
+```js
+describe('Menu:toggleMenu', () => {
+    const menu = shallow( < Menu / > ).instance();
+    // Init state
+    menu.state.expandedMenu = true;
+
+    it(
+        'When state is true, so links are hidden, a toggleMenu() call must change state to TRUE, that is, shows menu links',
+        () => {
+            menu.toggleMenu();
+            expect(menu.state.expandedMenu).toEqual(false);
+        });
+
+    it(
+        'When state is false, so links are hidden, a new call to toggleMenu() must change state to FALSE so hides menu links',
+        () => {
+
+            menu.toggleMenu();
+            expect(menu.state.expandedMenu).toEqual(true);
+
+        });
+
+});
+````
+
+And execute again the test. 
+Check results that should be like
+
+``` PASS  src/components/Menu/Menu.test.js
+  Menu:toggleMenu
+    ✓ When state is true, so links are hidden, a toggleMenu() call must change state to TRUE, that is, shows menu links (1ms)
+    ✓ When state is false, so links are hidden, a new call to toggleMenu() must change state to FALSE so hides menu links (1ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        0.807s, estimated 1s
+Ran all test suites.
+```
+
+Let's analyse now the code:
+
+We create an instance of our Menu component and set it's initial state:
+```js
+describe('Menu:toggleMenu', () => {
+    const menu = shallow( < Menu / > ).instance();
+    // Init state
+    menu.state.expandedMenu = true;
+```
+
+> The component itself sets expandedMenu to true but best practises demands to initialise props on your own as you need.
+
+After Menu component initialization, we define two **it**, once to check that invoking toggleMenu changes expandedMenu from true to false:
+
+```js
+    it(
+        'When state is true, so links are hidden, a toggleMenu() call must change state to TRUE, that is, shows menu links',
+        () => {
+            menu.toggleMenu();
+            expect(menu.state.expandedMenu).toEqual(false);
+        });
+````
+
+And another one to check the only other option, toggleMenu changing expandedMenu from false to true:
+
+```js
+    it(
+        'When state is false, so links are hidden, a new call to toggleMenu() must change state to FALSE so hides menu links',
+        () => {
+
+            menu.toggleMenu();
+            expect(menu.state.expandedMenu).toEqual(true);
+
+        });
+```
+
+This case is simple, we test two possible options but think on more complex cases where you must cover all of them. This way you are defining your code behaviour, what you expect from it and demonstrating you are testing any possibility.
+  
+To sum up, those are very simple tests but it's the way to start with. Another test could be to check that not only the state is changed but also all menu links are rendered and in the way (styles for example) you expect to be rendered.
 
 
