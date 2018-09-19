@@ -29,8 +29,6 @@ Also, we will use a fake REST API emulating [Accenture site](https://www.accentu
 
 # Prerequisites
 
-It will be useful to install 
-
 1. Install **Visual Studio Code** for your current Operating System: 
 
     **Visual Studio Code** is a source code editor with support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.
