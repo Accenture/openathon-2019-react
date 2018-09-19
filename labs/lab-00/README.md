@@ -68,6 +68,7 @@ It’s used not only in **FrontEnd** web applications but in Hybrid mobile apps 
     
     React defines the life cycle of components and provide a default implementation; these methods are executed at particular moments of the life cycle, and they can be overridden to run custom code.
 
+<br/>  
 
 ## Resources
 
