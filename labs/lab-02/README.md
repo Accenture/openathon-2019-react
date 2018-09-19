@@ -1,9 +1,9 @@
 
-# Lab 02
+# Lab 02 - Fundamental React Concepts
 
 ## Table of Contents
 
-- [Creating my first React Component](#creating-my-first-react-component)
+- [Creating your first React Component](#creating-my-first-react-component)
 - [Composing Components](#composing-components)
 - [Components and Props](#components-and-props)
 - [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
@@ -12,7 +12,7 @@
 
 <br/>  
 
-## Creating my first React Component 
+## Creating your first React Component 
 
 **React Components** let you split the UI into independent and reusable pieces, thinking about each piece in isolation.
 
@@ -219,7 +219,11 @@ Save the changes and check it in your browser. Run ```npm start``` if the proyec
     };
     ```
 
-<br/>  
+<br/> 
+
+### How to render your Component
+
+// TODO: ReactDOM guide.
 
 ## Composing Components
 
@@ -521,6 +525,49 @@ Handling events with React elements is very similar to handling events on DOM el
     -            text-align: left
     +            text-align: center;
             }
+    ```
+
+    <br/>  
+7. Add a ```className="Menu-button"``` to your button in Menu.jsx file and include some styles:
+
+    ```scss
+    &-button{
+        position: relative;
+        width: 20px;
+        height: 16px;
+        margin-left: $space-s;
+        border: 0;
+        border-top: 3px solid $text-color;
+        border-bottom: 3px solid $text-color;
+        background: transparent;
+        cursor: pointer;
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 3px;
+            background: $text-color;
+            transform: translate(-50%, -50%);
+            transition: transform ease-in-out .15s;
+        }
+
+        &--expanded{
+            border-color: transparent;
+
+            &:before {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:after {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
+    }
     ```
 
 <br/>  

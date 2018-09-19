@@ -1,0 +1,29 @@
+@import 'assets/styles/common/variables';
+
+.List{
+    .ListBasic{
+
+        &-header{
+            text-align: left;
+            border-bottom: 1px solid $border-color;
+        }
+        &-item{
+            display: flex;
+
+            &-image{
+                flex-basis: 25%;
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            &-content{
+                flex-basis: 75%;
+                padding-left: $space-m;
+                text-align: left;
+            }
+        }
+
+    }
+}

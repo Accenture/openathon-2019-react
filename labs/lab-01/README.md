@@ -1,18 +1,18 @@
 
-# Lab 01
+# Lab 01 - Starting a New React Project
 
 ## Table of Contents
 
-- [Creating a new React Project](#creating-a-new-react-project)
+- [Creating a new React App](#creating-a-new-react-app)
 - [Folder Structure](#folder-structure)
 - [Adding a CSS Preprocessor Structure](#adding-a-CSS-preprocessor)
 - [Displaying ESLint Output in the Editor](#displaying-eslint-output-in-the-editor)
 
 <br/>  
 
-## Creating a new React Project
+## Creating a new React App
 
-It is possible to manually create a React app, but Facebook has created a node module **create-react-app** to generate a boilerplate version of a React application
+It is possible to manually create a React project, but Facebook has created a node module **create-react-app** to generate a boilerplate version of a React application.
 
 >**You’ll need to have Node >= 6 on your local development machine** (but it’s not required on the server). You can use [nvm](https://github.com/creationix/nvm#installation) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) to easily switch Node versions between different projects.
 
@@ -35,12 +35,11 @@ npm init react-app <name-of-app>
 
 >More information about [create-react-app](https://github.com/facebook/create-react-app/)
 
-Inside the newly created project (_name-of-app_), you can run some built-in commands:
+Inside the newly created project (_name-of-app_), you can run some built-in commands.
 
-```npm start``` **Runs the app in development mode**. In your browse, open http://localhost:3000 to view your running react application.
+To **run the application** in development mode, execute ```npm start```. In your browser, open http://localhost:3000 to view your running react application.
 
-The page will automatically reload if you make changes to the code.
-You will see the build errors and lint warnings in the console.
+The page will automatically reload if you make changes to the code. Also, you will see the build errors and lint warnings in the console.
 
 <br/>  
 

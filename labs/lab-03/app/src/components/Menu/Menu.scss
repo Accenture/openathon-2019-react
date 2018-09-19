@@ -9,8 +9,43 @@
     justify-content: flex-end;
     align-items: center;
 
-    button{
+    &-button{
+        position: relative;
+        width: 20px;
+        height: 16px;
         margin-left: $space-s;
+        border: 0;
+        border-top: 3px solid $text-color;
+        border-bottom: 3px solid $text-color;
+        background: transparent;
+        cursor: pointer;
+        outline: 0;
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 3px;
+            background: $text-color;
+            transform: translate(-50%, -50%);
+            transition: transform ease-in-out .15s;
+        }
+
+        &--expanded{
+            border-color: transparent;
+
+            &:before {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:after {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
     }
 
     nav{
