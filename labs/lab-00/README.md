@@ -39,6 +39,7 @@ It’s used not only in **FrontEnd** web applications but in Hybrid mobile apps 
     It’s **declarative** rather than **imperative**, and application state flows through pure functions. This paradigm contrast with Object-Oriented Programming, where application state is usually shared and located with methods in objects.
     [More info.](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 
+<br/>  
 
 ## Main Characteristics of React
 
@@ -74,19 +75,19 @@ It’s used not only in **FrontEnd** web applications but in Hybrid mobile apps 
 
 This is a series of books diving deep into the core mechanisms of the JavaScript language. The first edition of the series is now complete.
 
-<a href="http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/"><img src="up %26 going/cover.jpg" width="75"></a>&nbsp;
-<a href="http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/"><img src="scope %26 closures/cover.jpg" width="75"></a>&nbsp;
-<a href="http://www.ebooks.com/1734321/you-don-t-know-js-this-object-prototypes/simpson-kyle/"><img src="this %26 object prototypes/cover.jpg" width="75"></a>&nbsp;
-<a href="http://www.ebooks.com/1935541/you-don-t-know-js-types-grammar/simpson-kyle/"><img src="types %26 grammar/cover.jpg" width="75"></a>&nbsp;
-<a href="http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/"><img src="async %26 performance/cover.jpg" width="75"></a>&nbsp;
-<a href="http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/"><img src="es6 %26 beyond/cover.jpg" width="75"></a>
+<a href="http://www.ebooks.com/1993212/you-don-t-know-js-up-going/simpson-kyle/"><img src="https://i2.ebkimg.com/previews/001/001993/001993212/001993212-hq-168-80.jpg" width="75"></a>&nbsp;
+<a href="http://www.ebooks.com/1647631/you-don-t-know-js-scope-closures/simpson-kyle/"><img src="https://i1.ebkimg.com/previews/001/001647/001647631/001647631-hq-168-80.jpg" width="75"></a>&nbsp;
+<a href="http://www.ebooks.com/1734321/you-don-t-know-js-this-object-prototypes/simpson-kyle/"><img src="https://i1.ebkimg.com/previews/001/001734/001734321/001734321-hq-168-80.jpg" width="75"></a>&nbsp;
+<a href="http://www.ebooks.com/1935541/you-don-t-know-js-types-grammar/simpson-kyle/"><img src="https://i1.ebkimg.com/previews/001/001935/001935541/001935541-hq-168-80.jpg" width="75"></a>&nbsp;
+<a href="http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/"><img src="https://i0.ebkimg.com/previews/001/001977/001977375/001977375-hq-168-80.jpg" width="75"></a>&nbsp;
+<a href="http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/"><img src="https://i0.ebkimg.com/previews/002/002481/002481820/002481820-hq-168-80.jpg" width="75"></a>
 
 ### React JS Notes for Professionals
-[Get it here](https://goalkicker.com/ReactJSBook/)
+<a href="https://goalkicker.com/ReactJSBook/"><img src="https://goalkicker.com/ReactJSBook/ReactJSGrow.png" width="75"></a>
 
 ### React In-depth: An exploration of UI development 
-[Get it here](https://www.gitbook.com/download/pdf/book/developmentarc/react-indepth)
+<a href="https://www.gitbook.com/download/pdf/book/developmentarc/react-indepth"><img src="https://images.gr-assets.com/books/1474470756l/32173968.jpg" width="75"></a>
 
 ### React Enlightenment
-[Get it here](https://www.gitbook.com/download/pdf/book/frontendmasters/react-enlightenment)
+<a href="https://www.gitbook.com/download/pdf/book/frontendmasters/react-enlightenment"><img src="https://i.pinimg.com/originals/6e/1f/3f/6e1f3f8de55cb2def135cca9c8865efe.png" width="75"></a>
 
