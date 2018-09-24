@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [What is JavaScript](#what-is-javascript)
+- [The Two Pilars of JavaScript](#the_two_pilars_of_javascript)
+- [React. A JavaScript library for building user interfaces](#React_A_JavaScript_library_for_building_user_interfaces)
 - [Main Characteristics of React](#main-characteristics-of-react)
 - [Resources](#resources)
 
