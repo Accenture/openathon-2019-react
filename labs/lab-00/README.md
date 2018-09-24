@@ -9,7 +9,7 @@
 
 <br/>  
 
-## What is JavaScript 
+# What is JavaScript 
 
 **JavaScript** is one of the most important **programming languages** of all time, not simply because of its [popularity](https://www.tiobe.com/tiobe-index). 
 Is a multi-paradigm language, supporting **imperative/procedural** programming along with **OOP** (Object-Oriented Programming) with **prototypal inheritance** and **functional programming**.
@@ -24,7 +24,7 @@ It’s an **interpreted language** that needs a **JavaScript Engine** to be exec
 It’s used not only in **FrontEnd** web applications but in Hybrid mobile apps ([Ionic](https://ionicframework.com/), [React Native](http://www.reactnative.com/)...) and **BackEnd** ([Node.js](https://nodejs.org/), [Express](https://www.express.com/), [Meteor](https://www.meteor.com/)…)
 
 
-### The Two Pilars of JavaScript
+## The Two Pilars of JavaScript
 
 1. **Prototypal Inheritance**
 
@@ -41,7 +41,19 @@ It’s used not only in **FrontEnd** web applications but in Hybrid mobile apps 
 
 <br/>  
 
+# React. A JavaScript library for building user interfaces
+
+> React = Components + Virtual Dom + JSX + Props & State. 
+
+**React** is a modern open-source web development toolkit built by Facebook. React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called *components*.
+
+Dividing web applications up into **components** is a central idea to creating applications with React. Instead of a gigantic monolith of a web page, you will generally consider the individual pieces that make up an application and divide it up into smaller pieces that are much easier to develop, debug, and to generally think about.
+
 ## Main Characteristics of React
+
+![React operations](https://www.ibm.com/developerworks/library/wa-react-intro/figure1.png)[Image source](https://www.ibm.com/developerworks/library/wa-react-intro/index.html)
+
+
 
 * **Component-based Architecture**
     
@@ -51,7 +63,7 @@ It’s used not only in **FrontEnd** web applications but in Hybrid mobile apps 
     
     Components react to a change in the application state. Their behavior is defined, and when one of their properties changes, a reaction is triggered.
 
-* **High Performance, thanks to Virtua DOM**
+* **High Performance, thanks to Virtual DOM**
     
     When processing changes, React compares the **Virtual DOM** with the DOM to sync and reconcile changes. As a result, the DOM is efficiently and partially updated.
 
