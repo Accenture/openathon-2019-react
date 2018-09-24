@@ -5,7 +5,7 @@
 
 - [What is JavaScript](#what-is-javascript)
 - [The Two Pilars of JavaScript](#the-two-pilars-of-javascript)
-- [React. A JavaScript library for building user interfaces](#Rreact-a-javascript-library-for-building-user-interfaces)
+- [React. A JavaScript library for building user interfaces](#react-a-javascript-library-for-building-user-interfaces)
 - [Main Characteristics of React](#main-characteristics-of-react)
 - [Resources](#resources)
 
