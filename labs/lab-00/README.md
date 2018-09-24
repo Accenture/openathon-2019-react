@@ -92,3 +92,8 @@ This is a series of books diving deep into the core mechanisms of the JavaScript
 ### React Enlightenment
 <a href="https://www.gitbook.com/download/pdf/book/frontendmasters/react-enlightenment"><img src="https://i.pinimg.com/originals/6e/1f/3f/6e1f3f8de55cb2def135cca9c8865efe.png" width="75"></a>
 
+### Curated React/Redux tutorials and resource links
+
+[React/Redux Links](https://github.com/markerikson/react-redux-links#readme)
+
+For an amazing links compilation for React, Redux, ES6, and more, meant to be a collection of high-quality articles and resources for someone who wants to learn about the React-Redux ecosystem, as well as a source for quality information on advanced topics and techniques.
