@@ -13,6 +13,8 @@
 
 # What is JavaScript 
 
+![JS logo](https://github.com/Albarian/openathonFY19/blob/master/resources/images/jsLogo.png)
+
 **JavaScript** is one of the most important **programming languages** of all time, not simply because of its [popularity](https://www.tiobe.com/tiobe-index). 
 Is a multi-paradigm language, supporting **imperative/procedural** programming along with **OOP** (Object-Oriented Programming) with **prototypal inheritance** and **functional programming**.
  
@@ -44,6 +46,8 @@ It’s used not only in **FrontEnd** web applications but in Hybrid mobile apps 
 <br/>  
 
 # React. A JavaScript library for building user interfaces
+
+![React logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png)
 
 > React = Components + Virtual Dom + JSX + Props & State. 
 
