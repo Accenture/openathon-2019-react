@@ -1,12 +1,14 @@
-import Main from './Main/Main';
 import Home from './Home/Home';
+import Main from './Main/Main';
+import NotFound from './NotFound/NotFound';
 import Services from './Services/Services';
 import Innovation from './Innovation/Innovation';
 import Guestbook from './Guestbook/Guestbook';
 
 export {
-    Main,
     Home,
+    Main,
+    NotFound,
     Services,
     Innovation,
     Guestbook

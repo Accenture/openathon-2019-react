@@ -11,7 +11,12 @@
     height: 100%;
     z-index: 8;
 
-    &-message{
+    &--error{
+        border-top: 2px solid $red;
+        background-color: rgba( $red, .2 )
+    }
+
+    .Notification__message{
         position: absolute;
         top: 0;
         right: 0;
@@ -30,13 +35,7 @@
         z-index: 16;
     }
 
-    &-error{
-        border-top: 2px solid $red;
-        background-color: rgba( $red, .2 )
-
-    }
-
-    &-close{
+    .Notification__close{
         position: absolute;
         top: -8px;
         right: -8px;

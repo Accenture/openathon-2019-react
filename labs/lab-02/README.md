@@ -1,14 +1,13 @@
-
-# Lab 02 - Fundamental React Concepts
+# Lab 02 - React Fundamentals
 
 ## Table of Contents
 
-- [Creating your first React Component](#creating-my-first-react-component)
+- [Creating your first React Component](#creating-your-first-react-component)
 - [Composing Components](#composing-components)
 - [Components and Props](#components-and-props)
 - [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
-- [Stateless Components _versus_ Pure Components](#stateless-components-versus-puro-components)
-- [Adding Default Props](adding-default-props)
+- [Stateless Components _versus_ Pure Components](#stateless-components-versus-pure-components)
+- [Adding Default Props](#adding-default-props)
 
 <br/>  
 
@@ -45,6 +44,8 @@ As a general rule, keep components inside the dedicated components directory. Cr
 1. Import the React library in the Header.jsx file
 
     ```javascript
+    /* Header.jsx */
+
     import React from 'react';
     ```
 
@@ -55,6 +56,10 @@ As a general rule, keep components inside the dedicated components directory. Cr
 To create a new Header component you can use ES6 classes and extend the React.Component class:
 
 ```javascript
+/* Header.jsx */
+
+import React from 'react';
+
 class Header extends React.Component {
   // Instructions go here
 }
@@ -63,6 +68,8 @@ class Header extends React.Component {
 1. Include a **_render()_** method in your instructions. A render method is a property of each component whose value is a function that returns a JSX expression.
 
     ```javascript
+    /* Header.jsx */
+
     class Header extends React.Component {
     render() {
         return (
@@ -76,17 +83,19 @@ class Header extends React.Component {
 2. Inside of the render method's body, write a **_return statement_** that returns the logo, the title and the menu of the App.
 
     ```javascript
+    /* Header.jsx */
+
     class Header extends React.Component {
     render() {
         return (
         <div className="Header">
-            <div className="Header-logo">
+            <div className="Header__logo">
                 <img alt="Accenture Logo"
                 src="https://www.accenture.com/t20180820T081710Z__w__/us-en/_acnmedia/Accenture/Dev/Redesign/Acc_Logo_Black_Purple_RGB.PNG"
                 />
             </div>
-            <h1 className="Header-title">Accenture - II OPENATHON Custom Open Cloud</h1>
-            <div className="Header-menu">
+            <h1 className="Header__title">II OPENATHON Custom Open Cloud</h1>
+            <div className="Header__menu">
                 <nav>
                     <ul>
                         <li><a href="#home">Home</a></li>
@@ -120,16 +129,18 @@ class Header extends React.Component {
     ```
 
     <br/>  
-2. Import the new files in your index.scss file:
+2. Add a new ```index.scss``` file in ```src\styles``` and import the recently added files:
 
     ```css
+    /* index.scss */
+
     @import 'assets/styles/common/normalize';
     @import 'assets/styles/common/variables';
     @import 'assets/styles/common/typography';
     ```
 
     <br/>  
-3. Add a new .scss file to your component folder and import the processed .css file in our component:
+3. Add a new ```Header.scss``` file to your component folder and import the processed .css file in our component:
 
     ```
     app/
@@ -148,7 +159,9 @@ class Header extends React.Component {
     <br/>  
 4. Finally add the proper styles to the .scss file:
 
-    ```css
+    ```scss
+    /* Header.scss */
+
     .Header{
         display: flex;
         flex: 0 1 auto;
@@ -159,13 +172,13 @@ class Header extends React.Component {
         padding: $space-s $space-m;
         border-bottom: 1px solid $border-color;
 
-        &-logo{
+        .Header__logo{
             img{
                 max-width: 150px;
             }
         }
 
-        &-menu{
+        .Header__menu{
             display: flex;
             flex: 0 1 auto;
             flex-direction: row;
@@ -189,29 +202,31 @@ class Header extends React.Component {
             }
         }
 
-        &-title{
+        .Header__title{
             font-size: 1rem;
             text-align: left;
         }
     }
     ```
 
-Save the changes and check it in your browser. Run ```npm start``` if the proyect is not running currently.
-
 <br/>  
 
 ### How to export your Component
 
-1. At the end of your Header.jsx file add:
+1. At the end of your ```Header.jsx``` file add:
 
     ```javascript
+    /* Header.jsx */
+
     export default Header;
     ```
 
     <br/>  
-2. Add a new index.js file into your components directory to export the named component:
+2. Add a new ```index.js``` file into your components directory to export the named component:
 
     ```javascript
+    /* src\components\index.js */
+
     import Header from './Header/Header';
 
     export {
@@ -223,7 +238,26 @@ Save the changes and check it in your browser. Run ```npm start``` if the proyec
 
 ### How to render your Component
 
-// TODO: ReactDOM guide.
+Ensure that your ```public\index.html``` page contains an empty ```<div id="root"></div>``` tag. This <div> with an unique id attribute will allow you to find it from the JavaScript code and display a React component inside of it.
+
+Go to ```src\index.js``` and check that the following lines exist:
+
+```javascript
+/* src\index.js */
+
+import ReactDOM from 'react-dom';
+
+...
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+The **react-dom** package provides DOM-specific methods that can be used at the top level of your app. The last line of code finds the <div> in your ```ìndex.html``` and then displays your App React component inside of it.
+
+> Learn more about the [ReactDom package](https://reactjs.org/docs/react-dom.html).
+
+Finally, save all the changes and check it in your browser. Run ```npm start``` if the proyect is not running currently.
+
 
 ## Composing Components
 
@@ -231,19 +265,25 @@ Components can refer to other components in their output. This lets us use the s
 
 Create an App component that renders the new Header component:
 
-1. Move App folder from ```components``` directory to a new folder ```controllers``` and delete unnecessary .scss file.
+1. Move the App folder from ```components``` directory to a new folder ```controllers``` and delete the imported logo in the ```App.js``` file.
 
-2. Add ```import { Header } from '../../components'```
+2. Change the extension of your ```App.js``` file to ``` App.jsx```.
 
-3. Add your Header component inside the render method.
+3. Delete unnecessary ```App.scss``` and ```App.css``` files and remove the ```import './App.css';``` in your ```App.jsx``` file.
+
+4. Add ```import { Header } from '../../components'```.
+
+5. Add your Header component inside the render method.
 
     ```javascript
+    /* App.jsx */
+
     render() {
         return (
         <div className="App">
             <Header />
             <p className="Main">
-            Main content
+                Main content
             </p>
         </div>
         );
@@ -255,7 +295,9 @@ In the same way, we can split components into smaller components.
 1. Remove all the following JSX statement from the Header render method.
 
     ```javascript
-    <div className="Header-menu">
+    /* Header.jsx */
+
+    <div className="Header__menu">
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -271,6 +313,8 @@ In the same way, we can split components into smaller components.
 2. Create a new Menu component (following the previous steps to create a new component) that renders the removed menu in Header:
 
     ```javascript
+    /* Menu.jsx */
+
     import React from 'react';
     import './Menu.css';
 
@@ -298,6 +342,8 @@ In the same way, we can split components into smaller components.
 3. Add the Menu component to the index.js file in ```components```
 
     ```javascript
+    /* src\components\index.js */
+
     import Header from './Header/Header';
     import Menu from './Menu/Menu';
 
@@ -311,6 +357,8 @@ In the same way, we can split components into smaller components.
 4. Import the Menu component in Header.jsx file and replace the removed code by the new Menu:
 
     ```javascript
+    /* Header.jsx */
+
     import React from 'react';
     import { Menu } from '../../components'
     import './Header.css';
@@ -319,12 +367,12 @@ In the same way, we can split components into smaller components.
         render() {
             return (
                 <div className="Header">
-                    <div className="Header-logo">
+                    <div className="Header__logo">
                     <img alt="Accenture Logo"
                         src={this.props.logo}
                     />
                     </div>
-                    <h1 className="Header-title">Accenture - II OPENATHON Custom Open Cloud</h1>
+                    <h1 className="Header__title">II OPENATHON Custom Open Cloud</h1>
                     <Menu />
                 </div>
             );
@@ -340,9 +388,11 @@ In the same way, we can split components into smaller components.
 
 Another way that components can interact is passing information from one component to another. This information is known as "**_props_**"
 
-1. In the App.jsx render method, add a new "logo" attribute to the Header instance:
+1. In the ```App.jsx``` render method, add a new "logo" attribute to the Header instance:
 
     ```javascript
+    /* App.jsx */
+
     render() {
         return (
         <div className="App">
@@ -361,16 +411,18 @@ Another way that components can interact is passing information from one compone
     This prop will be received by our Header component and can be acceses via ```this.props.<propName>```:
 
     <br/>  
-2. Add your prop value in the Header.jsx render method:
+2. Add your prop value in the ```Header.jsx``` render method:
 
     ```javascript
+    /* Header.jsx */
+
     render() {
             return (
                 <div className="Header">
-                    <div className="Header-logo">
-                    <img alt="Accenture Logo"
-                        src={this.props.logo}
-                    />
+                    <div className="Header__logo">
+                        <img alt="Accenture Logo"
+                            src={this.props.logo}
+                        />
                     ...
     ```
 
@@ -391,6 +443,8 @@ To make a component have state, give it an initial state property.
 1. Declare a new State inside of a **_constructor(props)_** method in Menu component:
 
     ```javascript
+    /* Menu.jsx */
+
     constructor(props){
         super(props);
         this.state = {
@@ -415,25 +469,31 @@ Handling events with React elements is very similar to handling events on DOM el
 1. Add a new button inside Menu render method and an event handler when the user clicks on the button (_onClick_):
 
     ```javascript
-    <div className="Menu">
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#innovation">Innovation</a></li>
-            <li><a href="#guestbook">Guestbook</a></li>
-        </ul>
-    </nav>
-    <button onClick={this.toggleMenu}>
-    Menu
-    </button>
-    </div>
+    /* Menu.jsx */
+
+    render() {
+        <div className="Menu">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#innovation">Innovation</a></li>
+                <li><a href="#guestbook">Guestbook</a></li>
+            </ul>
+        </nav>
+        <button onClick={this.toggleMenu}>
+        Menu
+        </button>
+        </div>
+    }
     ```
 
     <br/>  
 2. Add a custom method that changes the expandedMenu state of Menu component:
 
     ```javascript
+    /* Menu.jsx */
+
     toggleMenu() {
         this.setState({ expandedMenu: !this.state.expandedMenu });
     }
@@ -443,6 +503,8 @@ Handling events with React elements is very similar to handling events on DOM el
 3. Bind ```this``` in the component constructor:
 
     ```javascript
+    /* Menu.jsx */
+
     constructor(props){
         ...
         this.toggleMenu = this.toggleMenu.bind(this);
@@ -455,17 +517,25 @@ Handling events with React elements is very similar to handling events on DOM el
 4. Add a condition that checks _expandedMenu_ state to render or not the navigation:
 
     ```javascript
-    {this.state.expandedMenu &&
-    <nav>
+    /* Menu.jsx */
+
+    render() {
+    ...
+        {this.state.expandedMenu &&
+        <nav>
+            ...
+        </nav>
+        }
         ...
-    </nav>
-    }
     ```
 
-    <br/>  
-5. Finally, remove the Menu styles in Header.scss and place into the Menu.scss:
+    >Learn more about [Conditional Rendering in React](https://reactjs.org/docs/conditional-rendering.html).
 
-    ```css
+    <br/>  
+5. Remove the Menu styles in Header.scss and place into the Menu.scss:
+
+    ```scss
+    /* Header.scss */
     .Menu{
         display: flex;
         flex: 0 1 auto;
@@ -496,7 +566,7 @@ Handling events with React elements is very similar to handling events on DOM el
     ```
 
     <br/>  
-6. To prevent that the ```Header-title``` moves on Menu collapsing, assign a default width to each Header component styles:
+6. To prevent that the ```Header__title``` moves on Menu collapsing, assign a default width to each Header component styles:
 
     ```diff
     /* Menu.scss */
@@ -512,14 +582,14 @@ Handling events with React elements is very similar to handling events on DOM el
 
     ```diff
         /* Header.scss */
-            &-logo{
+            &__logo{
     +           flex-basis: 20%;
                 img{
                     max-width: 150px;
                 }
             }
 
-            &-title{
+            &__title{
     +            flex-basis: 40%;
                  font-size: 1rem;
     -            text-align: left
@@ -528,10 +598,23 @@ Handling events with React elements is very similar to handling events on DOM el
     ```
 
     <br/>  
-7. Add a ```className="Menu-button"``` to your button in Menu.jsx file and include some styles:
+7. Add a ```className="Menu__button"``` to your button in Menu.jsx file and a conditional class ```Menu__button--expanded``` checking the _expandedMenu_ state:
+
+    ```javascript
+    /* Menu.jsx */
+
+    <button className={`Menu__button ${this.state.expandedMenu ? 'Menu__button--expanded' : ''}`}
+        onClick={this.toggleMenu}
+    />
+    ```
+
+    <br/>  
+8. Include some styles in ```Menu.scss```:
 
     ```scss
-    &-button{
+    /* Menu.scss */
+
+    .Menu__button{
         position: relative;
         width: 20px;
         height: 16px;
@@ -570,11 +653,74 @@ Handling events with React elements is very similar to handling events on DOM el
     }
     ```
 
+    <br/>
+9. Finally, include some styles in your ```Menu.scss``` file to animate your menu:
+
+    ```scss
+    /* Menu.scss */
+
+    nav{
+        animation: fadeIn 1s;
+
+        ul{
+            margin: 0;
+
+            li{
+                position: relative;
+                float: left;
+                margin: 0 $space-s;
+                list-style: none;
+                line-height: 36px;
+                text-align: center;
+
+                &:after{
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 0%;
+                    height: 2px;
+                    margin: auto;
+                    background-color: $main-color;
+                    transition: width 0.4s ease-in-out;
+                }
+
+                &:hover{
+                    color: $main-color;
+
+                    &:after{
+                        width: 100%;
+                    }
+
+                    a{
+                        color: $main-color;
+                    }
+                }
+
+                a{
+                    color: $text-color;
+                    text-decoration: none;
+                    transition: color 0.4s ease-in-out;
+                }
+            }
+        }
+    }
+
+    ...
+
+    @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+
+    ```
+
 <br/>  
 
 ## Stateless Components _versus_ Pure Components
 
-A Stateless Component is declared as a function that has no state and returns the same markup given the same props:
+A **Stateless Component** is declared as a function that has no state and returns the same markup given the same props:
 
 ```javascript
 HelloWorld = () => {
@@ -582,7 +728,7 @@ HelloWorld = () => {
 }
 ```
 
-A Pure Component is one of the most significant ways to optimize React applications. The usage of Pure Component gives a considerable increase in performance because it reduces the number of render operations in the application:
+A **Pure Component** is one of the most significant ways to optimize React applications. The usage of Pure Component gives a considerable increase in performance because it reduces the number of render operations in the application:
 
 ```javascript
 class HelloWorld extends React.PureComponent {  
@@ -595,6 +741,8 @@ class HelloWorld extends React.PureComponent {
 1. Create a new Footer component as a Pure Component:  
 
     ```javascript
+    /* Footer.jsx */
+
     import React from 'react';
     import './Footer.css';
 
@@ -602,8 +750,8 @@ class HelloWorld extends React.PureComponent {
         render() {
             return (
             <div className="Footer">
-                <p className="Footer-info">
-                    'Openathon II FY19 React'
+                <p className="Footer__info">
+                    'II Openathon Custom Open Cloud'
                 </p>
             </div>
             );
@@ -614,9 +762,11 @@ class HelloWorld extends React.PureComponent {
     ```
 
     <br/>  
-2. Add some styles to your footer component into a Footer.scss file
+2. Add some styles to your footer component into a ```Footer.scss``` file
 
     ```css
+    /* Footer.scss */
+
     @import 'assets/styles/common/variables';
 
     .Footer {
@@ -638,18 +788,20 @@ To assign a value to a specific prop, use the special defaultProps property.
 1. Add a default prop to your Footer component. _To add more readability, you can define a defaultProps constant at the beginning of your file and assign its values before your component export_: 
 
     ```javascript
+    /* Footer.jsx */
+    
     import React from 'react';
     import './Footer.css';
 
     const defaultProps = {
-        footerInfo: 'Copyright 2001-2018 Accenture. All rights reserved. Accenture Confidential. For internal use only.'
+        footerInfo: 'II Openathon Custom Open Cloud'
     };
 
     class Footer extends React.PureComponent {
         render() {
             return (
             <div className="Footer">
-                <p className="Footer-info">
+                <p className="Footer__info">
                     {this.props.footerInfo}
                 </p>
             </div>

@@ -8,7 +8,7 @@ class App extends Component {
         return (
             <div className="App">
                 <BrowserRouter>
-                    <div className="App-root">
+                    <div className="App__root">
                         <Header />
                         <Main />
                         <Footer />

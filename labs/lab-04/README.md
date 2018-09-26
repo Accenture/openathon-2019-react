@@ -2,17 +2,20 @@
 
 ## Table of Contents
 
-- [Installing React Router](#getting-a-full-fake-rest-api-with-json-server)
+- [Installing React Router](#installing-react-router)
 - [Adding a Router Component](#adding-a-router-component)
-- [React Navigation: Links, Switch and Routes](#react-navigation:-links,-switch-and-routes)
+- [React Navigation: Links, Switch and Routes](#react-navigation:-links,-switches-and-routes)
+- [Creating a custom 404 NotFound Page ](#creating-a-custom-404-notfound-page)
 
 <br/>  
 
 ## Installing React Router
 
-**React Router** has been divided into three packages: ```react-router```, ```react-router-dom``` and ```react-router-native```. The main package provides the core routing components and functions and the other two provide environment specific (browser and mobile) components.
+**React Router** is the standard routing library for React that keeps your UI in sync with the URL.
 
-You should choose the right one depending on your application. Because you are building a website, install ```react-router-dom```.
+The library has been divided into three packages: ```react-router```, ```react-router-dom``` and ```react-router-native```. The main package provides the core routing components and functions and the other two provide environment specific (browser and mobile) components.
+
+You should choose the right one depending on your application. Because you are building a website, start installing the ```react-router-dom```.
 
 <br/>  
 
@@ -26,11 +29,13 @@ npm install react-router-dom --save
 
 ## Adding a Router Component
 
-At the core of every React Router application should be a router component. Also, you need to determine which type of router to use. For web projects that need to handle dynamic requests **_BrowserRouter_** is the most suitable.
+At the core of every React Router application should be a **router** component. Also, you need to determine which type of router to use. For web projects that need to handle dynamic requests **_BrowserRouter_** is the most suitable.
 
 1. Import _BrowserRouter_ from ```react-router-dom``` in your App controller:
 
     ```javascript
+    /* App.jsx */
+
     import { BrowserRouter as Router } from "react-router-dom";
     ```
 
@@ -38,11 +43,13 @@ At the core of every React Router application should be a router component. Also
 2. Wrap the App render with your imported *<BrowserRouter>*:
 
     ```javascript
+    /* App.jsx */
+    
     render() {
         return (
             <div className="App">
                 <BrowserRouter>
-                    <div className="App-root">
+                    <div className="App__root">
                         <Fetch path={'general'} fetchOptions={FETCH_OPTIONS}>
                             {({ data }) => {
                                 if (data && data.logo) {
@@ -61,7 +68,7 @@ At the core of every React Router application should be a router component. Also
     }
     ```
 
-    A Router component only expect to receive a single child element. So, to handle this limitation, create a _div class="App-root"_ to wrap the rest of the components.
+    A Router component only expect to receive a single child element. So, to handle this limitation, you have created a ```<div class="App__root"></div>``` tag to wrap the rest of the components.
 
 >Learn more about [React Router](https://reacttraining.com/react-router)
 
@@ -69,9 +76,11 @@ At the core of every React Router application should be a router component. Also
 
 ### Creating a Main Container and Refactoring
 
-1. Create a new ```src\containers``` directory and add a Main component:
+1. Create a new directory ```src\containers\Main``` and add a Main component:
 
     ```js
+    /* Main.jsx */
+
     import React from 'react';
     import './Main.css';
 
@@ -89,9 +98,11 @@ At the core of every React Router application should be a router component. Also
     ```
 
     <br/>  
-2. Create an empty Main.scss file and add the following styles:
+2. Create an empty ```Main.scss``` file and add the following styles:
 
     ```css
+    /* Main.scss */
+
     .Main {
         padding: 2.5rem 0;
         background: $light-gray;
@@ -100,14 +111,16 @@ At the core of every React Router application should be a router component. Also
     ```
 
     <br/>  
-3. In App.jsx, remove the "Main" div and replace it by the new Main component:
+3. In ```App.jsx```, remove the "Main" div and replace it by the new Main component:
 
     ```diff
+    /* App.jsx */
+
     render() {
         return (
             <div className="App">
                 <BrowserRouter>
-                    <div className="App-root">
+                    <div className="App__root">
                         <Fetch path={'general'} options={FETCH_OPTIONS}>
                             {({ data, loading, error }) => {
                                 if (error) {
@@ -143,11 +156,13 @@ At the core of every React Router application should be a router component. Also
 1. Remove the Fetch component in the App controller and render only the Header, Main and Footer components:
 
     ```js
+    /* App.jsx */
+
     render() {
         return (
             <div className="App">
                 <BrowserRouter>
-                    <div className="App-root">
+                    <div className="App__root">
                         <Header />
                         <Main />
                         <Footer />
@@ -162,6 +177,8 @@ At the core of every React Router application should be a router component. Also
 2. Add the Fetch service in the Header component to get the logo url and delete the PropTypes (Now, you don't need to check the type of the props because the component it is not receiving props):
 
     ```js
+    /* Header.jsx */
+
     import { Menu, Loader, Notification } from '../../components';
     import { Fetch } from '../../services/api';
 
@@ -174,7 +191,7 @@ At the core of every React Router application should be a router component. Also
 
     ...
 
-        <div className="Header-logo">
+        <div className="Header__logo">
             <Fetch path={'general'} options={FETCH_OPTIONS}>
                 {({ data, loading, error }) => {
                     if (error) {
@@ -206,7 +223,7 @@ At the core of every React Router application should be a router component. Also
 
 <br/>  
 
-## React Navigation: Links, Switch and Routes
+## React Navigation: Links, Switches and Routes
 
 React Router provides a **Link** component to render an accesible navigation around the application. Wherever you render a _<Link>_, an anchor _<a>_ will appear in the DOM.
 
@@ -215,6 +232,8 @@ Link component is responsible for requesting the location that it should navigat
 1. Replace the anchor _<a>_ links in Menu.jsx using Link component:
 
     ```javascript
+    /* Menu.jsx */
+
     <nav>
         <ul>
             <li><Link to="/">Home</Link></li>
@@ -233,6 +252,8 @@ Link component is responsible for requesting the location that it should navigat
 2. Create four new containers _—Home, Services, Innovation and Guestbook—_ as React Components, to render each page of your application following this basic structure:
 
     ```javascript
+    /* Home.jsx */
+
     import React from 'react';
 
     class Home extends React.Component {
@@ -252,6 +273,8 @@ Link component is responsible for requesting the location that it should navigat
 3. Add your new container Components to the ```containers\index.js``` file:
 
     ```javascript
+    /* src\containers\index.js */
+
     import Main from './Main/Main';
     import Home from './Home/Home';
     import Services from './Services/Services';
@@ -271,6 +294,8 @@ Link component is responsible for requesting the location that it should navigat
 4. Render the content for each page using **Switch** and **Routes** from React Router inside of your Main controler. The Switch component renders the first Route or Redirect that matches the location. On the other hand, the Route component —perhaps the most important in React Router— is responsible to render other components or HTML content when a location matches the route’s path. 
 
     ```javascript
+    /* Main.jsx */
+
     import { Switch, Route } from "react-router-dom";
     import { Home, Services, Innovation, Guestbook } from "../../containers";
 
@@ -288,3 +313,82 @@ Link component is responsible for requesting the location that it should navigat
     The route for Home includes an exact prop to __ match only when the pathname matches the route’s path exactly.
 
     >Learn more about [Switch](https://reacttraining.com/react-router/web/api/Switch) and [Route](https://reacttraining.com/react-router/web/api/Route)
+
+<br/>  
+
+## Creating a custom 404 NotFound Page 
+
+Now, what happens if a user hits a route that is not defined? Let’s set up a 404 route and component that will return if the route is not found.
+
+1. Create a new ```NotFound``` folder in ```scr\containers```directory.
+
+2. Create a ```NotFound.jsx``` and a ```NotFound.scss``` files:
+
+    ```javascript
+    /* NotFound.jsx */
+
+    import React from 'react';
+    import { Link } from 'react-router-dom';
+    import './NotFound.css'
+
+    class NotFound extends React.PureComponent {
+        render() {
+            return (
+                <div className="NotFound">
+                    <p className="NotFound__title">404<br/>This page is not found</p>
+                    <p><Link to="/">Return to Home Page</Link></p>
+                </div>
+            );
+        }
+    }
+
+    export default NotFound;
+    ```
+
+    ```scss
+    /* NotFound.scss */
+
+    .NotFound{
+        .NotFound__title{
+            font-size: 2.5rem;
+        }
+    }
+    ```
+
+    <br/>  
+3. Import your new component into the ```containers\index.js```file:
+
+    ```diff
+    /* src\containers\index.js */
+        import Home from './Home/Home';
+        import Main from './Main/Main';
+    +   import NotFound from './NotFound/NotFound';
+        import Services from './Services/Services';
+        import Innovation from './Innovation/Innovation';
+        import Guestbook from './Guestbook/Guestbook';
+
+        export {
+            Home,
+            Main,
+    +       NotFound,
+            Services,
+            Innovation,
+            Guestbook
+        };
+    ```
+
+    <br/>  
+4. Below your ```/guestbook``` route in Main component, create a new route:
+
+    ```diff
+    /* Main.jsx */
+    <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/services" component={Services} />
+        <Route path="/innovation" component={Innovation} />
+        <Route path="/guestbook" component={Guestbook} />
+    +   <Route path='*' component={NotFound} />
+    </Switch>
+    ```
+
+Now, if you navigate to some route that has not been defined (http://localhost:3000/example), your 404 NotFound page will appear.

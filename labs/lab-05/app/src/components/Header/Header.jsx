@@ -12,7 +12,7 @@ class Header extends React.Component {
     render() {
         return (
             <div className="Header">
-                <div className="Header-logo">
+                <div className="Header__logo">
                     {
                     <Fetch path={'general'} options={FETCH_OPTIONS}>
                         {({ data, loading, error }) => {
@@ -38,7 +38,7 @@ class Header extends React.Component {
                     </Fetch>
                     }
                 </div>
-                <h1 className="Header-title">Accenture - II OPENATHON Custom Open Cloud</h1>
+                <h1 className="Header__title">II OPENATHON Custom Open Cloud</h1>
                 <Menu />
             </div>
         );

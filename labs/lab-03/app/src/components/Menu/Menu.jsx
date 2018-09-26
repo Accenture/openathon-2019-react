@@ -28,7 +28,7 @@ class Menu extends React.Component {
                         </ul>
                     </nav>
                 }
-                <button className={`Menu-button ${this.state.expandedMenu ? 'Menu-button--expanded' : ''}`}
+                <button className={`Menu__button ${this.state.expandedMenu ? 'Menu__button--expanded' : ''}`}
                     onClick={this.toggleMenu}
                 />
             </div>

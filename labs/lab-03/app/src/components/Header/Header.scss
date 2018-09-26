@@ -10,14 +10,14 @@
     padding: $space-s $space-m;
     border-bottom: 1px solid $border-color;
 
-    &-logo{
+    .Header__logo{
         flex-basis: 20%;
         img{
-            max-width: 150px;
+            max-width: 120px;
         }
     }
 
-    &-title{
+    .Header__title{
         flex-basis: 40%;
         font-size: 1rem;
         text-align: center;

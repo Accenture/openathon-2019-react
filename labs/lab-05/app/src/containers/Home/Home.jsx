@@ -12,7 +12,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="Home" location={this.props.location}>
-                <div className="Home-info">
+                <div className="Home__info">
                     <Fetch path={'general'} options={FETCH_OPTIONS}>
                         {({ data, loading, error }) => {
                             if (error) {
@@ -27,15 +27,17 @@ class Home extends React.Component {
                             }
                             if (data) {
                                 return (
-                                    <Info title="About Accenture" data={data} />
+                                    <Info title="About Accenture"
+                                        data={data}
+                                    />
                                 );
                             }
                             return <Loader />;
                         }}
                     </Fetch>
                 </div>
-                <div className="Home-list">
-                    <div className="Home-list-services">
+                <div className="Home__list">
+                    <div className="Home__services">
                         <Fetch path={'services'} options={FETCH_OPTIONS}>
                             {({ data, loading, error }) => {
                                 if (error) {
@@ -50,14 +52,17 @@ class Home extends React.Component {
                                 }
                                 if (data) {
                                     return (
-                                        <ListBasic title="Services" data={data} />
+                                        <ListBasic title="Services"
+                                            data={data}
+                                            fields={['name', 'description', 'image', 'internal_link']}
+                                        />
                                     );
                                 }
                                 return <Loader />;
                             }}
                         </Fetch>
                     </div>
-                    <div className="Home-list-innovation">
+                    <div className="Home__innovation">
                         <Fetch path={'innovation'} options={FETCH_OPTIONS}>
                             {({ data, loading, error }) => {
                                 if (error) {
@@ -72,7 +77,11 @@ class Home extends React.Component {
                                 }
                                 if (data) {
                                     return (
-                                        <ListBasic title="Innovation" data={data} />
+                                        <ListBasic title="Innovation"
+                                            data={data}
+                                            fields={['image']}
+                                            layout="grid"
+                                        />
                                     );
                                 }
                                 return <Loader />;

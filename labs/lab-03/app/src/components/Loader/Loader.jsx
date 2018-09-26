@@ -6,7 +6,7 @@ class Loader extends React.PureComponent {
     render() {
         return (
             <div className="Loader">
-                <div className="Loader-icon"></div>
+                <div className="Loader__icon"></div>
             </div>
         );
     }

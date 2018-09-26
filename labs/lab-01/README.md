@@ -97,6 +97,23 @@ my-app/
     index.js
 ```
 
+Don't forget to update the path for the imported files in ```App.js``` and ```index.js``` files considering the new folder structure:
+
+```javascript
+/* index.js */
+
+import './assets/styles/index.css';
+import App from './components/App/App';
+import registerServiceWorker from './services/registerServiceWorker';
+```
+
+```javascript
+/* App.js */
+
+import logo from '../../assets/images/logo.svg';
+import './App.css';
+```
+
 <br/>  
 
 ## Adding a CSS Preprocessor
@@ -109,7 +126,7 @@ Install node-sass:
 npm install node-sass --save-dev
 ```
 
-Then in package.json, add the following lines to scripts:
+Then in ```package.json```, add the following lines to scripts:
 
 ```diff
 "scripts": {
@@ -126,15 +143,42 @@ To use a different preprocessor, replace `sass:watch` and `sass:build` commands 
 
 _Before run new commands, remember to stop the ejecution of previous jobs: Ctrl + C_.
 
-Now you can create a new file `App.scss`, copy and pasthe the content from the .css file to the new .scss and run `npm run sass:watch`. The watcher will find every Sass file in `src` subdirectories, and create a corresponding CSS file next to it, in our case overwriting `App.css`. Since `App.js` still imports `App.css`, the styles become a part of your application.
+1. Create a new index.scss file in ```scr\assets\styles``` to include de generic styles for your application.
 
-You can now make some changes in `App.scss` and the `App.css` file will be regenerated.
+2. Run ```npm sass:watch``` in your terminal.
+
+3. Add the following rules to your index.scss:
+
+    ```scss
+    /* index.scss */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+    ```
+      
+  <br/>
+4. Save the changes.
+
+5. The watcher will find every Sass file in ```src``` subdirectories and creates a corresponding CSS file next to it. You can find a new ```index.css``` file in your styles folder. Check that your main ```src\index.js``` imports the _index.css_ file. If not, add the following line:
+
+```javascript
+/* index.js */
+
+import './assets/styles/index.css';
+```
+      
+  <br/>
+Now, create a new file _App.scss_ in your ```src\components\App``` directory, copy and paste all the content from the _old App.css_ file to the new _App.scss_ and save the file. The watcher will overrides _App.css_. Since _App.js_ still imports _App.css_, the styles become a part of your application.
+
+You can now make some changes in _App.scss_ and the _App.css_ file will be regenerated.
 
 <br/>  
 
 ## How to run multiple concurrently
 
-The usual way to run multiple commands concurrently is ```npm run script01 && npm run script02```. That's fine but it's hard to keep on track of different outputs. Also if one process fails, others still keep running and you won't even notice the difference. Another option would be to just run all commands in separate terminals.
+The usual way to run multiple commands concurrently is ```npm run <script01> && npm run <script02>```. That's fine but it's hard to keep on track of different outputs. Also if one process fails, others still keep running and you won't even notice the difference. Another option would be to just run all commands in separate terminals.
 
 To make it easy, we will use the library: **concurrently**.
 
@@ -148,16 +192,18 @@ Then in package.json, replace the following lines:
 
 ```json
 "scripts": {
-    "build": "concurrently --kill-others \"npm run sass:build\" \"react-scripts build\"",
+    "build": "concurrently \"npm run sass:build\" \"react-scripts build\"",
     "eject": "react-scripts eject",
-    "sass:watch": "node-sass -w src -o src --output-style compressed",
-    "sass:build": "node-sass src -o src --output-style compressed",
-    "start": "concurrently --kill-others \"npm run sass:build\" \"react-scripts start\"",
+    "sass:watch": "node-sass -w src -o src --output-style compressed --include-path src",
+    "sass:build": "node-sass src -o src --output-style compressed --include-path src",
+    "start": "concurrently --kill-others \"npm run sass:watch\" \"react-scripts start\"",
     "test": "react-scripts test --env=jsdom"
   },
 ```
 
-Now, stop the previous job in your terminal and run ```npm start```. If you make changes in your `App.scss` file, your app will be automatically reloaded and all the changes are visibles in the browser. _You can test adding a ```color:red```property to the ```.App``` class and saving the changes. After check that is working properly, remove this property_.
+Now, stop the previous job in your terminal and run ```npm start```. Make some changes in your `App.scss` save ther file. Your app will be automatically reloaded and all the changes are visibles in the browser. _Prove it by adding a ```color:red```property to the ```.App``` class and saving the changes. After check that is working properly, remove this property and save again._
+
+>Note: During the next labs, if you get an error because a new css file can't be found, stop the execution of the current job and run again ```npm start```. Go then to the .scss file that the system doesn't find and save again to generate the css file.
 
 <br/>  
 
@@ -167,20 +213,21 @@ Some editors, including Sublime Text, Atom, and Visual Studio Code, provide plug
 
 However, if you prefer the lint results to appear right in your editor, there are some extra steps you can follow:
 
-You would need to install an ESLint plugin for your editor first.
+1. You would need to install an ESLint plugin for your editor first.
 
-[Download](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ESLint plugin for Visual Studio Code.
+    [Download](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ESLint plugin for Visual Studio Code.
 
-Then, add a file called `.eslintrc` to the project root:
+2. Then, add a file called `.eslintrc` to the project root:
 
-```javascript
-{
-  "extends": "react-app"
-}
-```
+    ```javascript
+    {
+      "extends": "react-app"
+    }
+    ```
 
+    <br/> 
 Now your editor should report the linting warnings.
 
 >This feature is available with `react-scripts@0.2.0` and higher. It also only works with npm 3 or higher. More information about the [ESLint package in Create React App](https://github.com/facebook/create-react-app/blob/26f701fd60cece427d0e6c5a0ae98a5c79993640/packages/eslint-config-react-app/README.md)
 
->Lear more about [ESLint](https://eslint.org/docs/user-guide/getting-started)
+>Learn more about [ESLint](https://eslint.org/docs/user-guide/getting-started)

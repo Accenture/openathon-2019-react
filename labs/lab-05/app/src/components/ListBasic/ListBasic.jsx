@@ -1,5 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ListBasic.css';
+
+const defaultProps = {
+    title: null,
+    data: null,
+    fields: ['name', 'description', 'image', 'internal_link'],
+    layout: 'list'
+};
 
 class ListBasic extends React.PureComponent {
     render() {
@@ -7,32 +15,52 @@ class ListBasic extends React.PureComponent {
             <div className="List">
                 <div className="ListBasic">
                     {this.props.title &&
-                        <header className="ListBasic-header">
+                        <header className="ListBasic__header">
                             <h2>{this.props.title}</h2>
                         </header>
                     }
-                    <section>
-                    {this.props.data && this.props.data.map((item) => {
-                        return (
-                            <article key={`service-${item.id}`}
-                                className="ListBasic-item">
-                                <div className="ListBasic-item-image">
-                                    {item.image_link &&
-                                        <img alt={item.name} src={item.image_link} />
+
+                    <section className={`ListBasic--${this.props.layout}`}>
+                        {this.props.data && this.props.data.map((item) => {
+                            return (
+                                <article key={`service-${item.id}`}
+                                    className="ListBasic__item">
+                                    {this.props.fields.includes('image') &&
+                                        <div className="ListBasic__image">
+                                            {item.image_link &&
+                                                <img alt={item.name} src={item.image_link} />
+                                            }
+                                        </div>
                                     }
-                                </div>
-                                <section className="ListBasic-item-content">
-                                    <header><h3>{item.name}</h3></header>
-                                    <div>{item.description}</div>
-                                </section>
-                            </article>
-                        );
-                    })}
+                                    <section className="ListBasic__content">
+                                        {this.props.fields.includes('name') &&
+                                            <header className="ListBasic__content__title">
+                                                <h3>{item.name}</h3>
+                                            </header>
+                                        }
+                                        {this.props.fields.includes('description') &&
+                                            <div className="ListBasic__content__description">
+                                                {item.description}
+                                            </div>
+                                        }
+                                    </section>
+                                </article>
+                            );
+                        })}
                     </section>
                 </div>
             </div>
         );
     }
+}
+
+ListBasic.defaultProps = defaultProps;
+
+ListBasic.PropTypes = {
+    title: PropTypes.string,
+    data: PropTypes.arrayOf(PropTypes.string).isRequired,
+    fields: PropTypes.arrayOf(PropTypes.string),
+    layout: PropTypes.oneOf(['list', 'grid'])
 }
 
 export default ListBasic;

@@ -3,27 +3,60 @@
 .List{
     .ListBasic{
 
-        &-header{
+        .ListBasic__header{
             text-align: left;
-            border-bottom: 1px solid $border-color;
         }
-        &-item{
-            display: flex;
 
-            &-image{
-                flex-basis: 25%;
-                img{
-                    width: 100%;
-                    height: auto;
+        .ListBasic--list{
+            border-top: 1px solid $border-color;
+
+            .ListBasic__item{
+                display: flex;
+                align-items: center;
+                padding: $space-m 0;
+                border-bottom: 1px solid $border-color;
+
+                .ListBasic__image{
+                    flex-basis: 25%;
+
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .ListBasic__content{
+                    flex-basis: 75%;
+                    padding-left: $space-l;
+                    font-size: 0.875rem;
+                    text-align: left;
+
+                    .ListBasic__content__title{
+                        h3{
+                            margin: 0 0 $space-s;
+                        }
+                    }
                 }
             }
+        }
 
-            &-content{
-                flex-basis: 75%;
-                padding-left: $space-m;
-                text-align: left;
+        .ListBasic--grid{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: $space-m;
+
+            .ListBasic__item{
+
+                .ListBasic__image{
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
             }
         }
+
+
 
     }
 }

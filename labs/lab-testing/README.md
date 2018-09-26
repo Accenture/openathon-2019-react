@@ -215,12 +215,12 @@ describe('Menu:toggleMenu', () => {
         });
 
 });
-````
+```
 
 And execute again the test. 
 Check results that should be like
 
-``` PASS  src/components/Menu/Menu.test.js
+```PASS  src/components/Menu/Menu.test.js
   Menu:toggleMenu
     ✓ When state is true, so links are hidden, a toggleMenu() call must change state to TRUE, that is, shows menu links (1ms)
     ✓ When state is false, so links are hidden, a new call to toggleMenu() must change state to FALSE so hides menu links (1ms)
@@ -253,7 +253,7 @@ After Menu component initialization, we define two **it**, once to check that in
             menu.toggleMenu();
             expect(menu.state.expandedMenu).toEqual(false);
         });
-````
+```
 
 And another one to check the only other option, toggleMenu changing expandedMenu from false to true:
 

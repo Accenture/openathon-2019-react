@@ -2,14 +2,14 @@ import React from 'react';
 import './Footer.css';
 
 const defaultProps = {
-    footerInfo: 'Copyright 2001-2018 Accenture. All rights reserved. Accenture Confidential. For internal use only.'
+    footerInfo: 'II Openathon Custom Open Cloud'
 };
 
 class Footer extends React.PureComponent {
     render() {
         return (
             <div className="Footer">
-                <p className="Footer-info">
+                <p className="Footer__info">
                     {this.props.footerInfo}
                 </p>
             </div>

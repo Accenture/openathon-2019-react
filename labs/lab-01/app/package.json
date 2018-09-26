@@ -9,7 +9,7 @@
         "react-scripts": "1.1.5"
     },
     "scripts": {
-        "build": "concurrently --kill-others \"npm run sass:build\" \"react-scripts build\"",
+        "build": "concurrently \"npm run sass:build\" \"react-scripts build\"",
         "eject": "react-scripts eject",
         "sass:watch": "node-sass -w src -o src --output-style compressed --include-path src",
         "sass:build": "node-sass src -o src --output-style compressed --include-path src",

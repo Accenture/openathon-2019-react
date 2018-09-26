@@ -1,1 +1,1 @@
-.Header{display:flex;flex:0 1 auto;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-items:center;padding:.5rem 1rem;border-bottom:1px solid #ccc}.Header-logo img{max-width:150px}.Header-title{font-size:1rem;text-align:left}
+.Header{display:flex;flex:0 1 auto;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-items:center;padding:.5rem 1rem;border-bottom:1px solid #ccc}.Header .Header__logo{flex-basis:20%}.Header .Header__logo img{max-width:150px}.Header .Header__title{flex-basis:40%;font-size:1rem;text-align:center}

@@ -10,7 +10,7 @@
     },
     "scripts": {
         "server": "json-server --watch src/mockdata/api.json --port 3001",
-        "build": "concurrently --kill-others \"npm run sass:build\" \"react-scripts build\"",
+        "build": "concurrently \"npm run sass:build\" \"react-scripts build\"",
         "eject": "react-scripts eject",
         "sass:watch": "node-sass -w src -o src --output-style compressed --include-path src",
         "sass:build": "node-sass src -o src --output-style compressed --include-path src",
@@ -19,6 +19,5 @@
     },
     "devDependencies": {
         "node-sass": "^4.9.3"
-    },
-    "proxy": "http://localhost:3001/"
+    }
 }

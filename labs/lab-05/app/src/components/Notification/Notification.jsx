@@ -22,9 +22,9 @@ class Notification extends React.Component {
     render() {
         const element = this.state.opened &&
             <div className="Notification">
-                <div className={`Notification-message Notification-${this.props.type}`}>
+                <div className={`Notification__message Notification--${this.props.type}`}>
                     {this.props.message}
-                    <div className="Notification-close"
+                    <div className="Notification__close"
                         onClick={this.closeNotification}
                     />
                 </div>
