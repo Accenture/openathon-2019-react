@@ -603,7 +603,7 @@ class HelloWorld extends React.PureComponent {
             return (
             <div className="Footer">
                 <p className="Footer-info">
-                    'Copyright 2001-2018 Accenture. All rights reserved. Accenture Confidential. For internal use only.'
+                    'Openathon II FY19 React'
                 </p>
             </div>
             );
