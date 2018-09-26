@@ -1,5 +1,7 @@
 # II Openathon Custom Open Cloud
 
+<img src="https://github.com/Albarian/openathonFY19/blob/master/resources/images/IIopenathon_customopencloud.png">
+
 You are welcomed to a new **Openathon** edition organised for the **Accenture Technology Custom Open Cloud community** where we will have again the opportunity to discover, in a practical way, the possibilities offered by the different architectures and leading frameworks in the market.
 
 As you already knows, this time we will learn to develop a **FrontEnd web application using React** applying some of the recommended best practices such as routing, asynchronous REST API access, reusable components and state management.
