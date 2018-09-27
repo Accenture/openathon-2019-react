@@ -8,15 +8,13 @@
 - [Fetching Data: Part 2](#fetching-data:-part-2)
 - [Validating Data Types: PropTypes](#validating-data-types:-proptypes)
 
-<br/>  
-
 ## Getting a full fake REST API with json-server
 
-JSON Server is a Node Module that you can use to create a demo REST Json webservice in less than a minute. All you need is a JSON file for sample data.
+JSON Server is a Node Module that you can use to create a demo REST
+Json webservice in less than a minute.  All you need is a JSON file
+for sample data.
 
 [View JSON server repository](https://github.com/typicode/json-server)
-
-<br/>  
 
 ### Install JSON Server
 
@@ -24,19 +22,19 @@ JSON Server is a Node Module that you can use to create a demo REST Json webserv
 npm install -g json-server
 ```
 
-<br/>  
-
 ### Adding mocked data to your project
 
-Copy and paste the ```api.json``` file from the ```\server``` folder into a new ```\src\mockdata``` directory in your project.
+Copy and paste the `api.json` file from the `/server` folder into a
+new `/src/mockdata` directory in your project.
 
->You can find more information about the available endpoints and methods in the II Openathon repository: ```server\public\index.html```
-
-<br/>  
+> You can find more information about the available endpoints and
+> methods in the II Openathon repository: `server/public/index.html`
 
 ### Starting JSON Server
 
-Create a _server_ script to configure your json-server and add it to the _start_ script to run concurrently. Update your ```package.json``` replacing the following lines:
+Create a `server` script to configure your json-server and add it to
+the `start` script to run concurrently.  Update your `package.json`
+replacing the following lines:
 
 ```json
 "scripts": {
@@ -50,73 +48,101 @@ Create a _server_ script to configure your json-server and add it to the _start_
 },
 ```
 
-Run ```npm start``` and go to http://localhost:3001/general to inspect the returned data from the _general_ endpoint.
+Run `npm start` and go to http://localhost:3001/general to inspect the
+returned data from the `/general` endpoint.
 
->Note: It’s common to serve the front-end and back-end of your app in the same server and port. However, you cannot do this at development time since Create React App runs the app in its own development server. You can add a proxy field to your ```package.json``` file: ```"proxy": "http://localhost:3001/"```.
+> Note: It’s common to serve the front-end and back-end of your app in
+> the same server and port.  However, you cannot do this at
+> development time since Create React App runs the app in its own
+> development server.  You can add a proxy field to your
+> `package.json` file: `"proxy": "http://localhost:3001/"`.
 >
->Now, instead of making a request like this:
+> Now, instead of making a request like this:
 >
 >```javascript
 >fetch('http://localhost:3001/endpoint').then()
 >```
 >
->You should make them like this:
+> You should make them like this:
+> 
 >```javascript
 >fetch('endpoint').then()
 >```
 >
->But to prevent future issues in your application due to some routes match with your server endpoints, skip this step and store your server host as a global variable [Fetching Data: Part 2]().
-
-<br/>  
+> But to prevent future issues in your application due to some routes
+> match with your server endpoints, skip this step and store your
+> server host as a global variable [Fetching Data: Part 2]().
 
 ## Fetching Data: Part 1
 
-React doesn't prescribe a specific approach to data fetching, but people commonly use either the fetch() API provided by the browser or a library like axios. (_In the current lab we are going to use the fetch() API and we will implement the axios library in a next optional lab_)
+React doesn't prescribe a specific approach to data fetching, but
+people commonly use either the `fetch()` API provided by the browser
+or a library like axios.  (_In the current lab we are going to use the
+`fetch()` API and we will implement the axios library in a next
+optional lab_).
 
-To initiate a component with remote data, React components have many useful lifecycle hooks...
+To initiate a component with remote data, React components have many
+useful lifecycle hooks.
 
-It's time for a break. Let's know all these methods first.
-
-<br/>  
+It's time for a break.  Let's know all these methods first.
 
 ## React Lifecycle Methods
 
-On the component class we can declare special hooks called “lifecycle methods” to run some code when a component mounts, unmounts, renders new values,...
-
-<br/>  
+On the component class we can declare special hooks called “lifecycle
+methods” to run some code when a component mounts, unmounts, renders
+new values, etc.
 
 ### Commonly Used Lifecycle Methods
 
-* **_componentDidMount()_** is invoked immediately after a component is mounted
-* **_shouldComponentUpdate()_** is invoked before rendering when new props or state are being received
-* **_componentDidUpdate()_** is invoked immediately after updating occurs. This method is not called for the initial
-* **_componentWillUnmount()_** is invoked immediately before a component is unmounted and destroyed
+* `componentDidMount()` is invoked immediately after a component is
+  mounted.
+
+* `shouldComponentUpdate()` is invoked before rendering when new props
+  or state are being received.
+
+* `componentDidUpdate()` is invoked immediately after updating
+  occurs. This method is not called for the initial.
+
+* `componentWillUnmount()` is invoked immediately before a component
+  is unmounted and destroyed.
 
 ### Rarely Used Lifecycle Methods (_React 16.3+_)
 
-* **_getDerivedStateFromProps()_** is invoked right before calling the render method, both on the initial mount and on subsequent updates
-* **_getSnapshotBeforeUpdate()_** is invoked right before the most recently rendered output is committed to the DOM
-* **_componentDidCatch()_** method works like a JavaScript catch {} block, but for components
+* `getDerivedStateFromProps()` is invoked right before calling the
+  render method, both on the initial mount and on subsequent updates.
+
+* `getSnapshotBeforeUpdate()` is invoked right before the most
+  recently rendered output is committed to the DOM.
+
+* `componentDidCatch()` method works like a JavaScript `catch {}`
+  block, but for components.
 
 ### Legacy Lifecycle Methods
 
-* __*UNSAFE_componentWillMount()*__ is invoked just before mounting occurs
-* __*UNSAFE_componentWillReceiveProps()*__ is invoked before a mounted component receives new props
-* __*UNSAFE_componentWillUpdate()*__ is invoked just before rendering when new props or state are being received
+* `UNSAFE_componentWillMount()` is invoked just before mounting
+  occurs.
 
-> See a [React Lifecycle method diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+* `UNSAFE_componentWillReceiveProps()` is invoked before a mounted
+  component receives new props.
 
-<br/>  
+* `UNSAFE_componentWillUpdate()` is invoked just before rendering when
+  new props or state are being received.
+
+> See a [React Lifecycle method
+> diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
 ## Fetching Data: Part 2
 
-Because React uses components, it’s easy to fetch data from an API and store the result in one component. Then, we can import the entire component to the App or another component.
-
-<br/>  
+Because React uses components, it’s easy to fetch data from an API and
+store the result in one component.  Then, we can import the entire
+component to the App or another component.
 
 ### Creating a new Fetch component
 
-1. Create a new **Fetch** component in ```src\services\api``` including a constructor _—with three initial states: data, loading and error—_ a fetchData method, a componentDidMount lifecycle method and a render.
+1. Create a new **Fetch** component in `src/services/api` including a
+   constructor _—with three initial states: data, loading and error—_
+   a `fetchData` method, a `componentDidMount` lifecycle method and a
+   render.
 
     ```javascript
     /* Fetch.jsx */
@@ -144,8 +170,8 @@ Because React uses components, it’s easy to fetch data from an API and store t
     export default Fetch;
     ```
 
-<br/>  
-2. Store in a variable the API host of your JSON Server adding the following line before the Fetch class definition:
+2. Store in a variable the API host of your JSON Server adding the
+   following line before the Fetch class definition:
 
     ```javascript
     /* Fetch.jsx */
@@ -153,13 +179,14 @@ Because React uses components, it’s easy to fetch data from an API and store t
     const API_HOST = 'http://localhost:3001/';
     ```
 
-Alternativelly, you can add [Custom Environment Variables](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables).
+Alternativelly, you can add [Custom Environment
+Variables](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables).
 
-<br/>  
-3. Create a ```index.js``` file in ```src\services\api``` to export your Fetch component:
+3. Create a `index.js` file in `src/services/api` to export your Fetch
+   component:
 
     ```javascript
-    /*src\services\api\index.js*/
+    /*src/services/api/index.js*/
 
     import Fetch from './Fetch/Fetch';
 
@@ -169,20 +196,26 @@ Alternativelly, you can add [Custom Environment Variables](https://github.com/fa
 
     ```
 
-<br/>  
-
 ### Using Fetch API
 
-The _fetchData_ method must take one mandatory argument: the _path_ to the resource we want to fetch. It returns a _Promise_ that resolves to the _Response_ to the request, whether it is successful or not. Also, you can pass as the second argument some options.
+The `fetchData` method must take one mandatory argument: the `path` to
+the resource we want to fetch.  It returns a `Promise` that resolves
+to the `Response` to the request, whether it is successful or not.
+Also, you can pass as the second argument some options.
 
 ```js
 fetch(path, options);
 ```
- 
->Learn more about the [JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [how to use it](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
- 
-1. Use **Async/Await** or **Javascript Promises** to resolve the asynchronous response. When the data is fetched successfully, store it in the local state with React’s _this.setState()_ method. 
+> Learn more about the [JavaScript Fetch API][js-fetch] and [how to
+> use it][js-fetch-howto].
+
+[js-fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+[js-fetch-howto]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+1. Use **Async/Await** or **Javascript Promises** to resolve the
+   asynchronous response. When the data is fetched successfully, store
+   it in the local state with React’s `this.setState()` method.
 
     ```javascript
     /* Fetch.jsx */
@@ -202,7 +235,11 @@ fetch(path, options);
     ...
     ```
 
-    >Using Async/Await rather than Promises has several advantages: makes our code more readable and clean, with the same construct allows to handle both synchronous and asynchronous errors and it’s much easier to debug. Use _setState()_ to store the returned data/error.
+    > Using Async/Await rather than Promises has several advantages:
+    > makes our code more readable and clean, with the same construct
+    > allows to handle both synchronous and asynchronous errors and
+    > it’s much easier to debug. Use `setState()` to store the
+    > returned data/error.
 
     Example using Promises:
 
@@ -229,10 +266,12 @@ fetch(path, options);
     ...
     ```
 
-    >Learn more about the [JavaScript Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) and [Async Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
+    > Learn more about the [JavaScript
+    > Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+    > and [Async
+    > Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
-    <br/>  
-2. Invoke _fetchData_ method in _componentDidMount()_.
+2. Invoke `fetchData` method in `componentDidMount()`.
 
     ```javascript
     /* Fetch.jsx */
@@ -242,13 +281,16 @@ fetch(path, options);
     }
     ```
 
-    This is the best place to put calls to fetch data by default for two reasons:
+    This is the best place to put calls to fetch data by default for
+    two reasons:
 
-    * The data won’t be loaded until after the initial render and reminds you to set up initial state properly. 
-    * Let you handle the case where the data to be rendered is empty.
+    * The data won’t be loaded until after the initial render and
+      reminds you to set up initial state properly.
+    
+	* Let you handle the case where the data to be rendered is empty.
 
-    <br/>  
-3. Finally, return the children elements (_this.props.children_) into the render method:
+3. Finally, return the children elements (`this.props.children`) into
+   the render method:
 
     ```javascript
     /* Fetch.jsx */
@@ -258,15 +300,19 @@ fetch(path, options);
     }
     ```
 
-    >The concept of children as a function or **render props** is one of the advanced patterns in React. The term refers to a simple technique to share code between React components using a prop whose value is a function. Learn more about [Render Props](https://reactjs.org/docs/render-props.html).
-
-<br/>  
+    > The concept of children as a function or **render props** is one
+    > of the advanced patterns in React.  The term refers to a simple
+    > technique to share code between React components using a prop
+    > whose value is a function.  Learn more about [Render
+    > Props](https://reactjs.org/docs/render-props.html).
 
 ### Using Fetch Component
 
-You can retrieve the logo url from the fake REST API json-server. To do this:
+You can retrieve the logo url from the fake REST API json-server.  To
+do this:
 
-1. Add the Fetch component into the App render method and replace the logo attribute with the _data.logo_ returned:
+1. Add the Fetch component into the App render method and replace the
+   logo attribute with the `data.logo` returned:
 
     ```javascript
     /* App.jsx */
@@ -306,13 +352,13 @@ You can retrieve the logo url from the fake REST API json-server. To do this:
     }
     ```
 
-<br/>  
-
 ### Creating a Loader Component - Optional
 
-Create a Loader component to show an animation while your Fetch component is retrieving data.
+Create a Loader component to show an animation while your Fetch
+component is retrieving data.
 
-1. Create a new Loader component and import in the ```components\index.js```file:
+1. Create a new Loader component and import in the
+   `components/index.js`file:
 
     ```javascript
     /* Loader.jsx */
@@ -333,9 +379,8 @@ Create a Loader component to show an animation while your Fetch component is ret
 
     export default Loader;
     ```
-    
-    <br/>  
-2. Add some styles to animate the icon:ç
+
+2. Add some styles to animate the icon:
 
     ```scss
     /* Loader.scss */
@@ -372,11 +417,11 @@ Create a Loader component to show an animation while your Fetch component is ret
     }
     ```
 
-<br/>  
-
 ### Creating a Notification Component - Optional
 
-Create a Notification component to provide short information to your users about events in your application, for example, when a error occurs retrieving data.
+Create a Notification component to provide short information to your
+users about events in your application, for example, when a error
+occurs retrieving data.
 
 1. Create a new Notification component.
 
@@ -424,8 +469,7 @@ Create a Notification component to provide short information to your users about
 
     ```
 
-    <br/>  
-2. Add the following styles to ```Notification.scss```
+2. Add the following styles to `Notification.scss`
 
     ```scss
     /* Notification.scss */
@@ -498,11 +542,10 @@ Create a Notification component to provide short information to your users about
     }
     ```
 
-<br/>  
-
 ### Adding Loader and Notification components to your application
 
-1. Replace de Loading and Error messages in ```App.jsx``` by the new components:
+1. Replace de Loading and Error messages in `App.jsx` by the new
+   components:
 
     ```javascript
     /* App.jsx */
@@ -537,13 +580,16 @@ Create a Notification component to provide short information to your users about
     }
     ```
 
-<br/>  
-
 ## Validating data types: PropTypes
 
-**React PropTypes** are a good way to help you catching bugs by validating data types of values passed through props. If props are missing, or if they're present but they aren't what you're expecting, then a warning will print in the console.
+**React PropTypes** are a good way to help you catch bugs by
+validating data types of values passed through props.  If props are
+missing, or if they're present but they aren't what you're expecting,
+then a warning will be printed to the console.
 
-They also offer possibilities to flag props as mandatory or set default values and serve as a handy documentation on how a component has to be used in terms of passing props.
+They also offer possibilities to flag props as mandatory or set
+default values and serve as a handy documentation on how a component
+has to be used in terms of passing props.
 
 The first step to use PropTypes is to import the library into your component:
 
@@ -552,7 +598,8 @@ import PropTypes from 'prop-types';
 ```
 PropTypes exports a range of validators that can be used to make sure the data you receive is valid.
 
-You can declare that a prop is a specific JS type. By default, this basic data types are all optional:
+You can declare that a prop is a specific JS type. By default, this
+basic data types are all optional:
 
 ```javascript
 CustomComponent.propTypes = {
@@ -566,7 +613,8 @@ CustomComponent.propTypes = {
 }
 ```
 
-1. Import the library in to your Header component and add a PropType to the logo prop after the close of the component declaration:
+1. Import the library in to your Header component and add a PropType
+   to the logo prop after the close of the component declaration:
 
     ```javascript
     /* Header.jsx */
@@ -617,7 +665,8 @@ CustomComponent.propTypes = {
 };
 ```
 
-If you want to require anyone who uses your component to always pass a certain prop, you can flag it as mandatory:
+If you want to require anyone who uses your component to always pass a
+certain prop, you can flag it as mandatory:
 
 ```javascript
 CustomComponent.propTypes = {
@@ -630,4 +679,7 @@ CustomComponent.propTypes = {
 }
 ```
 
->More info about [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html).
+> More info about
+> [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html).
+
+[< Prev](../lab-02) | [Next >](../lab-04)

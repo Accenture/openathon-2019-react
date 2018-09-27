@@ -1,86 +1,130 @@
 # II Openathon Custom Open Cloud
 
-<img src="https://github.com/Albarian/openathonFY19/blob/master/resources/images/IIopenathon_customopencloud.png">
+<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/IIopenathon_customopencloud.png">
 
-You are welcomed to a new **Openathon** edition organised for the **Accenture Technology Custom Open Cloud community** where we will have again the opportunity to discover, in a practical way, the possibilities offered by the different architectures and leading frameworks in the market.
+You are welcome to a new **Openathon** edition organised for the
+**Accenture Technology Custom Open Cloud community** where, once
+again, we will have the opportunity to discover, in a practical way,
+the possibilities offered by the different architectures and leading
+frameworks in the market.
 
-As you already knows, this time we will learn to develop a **FrontEnd web application using React** applying some of the recommended best practices such as routing, asynchronous REST API access, reusable components and state management.
+As you already knows, this time we will learn to develop a **FrontEnd
+web application** using **React**.  We will also use some of the
+recommended best practices such as routing, asynchronous REST API
+access, reusable components and state management.
 
-React’s strongest capability is the creation of web interfaces based on reusable components, so we are going to create and reuse our own components while learning how to manage their life cycle, the management of props and the JSX syntax while exercising our knowledge of JavaScript (ES6).
-
+React’s strongest capability is the creation of web interfaces based
+on _reusable_ components.  Therefore, we are going to create and reuse
+our own components while learning how to manage their life cycle, the
+management of props and the JSX syntax while exercising our knowledge
+of JavaScript (ES6).
 
 # What we are going to do
-We will learn how to develop a web application using React, playing with **props**, **JSX**, **Virtual DOM**, **components**, routing, REST API consumption, components reuse… and applying some of the recommended good practises like **Single responsibility principle**, **Isolation**, **functional programming**, **prototypal inheritance**…
 
-The web application will consist on a Main and two detail pages...
+We will learn how to develop a web application using React, playing
+with **props**, **JSX**, **Virtual DOM**, **components**, routing,
+REST API consumption, components reuse… and applying some of the
+recommended good practices like **Single responsibility principle**,
+**Isolation**, **functional programming** and **prototypal
+inheritance**.
+
+The web application will consist on a Main and two detail pages:
 
 <img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/web%20map.png" width="315">
 
-...having this simulated estructure for the Main page:
+The main page of the application will have this structure:
+
 <img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/main%20page%20mockup.png" width="756">
 
-Where we will use the next React components (also you can see its hierarchy):
+The main page is a modularised page that takes advantage of many
+reausable components, whose hierarchy can be seen in the following
+picture:
+
 <img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20use.png" width="608">
 
-Also, we will use a fake REST API emulating [Accenture site](https://www.accenture.com/us-en/company) data services:
+To provide data to the page we will also use a mocked REST API
+endpoint emulating the [Accenture
+site](https://www.accenture.com/us-en/company) data services:
+
 <img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20and%20API.png" width="456">
 
 
 # Openathon Labs
 
-| Lab                      | Title                                      |
-|--------------------------|--------------------------------------------|
-| [Lab 00](/labs/lab-00)   | JavaScript and React                       |
-| [Lab 01](/labs/lab-01)   | Starting a New React Project               |
-| [Lab 02](/labs/lab-02)   | React Fundamentals                         |
-| [Lab 03](/labs/lab-03)   | Fetching Data in your React Application    |
-| [Lab 04](/labs/lab-04)   | Using React Router                         |
-| [Lab 05](/labs/lab-05)   | Completing your App Home Page              |
-| [Lab 06](/labs/lab-06)   | Using Nested Routes                        |
-| [Lab 07](/labs/lab-07)   | Form Components in React                   |
-| [Lab 08](/labs/lab-08)*  | Integrating Axios Library                  |
-| [Lab 09](/labs/lab-09)*  | Persisting data in your JSON Server        |
-| [Lab 10](/labs/lab-10)*  | Using third-party React Components         |
+This edition of the Openathon is divided in the following labs:
 
-*Optional Labs for further learning
+| Lab                                 | Title                                      |
+|-------------------------------------|--------------------------------------------|
+| [Lab 00](/labs/lab-00)              | JavaScript and React                       |
+| [Lab 01](/labs/lab-01)              | Starting a New React Project               |
+| [Lab 02](/labs/lab-02)              | React Fundamentals                         |
+| [Lab 03](/labs/lab-03)              | Fetching Data in your React Application    |
+| [Lab 04](/labs/lab-04)              | Using React Router                         |
+| [Lab 05](/labs/lab-05)              | Completing your App Home Page              |
+| [Lab 06](/labs/lab-06)              | Using Nested Routes                        |
+| [Lab 07](/labs/lab-07)              | Form Components in React                   |
+| [Lab 08](/labs/lab-08)*             | Integrating Axios Library                  |
+| [Lab 09](/labs/lab-09)*             | Persisting data in your JSON Server        |
+| [Lab 10](/labs/lab-10)*             | Using third-party React Components         |
+| [Lab Testing](/labs/lab-testing)*   | React Unit Testing                         |
+
+\* Optional Labs for further learning
 
 
 # Prerequisites
 
-1. Install **Visual Studio Code** for your current Operating System: 
+1. Install **Visual Studio Code** for your operating system:
 
-    **Visual Studio Code** is a source code editor with support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.
-    
+    **Visual Studio Code** is a source code editor with support
+    for debugging, embedded Git control, syntax
+    highlighting, intelligent code completion, snippets, and code
+    refactoring.
+
     [Click here](https://code.visualstudio.com/) to download and install
 
-2. Install **Node.js** for your current Operating System: 
+2. Install **Node.js** for your operating system:
 
-    **Node.js** is an open source server environment, free, that runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)  using JavaScript runtime built on Chrome's V8 JavaScript engine.
-    
+    **Node.js** is a free, open source server environment that runs on
+    various platforms (Windows, Linux, Unix, Mac OS X, etc.) using
+    the JavaScript runtime built on Chrome's V8 JavaScript engine.
+
     [Click here](https://nodejs.org/en/download/) to download and install.
 
-    This installation also will install **npm**, the package manager for Node.js and the world’s largest software registry. 
+    This installation will also install **npm**, the package manager
+    for Node.js and the world's largest software registry.
 
 3. Install **webpack**
-    ```sh
+
+	```sh
     $ npm install webpack -g
     ```
-    
-    **webpack** is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging ... [More info](https://webpack.js.org/).
+
+    **webpack** is a module bundler.  Its main purpose is to bundle
+    JavaScript files for usage in a browser, yet it is also capable of
+    transforming, bundling, or packaging.  [More
+    info](https://webpack.js.org/).
 
 4. Install ***json-server***
-    
+
     ```sh
     $ npm install json-server -g
     ```
 
-    **JSON Server** is a Node Module that you can use to create demo rest json webservice in less than a minute. All you need is a JSON file for sample data. 
-    
-    [Click here](https://github.com/typicode/json-server) to download and install.
+    **JSON Server** is a Node module that can be used to create demo
+    REST web services in a few minutes using a JSON file to provide
+    sample data.
+
+    [Click here](https://github.com/typicode/json-server) to download
+    and install.
 
 5. Download and install **React Developer Tools**
 
-    **React Developer Tools** is a Chrome DevTools extension for the open-source React JavaScript library. It allows you to inspect the React component hierarchies in the Chrome Developer Tools.
+    **React Developer Tools** is a Chrome DevTools extension for the
+    open-source React JavaScript library.  It allows you to inspect the
+    React component hierarchies in the Chrome Developer Tools.
 
-    [Click here](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) to download and install.
+    [Click
+    here](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+    to download and install.
 
+[Next >](labs/lab-00)

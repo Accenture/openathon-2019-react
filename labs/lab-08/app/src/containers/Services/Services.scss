@@ -1,0 +1,50 @@
+@import 'assets/styles/common/variables';
+
+.Services{
+
+    .Services__header{
+        text-align: left;
+    }
+
+    .Services__content{
+        display: flex;
+
+        .Services__list{
+            flex-basis: 25%;
+            max-width: 25%;
+
+            .List .ListBasic {
+
+                .ListBasic--list{
+                    .ListBasic__image{
+                        flex-basis: 100%;
+                        text-align: left;
+
+                        img{
+                            width: auto;
+                            height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .Services__detail{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-basis: 75%;
+            max-width: 75%;
+            margin-left: $space-l;
+            padding: $space-m;
+            background-color: rgba($light-gray-alt, 0.5);
+
+            &--empty{
+                p{
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
+}

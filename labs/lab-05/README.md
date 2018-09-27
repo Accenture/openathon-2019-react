@@ -5,11 +5,13 @@
 - [Rendering multiple props by a Component](#rendering-multiple-props-by-a-component)
 - [Rendering multiple Components](#rendering-multiple-components)
 
-<br/>  
-
 ## Rendering multiple props into a Component
 
-1. Create a new Info component in the ```scr\components``` directory to _print_ all the general information from the _general_ endpoint, using the JavaScript Object.keys() and _map()_ functions to loop all values from the _data_ object. Exclude the logo to not render it:
+1. Create a new Info component in the `scr/components` directory to
+   _print_ all the general information from the _general_ endpoint,
+   using the JavaScript `Object.keys()` and `map()` functions to loop
+   all values from the `data` object.  Exclude the logo to not render
+   it:
 
     ```javascript
     /*Info.jsx*/
@@ -50,10 +52,12 @@
     export default Info;
     ```
 
-    >Know more about the [Javascript Object.keys() method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) and the [Javascript _map()_ function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
+    > Know more about the [Javascript Object.keys()
+    > method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+    > and the [Javascript _map()_
+    > function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 
-    <br/>  
-2. Import and export your new component in ```src\components\index.js```:
+2. Import and export your new component in `src/components/index.js`:
 
     ```javascript
     import Footer from './Footer/Footer';
@@ -73,8 +77,8 @@
     };
     ```
 
-    <br/>  
-3. In Home page, use the Fetch component to get the data from the _general_ endpoint in your JSON Server:
+3. In Home page, use the `Fetch` component to get the data from the
+   `general` endpoint in your JSON Server:
 
     ```javascript
     /* Home.jsx */
@@ -118,8 +122,8 @@
         ...
     ```
 
-    <br/>  
-3. Add a title _'About Accenture'_ to your Info component and assign a title attribute to the component in your Home: 
+3. Add a title _'About Accenture'_ to your `Info` component and assign
+   a title attribute to the component in your Home:
 
     ```javascript
     /*Info.jsx*/
@@ -143,8 +147,8 @@
     ...
     ```
 
-    <br/> 
-4. Add some DefaultProps and PropTypes to check data type into your Info component:
+4. Add some DefaultProps and PropTypes to check data type into your
+   Info component:
 
     ```javascript
     /* Info.jsx */
@@ -170,8 +174,8 @@
     ...
     ```
 
-    <br/> 
-5. Create a new ```Info.scss``` file and add some styles to align the text to the left:
+5. Create a new `Info.scss` file and add some styles to align the text
+   to the left:
 
     ```scss
     /*Info.scss*/
@@ -181,16 +185,19 @@
     }
     ```
 
-    <br/>
-6. Stop the current job in the terminal and run again ```npm start```.
-
-<br/>  
+6. Stop the current job in the terminal and run again `npm start`.
 
 ## Rendering Multiple Components
 
-You can build a collections of data, loop through this array using the JavaScript _map()_ function and return an element for each item in the array. Usually you would render lists inside a component, which accepts an array of data and outputs an unordered list of elements.
+You can build a collections of data, loop through this array using the
+JavaScript `map()` function and return an element for each item in the
+array.  Usually you would render lists inside a component, which
+accepts an array of data and outputs an unordered list of elements.
 
-1. Create a ListBasic Component in ```src\components``` directory that conditionally renders a title and accepts an array of data. Use the the JavaScript _map()_ function to render each item in the list that should contain a name, a description and an image source:
+1. Create a ListBasic Component in `src/components` directory that
+   conditionally renders a title and accepts an array of data.  Use
+   the the JavaScript `map()` function to render each item in the list
+   that should contain a name, a description and an image source:
 
     ```javascript
     /* ListBasic.jsx */
@@ -236,10 +243,12 @@ You can build a collections of data, loop through this array using the JavaScrip
     export default ListBasic;
     ```
 
-    Do not forget to import your new component in ```src\components\index.js```.
+    Do not forget to import your new component in
+    `src/components/index.js`.
 
-    <br/>  
-2. In Home page, import your new ListBasic component and use the Fetch component to get the data from the _services_ endpoint in your JSON Server:
+2. In Home page, import your new ListBasic component and use the
+   `Fetch` component to get the data from the `services` endpoint in
+   your JSON Server:
 
     ```javascript
     /* Home.jsx */
@@ -258,7 +267,7 @@ You can build a collections of data, loop through this array using the JavaScrip
     render() {
         return (
             <div className="Home" location={this.props.location}>
-                        
+
             ...
 
                 <div className="Home__list">
@@ -293,11 +302,14 @@ You can build a collections of data, loop through this array using the JavaScrip
         }
     }
 
-    export default Home;       
+    export default Home;
     ```
 
-    <br/>  
-3. Add some DefaultProps and PropTypes to check data type into your ListBasic component. Add two new props to handle the field types (_name, description and image_) that the components will render of each item and the layout (_list or grid_) to be used for show the list of items:
+3. Add some DefaultProps and PropTypes to check data type into your
+   ListBasic component.  Add two new props to handle the field types
+   (_name, description and image_) that the components will render of
+   each item and the layout (_list or grid_) to be used for show the
+   list of items:
 
     ```javascript
     /* ListBasic.jsx */
@@ -325,8 +337,9 @@ You can build a collections of data, loop through this array using the JavaScrip
     }
     ```
 
-    <br/> 
-4. Pass the new _fields prop_ to the component in ```Home.jsx```. Create another section to print a grid of images of each item returned from the _innovation_ endpoint:
+4. Pass the new _fields prop_ to the component in `Home.jsx`.  Create
+   another section to print a grid of images of each item returned
+   from the `innovation` endpoint:
 
     ```javascript
     /* Home.jsx */
@@ -388,8 +401,13 @@ You can build a collections of data, loop through this array using the JavaScrip
     ...
     ```
 
-    <br/> 
-5. Add a conditional rendering for each field in the ListBasic component and a className depending on the layout. Assign a new key prop to each list item. A **key** is a special attribute you need to include when creating lists to help React identify which item has changed, added, removed... The best way to pick a key is to use a unique string to identify a list item. You can use the IDs from your data:
+5. Add a conditional rendering for each field in the `ListBasic`
+   component and a `className` depending on the layout.  Assign a new
+   key prop to each list item.  A `key` is a special attribute you
+   need to include when creating lists to help React identify which
+   item has changed, added, removed, etc.  The best way to pick a key
+   is to use a unique string to identify a list item.  You can use the
+   IDs from your data:
 
     ```javascript
     /* ListBasic.jsx */
@@ -426,12 +444,15 @@ You can build a collections of data, loop through this array using the JavaScrip
     ...
     ```
 
-    Using indexes for keysis not recommend if the order of items may change because can negatively impact performance and may cause issues with component state.
+    Using indexes as keys is not recommend if the order of items may
+    change because can negatively impact performance and may cause
+    issues with component state.
 
-    >Learn more about [Lists and Keys in React](https://reactjs.org/docs/lists-and-keys.html)
+    > Learn more about [Lists and Keys in
+    > React](https://reactjs.org/docs/lists-and-keys.html)
 
-    <br/> 
-6. Add some styles to ```ListBasic.scss``` using Flex and Grid CSS modules:
+6. Add some styles to `ListBasic.scss` using Flex and Grid CSS
+   modules:
 
     ```scss
     /* ListBasic.scss */
@@ -496,8 +517,8 @@ You can build a collections of data, loop through this array using the JavaScrip
     }
     ```
 
-    <br/> 
-7. Finally, add other styles to customize your Home page in ```Home.scss```:
+7. Finally, add other styles to customize your Home page in
+   `Home.scss`:
 
     ```scss
     /* Home.scss */
@@ -525,7 +546,12 @@ You can build a collections of data, loop through this array using the JavaScrip
     }
     ```
 
-    <br/> 
-8. Stop the current job in the terminal and check the results in your browser by running again ```npm start```.
+8. Stop the current job in the terminal and check the results in your
+   browser by running again `npm start`.
 
->Lear more about [CSS Flex Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) and [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+> Learn more about [CSS Flex
+> Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)
+> and [CSS Grid
+> Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
+
+[< Prev](../lab-04) | [Next >](../lab-06)

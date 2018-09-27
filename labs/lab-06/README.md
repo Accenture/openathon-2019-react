@@ -4,27 +4,50 @@
 
 - [Using Nested Routes to display the details of a selected item](#displaying-details-of-a-selected-item)
 
-<br/>  
+<br/>
 
 ## Using Nested Routes to display the details of a selected item
 
-At this point, your project offers a few _Routes_ based on the current path your’re on. Each Route takes in a path and a component. When your app’s current location matches the path, the component will be rendered. This is a solid start to discuss how to handle nested routing in a React web application.
+At this point, your project offers a few _Routes_ based on the current
+path your’re on.  Each Route takes in a path and a component.  When
+your app’s current location matches the path, the component will be
+rendered.  This is a solid start to discuss how to handle nested
+routing in a React web application.
 
-Suppose you pretend that visiting _/services_ displays a list of services. Clicking on any service keeps our list of services on the page, but also displays details on the selected service. This should be updated by the URL, that should have changed to a nested route: _/services/:serviceId_.
+Suppose you pretend that visiting `/services` displays a list of
+services.  Clicking on any service keeps our list of services on the
+page, but also displays details on the selected service.  This should
+be updated by the URL, that should have changed to a nested route:
+`/services/:serviceId`.
 
-To create nested routes, we need to have a better understanding of how **Route** works. There are 3 **_ways to render_** something with a Route. Each is useful in different circumstances:
+To create nested routes, we need to have a better understanding of how
+`Route` works.  There are 3 **_ways to render_** something with a
+Route. Each is useful in different circumstances:
 
-* Component. A React component to render only when the location matches. It will be rendered with route props. When you use component the router uses ```React.createElement``` to create a new React element from the given component.
+* Component.  A React component to render only when the location
+  matches.  It will be rendered with route props. When you use
+  component the router uses `React.createElement` to create a new
+  `React` element from the given component.
 
-* Render. This allows for convenient inline rendering and wrapping without the undesired remounting. Instead of having a new React element, you can pass in a function to be called when the location matches.
+* Render.  This allows for convenient inline rendering and wrapping
+  without the undesired remounting.  Instead of having a new `React`
+  element, you can pass in a function to be called when the location
+  matches.
 
-* Children. It works exactly like render except that it gets called whether there is a match or not. The children render prop receives all the same route props as the component and render methods, except when a route fails to match the URL, then match is null.
+* Children.  It works exactly like render except that it gets called
+  whether there is a match or not.  The children render prop receives
+  all the same route props as the component and render methods, except
+  when a route fails to match the URL, then match is `null`.
 
-All three render methods will be passed the same three **_route props_**: _match_, location_ and _history_.
+All three render methods will be passed the same three **_route
+props_**: _match_, location_ and _history_.
 
 Let’s start creating a Services page.
 
-1. Include a Fetch component into the Services container to retrieve the data from the _services_ endpoint and render the list of images of each service using the ListBasic component created in the previous lab:
+1. Include a `Fetch` component into the Services container to retrieve
+   the data from the `services` endpoint and render the list of images
+   of each service using the `ListBasic` component created in the
+   previous lab:
 
     ```javascript
     /* Services.jsx */
@@ -81,8 +104,9 @@ Let’s start creating a Services page.
     export default Services;
     ```
 
-    <br/>  
-2. Create a new ```Services.scss```file and include the following styles. Don't forget to import the generated .css file into the Services component:
+2. Create a new `Services.scss`file and include the following
+   styles. Don't forget to import the generated `.css` file into the
+   `Services` component:
 
     ```scss
     /* Services.scss */
@@ -119,12 +143,13 @@ Let’s start creating a Services page.
     }
     ```
 
-    <br/>  
-3. Create a new ListItemDetail component into the ```scr\components``` folder based on the ListBasic component, including some new conditional fields (*image_alt, detail and external_link*):
+3. Create a new `ListItemDetail` component into the `scr/components`
+   folder based on the `ListBasic` component, including some new
+   conditional fields (`image_alt`, `detail` and `external_link`):
 
     ```javascript
     /* ListItemDetail.jsx */
-    
+
     import React from 'react';
     import PropTypes from 'prop-types';
     import './ListItemDetail.css';
@@ -198,8 +223,7 @@ Let’s start creating a Services page.
     export default ListItemDetail;
     ```
 
-    <br/>  
-4. Add some styles in the ```ListItemDetail.scss``` file:
+4. Add some styles in the `ListItemDetail.scss` file:
 
     ```scss
     /* ListItemDetail.scss */
@@ -225,8 +249,11 @@ Let’s start creating a Services page.
     }
     ```
 
-    <br/>  
-5. Import Switch and Route from ```react-router-dom```and add the new ListItemDetail component into the Services container. As previously mentioned, **_match_** prop will be used for building nested links and routes. Also, you can use match.params to filter the data received for each item in the list:
+5. Import `Switch` and `Route` from `react-router-dom`and add the new
+   `ListItemDetail` component into the `Services` container.  As
+   previously mentioned, `match` prop will be used for building nested
+   links and routes.  Also, you can use match.params to filter the
+   data received for each item in the list:
 
     ```javascript
     /* Services.jsx */
@@ -311,8 +338,8 @@ Let’s start creating a Services page.
     export default Services;
     ```
 
-    <br/> 
-6. Add a new *internal_link* field into the ListBasic component to render a Link to each ListItemDetail based on the matched url:
+6. Add a new `internal_link` field into the ListBasic component to
+   render a `Link` to each `ListItemDetail` based on the matched URL:
 
     ```javascript
     /* ListBasic.jsx */
@@ -346,8 +373,9 @@ Let’s start creating a Services page.
                                         className="ListBasic__item">
                                         {this.props.fields.includes('internal_link') && this.props.url &&
                                             <Link className="ListBasic__link--internal"
-                                                to={`${this.props.url}${item.id}`}
-                                            ><i className="ListBasic__link__icon"></i></Link>
+                                                to={`${this.props.url}${item.id}`}>
+												<i className="ListBasic__link__icon"></i>
+											</Link>
                                         }
                                         {this.props.fields.includes('image') &&
                                             <div className="ListBasic__image">
@@ -390,8 +418,7 @@ Let’s start creating a Services page.
     export default ListBasic;
     ```
 
-    <br/> 
-7. Add some styles in ```ListBasic.scss``` to the new link classes:
+7. Add some styles in `ListBasic.scss` to the new link classes:
 
     ```scss
     /* ListBasic.scss */
@@ -502,9 +529,9 @@ Let’s start creating a Services page.
     }
     ```
 
-<br/>  
-
-Repeat all the previous steps to create an Innovation page that contains a list of Innovation services using the existing ListBasic and ListItemetail components:
+Repeat all the previous steps to create an Innovation page that
+contains a list of Innovation services using the existing `ListBasic`
+and `ListItemetail` components:
 
 ```javascript
 /* Innovation.jsx */
@@ -591,8 +618,6 @@ class Innovation extends React.Component {
 export default Innovation;
 ```
 
-<br/>  
-
 ```scss
 /* Innovation.scss */
 
@@ -638,3 +663,5 @@ export default Innovation;
     }
 }
 ```
+
+[< Prev](../lab-05) | [Next >](../lab-07)

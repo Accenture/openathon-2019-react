@@ -1,0 +1,50 @@
+@import 'assets/styles/common/variables';
+
+.Guestbook{
+
+    .Guestbook__header {
+        text-align: left;
+    }
+
+    .Guestbook__content {
+        display: flex;
+        text-align: left;
+
+        .Guestbook__form {
+            flex-basis: 50%;
+            max-width: 50%;
+            border: 1px solid $border-color;
+            padding: $space-m;
+            background-color: rgba($light-gray-alt, 0.5);
+        }
+
+        .Guestbook__entries{
+            flex-basis: 50%;
+            max-width: 50%;
+            max-height: 380px;
+            overflow-y: auto;
+            margin-left: $space-l;
+            padding: $space-m;
+            background-color: rgba($light-gray-alt, 0.5);
+
+            &--empty{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .Guestbook__entry{
+                border-top: 1px solid $border-color;
+                padding: $space-s $space-m;
+                p {
+                    font-size: 0.875rem;
+                    margin: 0;
+                }
+            }
+        }
+
+        h3{
+            margin-top: 0;
+        }
+    }
+}

@@ -7,31 +7,34 @@
 - [React Navigation: Links, Switch and Routes](#react-navigation:-links,-switches-and-routes)
 - [Creating a custom 404 NotFound Page ](#creating-a-custom-404-notfound-page)
 
-<br/>  
-
 ## Installing React Router
 
-**React Router** is the standard routing library for React that keeps your UI in sync with the URL.
+**React Router** is the standard routing library for React that keeps
+your UI in sync with the URL.
 
-The library has been divided into three packages: ```react-router```, ```react-router-dom``` and ```react-router-native```. The main package provides the core routing components and functions and the other two provide environment specific (browser and mobile) components.
+The library has been divided into three packages: `react-router`,
+`react-router-dom` and `react-router-native`.  The main package
+provides the core routing components and functions and the other two
+provide environment specific (browser and mobile) components.
 
-You should choose the right one depending on your application. Because you are building a website, start installing the ```react-router-dom```.
-
-<br/>  
+You should choose the right one depending on your application. Because
+you are building a website, start installing the `react-router-dom`.
 
 ### Install React Router (_react-router-dom_)
 
 ```sh
-npm install react-router-dom --save 
+npm install react-router-dom --save
 ```
-
-<br/>  
 
 ## Adding a Router Component
 
-At the core of every React Router application should be a **router** component. Also, you need to determine which type of router to use. For web projects that need to handle dynamic requests **_BrowserRouter_** is the most suitable.
+At the core of every React Router application should be a **router**
+component.  Also, you need to determine which type of router to use.
+For web projects that need to handle dynamic requests `BrowserRouter`
+is the most suitable.
 
-1. Import _BrowserRouter_ from ```react-router-dom``` in your App controller:
+1. Import `BrowserRouter` from `react-router-dom` in your App
+   controller:
 
     ```javascript
     /* App.jsx */
@@ -39,12 +42,11 @@ At the core of every React Router application should be a **router** component. 
     import { BrowserRouter as Router } from "react-router-dom";
     ```
 
-    <br/>  
-2. Wrap the App render with your imported *<BrowserRouter>*:
+2. Wrap the App render with your imported `<BrowserRouter>`:
 
     ```javascript
     /* App.jsx */
-    
+
     render() {
         return (
             <div className="App">
@@ -68,15 +70,17 @@ At the core of every React Router application should be a **router** component. 
     }
     ```
 
-    A Router component only expect to receive a single child element. So, to handle this limitation, you have created a ```<div class="App__root"></div>``` tag to wrap the rest of the components.
+    A Router component only expect to receive a single child element.
+    So, to handle this limitation, you have created a `<div
+    class="App__root"></div>` tag to wrap the rest of the components.
 
->Learn more about [React Router](https://reacttraining.com/react-router)
-
-<br/>  
+> Learn more about [React
+> Router](https://reacttraining.com/react-router)
 
 ### Creating a Main Container and Refactoring
 
-1. Create a new directory ```src\containers\Main``` and add a Main component:
+1. Create a new directory `src/containers/Main` and add a Main
+   component:
 
     ```js
     /* Main.jsx */
@@ -97,8 +101,7 @@ At the core of every React Router application should be a **router** component. 
     export default Main;
     ```
 
-    <br/>  
-2. Create an empty ```Main.scss``` file and add the following styles:
+2. Create an empty `Main.scss` file and add the following styles:
 
     ```css
     /* Main.scss */
@@ -110,8 +113,8 @@ At the core of every React Router application should be a **router** component. 
     }
     ```
 
-    <br/>  
-3. In ```App.jsx```, remove the "Main" div and replace it by the new Main component:
+3. In `App.jsx`, remove the `Main` div and replace it by the new Main
+   component:
 
     ```diff
     /* App.jsx */
@@ -149,11 +152,15 @@ At the core of every React Router application should be a **router** component. 
             </div>
         );
     }
-    ``` 
+    ```
 
-**Refactoring** in React is a common proccess to maintain a clean code and improve the quality of your project, identifying reusable pieces of components and changing the design without modifying the end result of the application and how it is working.
+**Refactoring** in React is a common proccess to maintain a clean code
+and improve the quality of your project, identifying reusable pieces
+of components and changing the design without modifying the end result
+of the application and how it is working.
 
-1. Remove the Fetch component in the App controller and render only the Header, Main and Footer components:
+1. Remove the Fetch component in the App controller and render only
+   the Header, Main and Footer components:
 
     ```js
     /* App.jsx */
@@ -173,8 +180,9 @@ At the core of every React Router application should be a **router** component. 
     }
     ```
 
-    <br/>  
-2. Add the Fetch service in the Header component to get the logo url and delete the PropTypes (Now, you don't need to check the type of the props because the component it is not receiving props):
+2. Add the Fetch service in the Header component to get the logo url
+   and delete the PropTypes (Now, you don't need to check the type of
+   the props because the component it is not receiving props):
 
     ```js
     /* Header.jsx */
@@ -217,19 +225,23 @@ At the core of every React Router application should be a **router** component. 
         </div>
     ```
 
-    Now, your Header component is responsible by itself to call to the Fetch service and get the url for the logo.
+    Now, your Header component is responsible by itself to call to the
+    Fetch service and get the url for the logo.
 
->An online search about how to _Refactor in React_ will return a lot of information, tips and tricks.
-
-<br/>  
+> An online search about how to _Refactor in React_ will return a lot
+> of information, tips and tricks.
 
 ## React Navigation: Links, Switches and Routes
 
-React Router provides a **Link** component to render an accesible navigation around the application. Wherever you render a _<Link>_, an anchor _<a>_ will appear in the DOM.
+React Router provides a `Link` component to render an accesible
+navigation around the application.  Wherever you render a `<Link>`, an
+anchor `<a>` will appear in the DOM.
 
-Link component is responsible for requesting the location that it should navigate to using the ```to``` prop, which value can be either a string or a location object.
+`Link` component is responsible for requesting the location that it
+should navigate to using the `to` prop, which value can be either a
+string or a location object.
 
-1. Replace the anchor _<a>_ links in Menu.jsx using Link component:
+1. Replace the anchor `<a>` links in`Menu.js` using `Link` component:
 
     ```javascript
     /* Menu.jsx */
@@ -244,12 +256,16 @@ Link component is responsible for requesting the location that it should navigat
     </nav>
     ```
 
-    >Learn more about [Link Component](https://reacttraining.com/react-router/web/api/Link)
+    > Learn more about [Link
+    > Component](https://reacttraining.com/react-router/web/api/Link)
 
-    Now, launch your application by running ```npm start``` and click on each menu link. The address in your browser is updated each time you click on a link item. 
+    Now, launch your application by running `npm start` and click on
+    each menu link.  The address in your browser is updated each time
+    you click on a link item.
 
-    <br/>  
-2. Create four new containers _—Home, Services, Innovation and Guestbook—_ as React Components, to render each page of your application following this basic structure:
+2. Create four new containers _—Home, Services, Innovation and
+   Guestbook—_ as React Components, to render each page of your
+   application following this basic structure:
 
     ```javascript
     /* Home.jsx */
@@ -269,11 +285,11 @@ Link component is responsible for requesting the location that it should navigat
     export default Home;
     ```
 
-    <br/>  
-3. Add your new container Components to the ```containers\index.js``` file:
+3. Add your new container Components to the `containers/index.js`
+   file:
 
     ```javascript
-    /* src\containers\index.js */
+    /* src/containers/index.js */
 
     import Main from './Main/Main';
     import Home from './Home/Home';
@@ -290,8 +306,13 @@ Link component is responsible for requesting the location that it should navigat
     };
     ```
 
-    <br/>  
-4. Render the content for each page using **Switch** and **Routes** from React Router inside of your Main controler. The Switch component renders the first Route or Redirect that matches the location. On the other hand, the Route component —perhaps the most important in React Router— is responsible to render other components or HTML content when a location matches the route’s path. 
+4. Render the content for each page using **Switch** and **Routes**
+   from React Router inside of your Main controler.  The `Switch`
+   component renders the first `Route` or `Redirect` that matches the
+   location.  On the other hand, the Route component, perhaps the most
+   important in React Router, is responsible to render other
+   components or HTML content when a location matches the route’s
+   path.
 
     ```javascript
     /* Main.jsx */
@@ -310,19 +331,23 @@ Link component is responsible for requesting the location that it should navigat
         </Switch>
     </div>
     ```
-    The route for Home includes an exact prop to __ match only when the pathname matches the route’s path exactly.
 
-    >Learn more about [Switch](https://reacttraining.com/react-router/web/api/Switch) and [Route](https://reacttraining.com/react-router/web/api/Route)
+   The route for Home includes an exact prop to `__` match only when
+   the pathname matches the route’s path exactly.
 
-<br/>  
+   > Learn more about
+   > [Switch](https://reacttraining.com/react-router/web/api/Switch)
+   > and [Route](https://reacttraining.com/react-router/web/api/Route)
 
-## Creating a custom 404 NotFound Page 
+## Creating a custom 404 NotFound Page
 
-Now, what happens if a user hits a route that is not defined? Let’s set up a 404 route and component that will return if the route is not found.
+Now, what happens if a user hits a route that is not defined?  Let’s
+set up a 404 route and component that will return if the route is not
+found.
 
-1. Create a new ```NotFound``` folder in ```scr\containers```directory.
+1. Create a new `NotFound` folder in `scr/containers`directory.
 
-2. Create a ```NotFound.jsx``` and a ```NotFound.scss``` files:
+2. Create a `NotFound.jsx` and a `NotFound.scss` files:
 
     ```javascript
     /* NotFound.jsx */
@@ -355,11 +380,10 @@ Now, what happens if a user hits a route that is not defined? Let’s set up a 4
     }
     ```
 
-    <br/>  
-3. Import your new component into the ```containers\index.js```file:
+3. Import your new component into the `containers/index.js`file:
 
     ```diff
-    /* src\containers\index.js */
+    /* src/containers/index.js */
         import Home from './Home/Home';
         import Main from './Main/Main';
     +   import NotFound from './NotFound/NotFound';
@@ -377,8 +401,8 @@ Now, what happens if a user hits a route that is not defined? Let’s set up a 4
         };
     ```
 
-    <br/>  
-4. Below your ```/guestbook``` route in Main component, create a new route:
+4. Below your `/guestbook` route in Main component, create a new
+   route:
 
     ```diff
     /* Main.jsx */
@@ -391,4 +415,7 @@ Now, what happens if a user hits a route that is not defined? Let’s set up a 4
     </Switch>
     ```
 
-Now, if you navigate to some route that has not been defined (http://localhost:3000/example), your 404 NotFound page will appear.
+Now, if you navigate to some route that has not been defined
+(http://localhost:3000/example), your 404 NotFound page will appear.
+
+[< Prev](../lab-03) | [Next >](../lab-05)

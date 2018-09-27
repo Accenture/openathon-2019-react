@@ -4,12 +4,241 @@
 
 - [React Controlled Components](#react-controlled-components)
 
-
-<br/>  
-
 ## React Controlled Components
 
-Form elements work in a different way that other DOM elements in React. The traditional HTML form elements (_<input>, <textarea>, and <select>_) maintain their own state and update it based on user input. However, the state of a React component is kept in the state property and only updated with _setState()_ method.
+Form elements work in a different way that other DOM elements in
+React.  The traditional HTML form elements (`<input>`, `<textarea>`,
+and `<select>`) maintain their own state and update it based on user
+input.  However, the state of a React component is kept in the state
+property and only updated with `setState()` method.
 
-<br/>  
+We can combine the two by making the React state be the _single source
+of truth_.  Then the React component that renders a form also controls
+what happens in that form on subsequent user input.  An input form
+element whose value is controlled by React in this way is called a
+_controlled component_.
 
+### Creating a new From Component
+
+1. Create a Form component in `src/components` directory.  Define a
+   `fields` state with two inputs: a text input for `Name` and a
+   textarea for the comment.  Create two empty methods to handle input
+   changes and form submit.  Import and export your component in the
+   `src/components/index.js` file:
+
+    ```javascript
+    /* Form.jsx */
+
+    import React from 'react';
+    import './Form.css';
+
+    const defaultProps = {
+        className: ''
+    }
+
+    class Form extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                fields: [
+                    {id:'1', value:'', metadata: { label: 'Name', type: 'text' }},
+                    {id:'2', value:'', metadata: { label: 'Comment', type: 'textarea' }}
+                ]
+            };
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        handleChange(event) {}
+
+        handleSubmit(event) {}
+
+        render() {
+            return (
+                <div className={`Form ${this.props.className}`}>
+                    {this.props.title &&
+                        <header className="Form__title">
+                            <h3>{this.props.title}</h3>
+                        </header>
+                    }
+                    <form onSubmit={this.handleSubmit}>
+                        {this.state.fields.map((field) => {
+                            if (field.id === '1') {
+                                return (
+                                    <div className="Form__row">
+                                        <label>{field.metadata.label}</label>
+                                        <input type="text" id={field.id} value={field.value} onChange={this.handleChange} />
+                                    </div>
+                                );
+                            } else if (field.id === '2') {
+                                return (
+                                    <div className="Form__row">
+                                        <label>{field.metadata.label}</label>
+                                        <textarea id={field.id} value={field.value} onChange={this.handleChange} />
+                                    </div>
+                                );
+                            } else {
+                                return null;
+                            }
+                        })}
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+            );
+        }
+    }
+
+    Form.defaultProps = defaultProps;
+
+    export default Form;
+    ```
+
+2. Define some styles for your new component:
+
+    ```scss
+        .Form{
+            .Form__row{
+                label,
+                input{
+                    display: block;
+                }
+
+            }
+        }
+    ```
+
+3. Copy the two new `_buttons.scss` and `_forms.scss` files from
+   `src/assets/styles/common` in the `lab-07` repository and paste in
+   the same directory in your project.
+
+4. Import the new `.scss` files in your `index.scss`:
+
+    ```scss
+    @import 'assets/styles/common/normalize';
+    @import 'assets/styles/common/variables';
+    @import 'assets/styles/common/typography';
+    @import 'assets/styles/common/buttons';
+    @import 'assets/styles/common/forms';
+    ```
+
+5. Add your Form component to the `Guestbook` container:
+
+    ```javascript
+    /* Guestbook.jsx */
+
+    import React from 'react';
+    import { Form } from '../../components'
+    import './Guestbook.css'
+
+    class Guestbook extends React.Component {
+
+        constructor(props){
+            super(props);
+            this.state = {
+                entries: []
+            }
+            this.submitForm = this.submitForm.bind(this);
+        }
+
+        submitForm(newEntry) {}
+
+        render() {
+            return (
+                <div className="Guestbook" location={this.props.location}>
+                    <header className="Guestbook__header">
+                    <h1>Guestbook</h1>
+                </header>
+                <section className="Guestbook__content">
+                    <Form className="Guestbook__form"
+                        title="Guestbook Form"
+                        submitForm={this.submitForm}
+                    />
+                </section>
+                </div>
+            );
+        }
+    }
+
+    export default Guestbook;
+    ```
+
+6. Add some styles to your `Guestbook` component:
+
+    ```scss
+    @import 'assets/styles/common/variables';
+
+    .Guestbook{
+
+        .Guestbook__header {
+            text-align: left;
+        }
+
+        .Guestbook__content {
+            display: flex;
+            text-align: left;
+
+            .Guestbook__form {
+                flex-basis: 50%;
+                max-width: 50%;
+                border: 1px solid $border-color;
+                padding: $space-m;
+                background-color: rgba($light-gray-alt, 0.5);
+            }
+        }
+    }
+    ```
+
+7. Save all the changes.  Stop the execution of previous scripts and
+   run `npm start` to launch your project and see your new `Guestbook`
+   page.
+
+### Handling Input values and Form submit
+
+1. Add a `handlechange()` function to your `Form` component to update
+   the `fields` state with the new value for each one:
+
+    ```javascript
+    /* Form.jsx */
+
+    handleChange(event) {
+        const updatedFields = this.state.fields.map(field => {
+            if(field.id === event.target.id)
+                return Object.assign({}, field, {value: event.target.value})
+            return field
+        });
+        this.setState({ fields: updatedFields });
+    }
+    ```
+
+2. Define the `handleSubmit()` function to get the submitted data in
+   the form.  If your component has a submit Form prop :
+
+    ```javascript
+    /* Form.jsx */
+
+    handleSubmit(event) {
+        event.preventDefault();
+        if(this.props.submitForm && {}.toString.call(this.props.submitForm) === '[object Function]') {
+            const entry = {};
+            this.state.fields.map(field => {
+                entry[field.metadata.label] = field.value;
+            });
+            this.props.submitForm(entry);
+        } else {
+            const formValues = this.state.fields.reduce((result, field) => {
+                result += `${field.metadata.label.toLowerCase()}: ${field.value}\n`;
+                return result;
+            }, '');
+            alert('A new form was submitted\n' + formValues);
+        }
+        const resetFields = this.state.fields.map(field => {
+            return Object.assign({}, field, {value: ''})
+        });
+        this.setState({ fields: resetFields });
+    }
+    ```
+
+TODO: Finish the Lab 07 Readme
+
+[< Prev](../lab-06) | [Next >](../lab-08)
