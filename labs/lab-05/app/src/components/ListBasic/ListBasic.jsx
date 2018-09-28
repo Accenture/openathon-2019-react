@@ -56,9 +56,9 @@ class ListBasic extends React.PureComponent {
 
 ListBasic.defaultProps = defaultProps;
 
-ListBasic.PropTypes = {
+ListBasic.propTypes = {
     title: PropTypes.string,
-    data: PropTypes.arrayOf(PropTypes.string).isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
     fields: PropTypes.arrayOf(PropTypes.string),
     layout: PropTypes.oneOf(['list', 'grid'])
 }

@@ -214,7 +214,7 @@ Let’s start creating a Services page.
 
     ListItemDetail.defaultProps = defaultProps;
 
-    ListItemDetail.PropTypes = {
+    ListItemDetail.propTypes = {
         data: PropTypes.arrayOf(PropTypes.string).isRequired,
         fields: PropTypes.arrayOf(PropTypes.string),
         layout: PropTypes.oneOf(['list', 'grid'])
@@ -408,9 +408,9 @@ Let’s start creating a Services page.
 
     ListBasic.defaultProps = defaultProps;
 
-    ListBasic.PropTypes = {
+    ListBasic.propTypes = {
         title: PropTypes.string,
-        data: PropTypes.arrayOf(PropTypes.string).isRequired,
+        data: PropTypes.arrayOf(PropTypes.object).isRequired,
         fields: PropTypes.arrayOf(PropTypes.string),
         layout: PropTypes.oneOf(['list', 'grid'])
     }

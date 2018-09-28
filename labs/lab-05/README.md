@@ -166,9 +166,9 @@
 
     Info.defaultProps = defaultProps;
 
-    Info.PropTypes = {
+    Info.propTypes = {
         title: PropTypes.string.isRequired,
-        data: PropTypes.arrayOf(PropTypes.string).isRequired
+        data: PropTypes.objectOf(PropTypes.string).isRequired
     }
 
     ...
@@ -329,9 +329,9 @@ accepts an array of data and outputs an unordered list of elements.
 
     ListBasic.defaultProps = defaultProps;
 
-    ListBasic.PropTypes = {
+    ListBasic.propTypes = {
         title: PropTypes.string,
-        data: PropTypes.arrayOf(PropTypes.string).isRequired,
+        data: PropTypes.arrayOf(PropTypes.object).isRequired,
         fields: PropTypes.arrayOf(PropTypes.string),
         layout: PropTypes.oneOf(['list', 'grid'])
     }

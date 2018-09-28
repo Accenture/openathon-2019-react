@@ -152,7 +152,6 @@ _controlled component_.
                 <section className="Guestbook__content">
                     <Form className="Guestbook__form"
                         title="Guestbook Form"
-                        submitForm={this.submitForm}
                     />
                 </section>
                 </div>
@@ -212,7 +211,10 @@ _controlled component_.
     ```
 
 2. Define the `handleSubmit()` function to get the submitted data in
-   the form.  If your component has a submit Form prop :
+   the form.  If your component does not have a submit Form prop
+   defined as a function from the ancestor component, an alert must
+   appear to show the new data. Otherwise, the new data must be
+   propagated to this function:
 
     ```javascript
     /* Form.jsx */
@@ -239,6 +241,124 @@ _controlled component_.
     }
     ```
 
-TODO: Finish the Lab 07 Readme
+3. In your `Guestbook.jsx`file add a new `submitForm()` method to push
+the new entry values. In the `render()`method add a new `submitForm`
+prop to the `Form` component:
+
+    ```javascript
+    /* Guestbook.jsx */
+    
+    submitForm(newEntry) {
+        const entries = this.state.entries;
+        entries.push(newEntry);
+        this.setState({ entries });
+    }
+
+    ...
+    render() {
+        return (
+        ...
+        <Form className="Guestbook__form"
+            title="Guestbook Form"
+            submitForm={this.submitForm}
+        />
+        ...
+        )
+    }
+
+    ```
+
+4. Also, render the new existing entries in the `Guestbook` component:
+
+    ```javascript
+    /* Guestbook.jsx */
+
+    render() {
+        return (
+            ...
+            {this.state.entries.length > 0 ?
+                <div className="Guestbook__entries">
+                    <header>
+                        <h3>Guestbook Entries</h3>
+                    </header>
+                    <section>
+                        {this.state.entries.map((entry, i) => {
+                            return(
+                                <article className="Guestbook__entry">
+                                    {Object.keys(entry).map(key => {
+                                        return (
+                                        <p key={`entry-${i}-${key}`}>{entry[key]}</p>
+                                        );
+                                    })}
+                                </article>
+                            );
+                        })}
+                    </section>
+                </div>
+                : <div className="Guestbook__entries Guestbook__entries--empty">
+                    <p>No entries yet</p>
+                </div>
+            }
+            ...
+        );
+    }
+    ```
+
+5. Finally, add some new styles to your `Guestbook.jsx`file:
+
+    ```scss
+    /* Guestbook.jsx */
+
+    @import 'assets/styles/common/variables';
+
+    .Guestbook{
+
+        .Guestbook__header {
+            text-align: left;
+        }
+
+        .Guestbook__content {
+            display: flex;
+            text-align: left;
+
+            .Guestbook__form {
+                flex-basis: 50%;
+                max-width: 50%;
+                border: 1px solid $border-color;
+                padding: $space-m;
+                background-color: rgba($light-gray-alt, 0.5);
+            }
+
+            .Guestbook__entries{
+                flex-basis: 50%;
+                max-width: 50%;
+                max-height: 380px;
+                overflow-y: auto;
+                margin-left: $space-l;
+                padding: $space-m;
+                background-color: rgba($light-gray-alt, 0.5);
+
+                &--empty{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .Guestbook__entry{
+                    border-top: 1px solid $border-color;
+                    padding: $space-s $space-m;
+                    p {
+                        font-size: 0.875rem;
+                        margin: 0;
+                    }
+                }
+            }
+
+            h3{
+                margin-top: 0;
+            }
+        }
+    }
+    ```
 
 [< Prev](../lab-06) | [Next >](../lab-08)

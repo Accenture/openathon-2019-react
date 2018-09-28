@@ -42,9 +42,9 @@ class Info extends React.PureComponent {
 
 Info.defaultProps = defaultProps;
 
-Info.PropTypes = {
+Info.propTypes = {
     title: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(PropTypes.string).isRequired
+    data: PropTypes.objectOf(PropTypes.string).isRequired
 }
 
 export default Info;
