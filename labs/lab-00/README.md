@@ -4,10 +4,12 @@
 ## Table of Contents
 
 - [What is JavaScript](#what-is-javascript)
-- [Main Characteristics of React](#main-characteristics-of-react)
+- [React. A JavaScript library for building user interfaces](#react.-a-javascript-library-for-building-user-interfaces)
 - [Resources](#resources)
 
 ## What is JavaScript
+
+![JS logo](https://raw.githubusercontent.com/Albarian/openathonFY19/master/resources/images/jsLogo.png)
 
 **JavaScript** is one of the most important **programming languages**
 of all time, not simply because of its
@@ -65,7 +67,26 @@ applications ([Node.js](https://nodejs.org/),
     together with methods in objects.  [More
     info.](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
 
-## Main Characteristics of React
+## React. A JavaScript library for building user interfaces
+
+![React logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png)
+
+> React = Components + Virtual Dom + JSX + Props & State. 
+
+**React** is a modern open-source web development toolkit built by Facebook. 
+React is a declarative, efficient, and flexible JavaScript library for 
+building user interfaces. It lets you compose complex UIs from small 
+and isolated pieces of code called *components*.
+
+Dividing web applications up into **components** is a central idea to 
+creating applications with React. Instead of a gigantic monolith of 
+a web page, you will generally consider the individual pieces that 
+make up an application and divide it up into smaller pieces that 
+are much easier to develop, debug, and to generally think about.
+
+### Main Characteristics of React
+
+![React operations](https://www.ibm.com/developerworks/library/wa-react-intro/figure1.png)[Image source](https://www.ibm.com/developerworks/library/wa-react-intro/index.html)
 
 * **Component-based Architecture**
 

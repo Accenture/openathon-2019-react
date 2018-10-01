@@ -1,0 +1,1 @@
+.Header{display:flex;flex:0 1 auto;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-items:center;padding:.5rem 1rem;border-bottom:1px solid #ccc}.Header .Header__logo img{max-width:120px}.Header .Header__title{font-size:1rem;text-align:left}

@@ -1,0 +1,104 @@
+@import 'assets/styles/common/variables';
+
+.List{
+    .ListBasic{
+
+        .ListBasic__header{
+            text-align: left;
+        }
+
+        .ListBasic--list{
+            border-top: 1px solid $border-color;
+
+            .ListBasic__item{
+                position: relative;
+                display: flex;
+                align-items: center;
+                padding: $space-m 0;
+                border-bottom: 1px solid $border-color;
+
+                .ListBasic__image{
+                    flex-basis: 25%;
+                    padding: 0 $space-m;
+
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .ListBasic__content{
+                    flex-basis: 75%;
+                    padding-left: $space-l;
+                    font-size: 0.875rem;
+                    text-align: left;
+
+                    .ListBasic__content__title{
+                        h3{
+                            margin: 0 0 $space-s;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ListBasic--grid{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: $space-m;
+
+            .ListBasic__item{
+                position: relative;
+
+                .ListBasic__image{
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .ListBasic__link{
+            &--internal{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding: $space-s;
+                cursor:  pointer;
+                opacity: 0;
+                transition: all 0.4s ease-in-out;
+                z-index: 9;
+
+                &:hover{
+                    background: rgba($white, 0.25);
+                    opacity: 1;
+                }
+            }
+        }
+
+        .ListBasic__link__icon{
+            width: 24px;
+            height: 24px;
+
+            &:after{
+                content: '';
+                display: inline-block;
+                vertical-align: middle;
+                margin-top: 4px;
+                margin-left: -8px;
+                width: 15px;
+                height: 15px;
+                border-top: 2px solid $meta-gray;
+                border-right: 2px solid $meta-gray;
+                transform: rotate(45deg);
+            }
+        }
+
+    }
+}

@@ -1,0 +1,51 @@
+/***** BUTTONS *****/
+
+/**** Default Button ****/
+
+%button {
+    display: inline-block;
+    position: relative;
+    padding: 0 20px;
+    margin-bottom: 1rem;
+    border: 0;
+    border-radius: 4px;
+    background-color: $blue;
+    color: $white;
+    cursor: pointer;
+    font-size: 0.875rem;
+    height: 36px;
+    line-height: 36px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all, 0.4s ease-in-out;
+    vertical-align: middle;
+
+    &:hover, &:focus {
+        background-color: $blue;
+        text-decoration: none;
+    }
+
+    &:active {
+        top: 1px;
+    }
+
+}
+
+/**** Standard Buttons ****/
+
+.button {
+    @extend %button;
+    border: 0;
+    background-color: $main-color;
+    color: $white;
+
+    &:hover,
+    &:focus {
+        background-color: darken($main-color, 5%);
+        color: $white;
+    }
+
+    &:active {
+        background-color: darken($main-color, 5%);
+    }
+}

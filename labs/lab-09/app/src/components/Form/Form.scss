@@ -1,0 +1,41 @@
+@import 'assets/styles/common/variables';
+@import 'assets/styles/common/buttons';
+
+.Form{
+
+    .Form__row{
+        label,
+        input{
+            display: block;
+        }
+    }
+
+    .Form__submit{
+        display: flex;
+
+        .Form__button{
+            @extend %button;
+            border: 0;
+            background-color: $blue;
+            color: $white;
+
+            &:hover,
+            &:focus {
+                background-color: darken($blue, 5%);
+                color: $white;
+            }
+
+            &:active {
+                background-color: darken($blue, 5%);
+            }
+        }
+
+        .Form__message--success{
+            display: inline-block;
+            line-height: 36px;
+            font-size: 0.875rem;
+            color: $green;
+            padding: 0 $space-m;
+        }
+    }
+}

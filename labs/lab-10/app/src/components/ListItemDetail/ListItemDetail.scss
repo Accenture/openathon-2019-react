@@ -1,0 +1,19 @@
+.ListItemDetail{
+    width: 100%;
+    text-align: center;
+
+    .ListItemDetail__image{
+        &--alt{
+            img{
+                max-width: 150px;
+            }
+        }
+    }
+
+    .ListItemDetail__content{
+        max-width: 650px;
+        margin: auto;
+        text-align: left;
+    }
+
+}

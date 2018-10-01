@@ -11,9 +11,10 @@
     height: 100%;
     z-index: 8;
 
-    &--error{
-        border-top: 2px solid $red;
-        background-color: rgba( $red, .2 )
+    &.Notification--error{
+        .Notification__message{
+            border-top: 2px solid $red;
+        }
     }
 
     .Notification__message{

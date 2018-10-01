@@ -1,0 +1,48 @@
+/***** SPACING *****/
+
+$space-s:       0.5rem;
+$space-m:       1rem;
+$space-l:       1.5rem;
+
+/***** COLORS *****/
+
+$black:				#000;
+$white:				#fff;
+$light-gray:		#eeeeee;
+$light-gray-alt:	#f8f8f8;
+$gray:				#666666;
+$dark-gray:			#222222;
+$text-color:		#333333;
+$meta-gray:			#888888;
+$border-color:		#cccccc;
+$disabled-gray:		#cfcfcf;
+
+$purple:            #7500C0;
+$light-purple:      #A100FF;
+$dark-purple:       #460073;
+$red:               #BD001D;
+$light-red:         #FF0000;
+$dark-red:          #710012;
+$yellow:            #FFD42E;
+$light-yellow:      #FFFF00;
+$dark-yellow:       #FFB600;
+$green:             #00D700;
+$light-green:       #00FF00;
+$dark-green:        #00530A;
+$blue:              #008EFF;
+$light-blue:        #00BAFF;
+$dark-blue:         #004DFF;
+
+$main-color:		$purple;
+$alt-color:			$green;
+$link-color:		$light-blue;
+$link-hover:		$dark-blue;
+
+/***** FONT *****/
+
+$sans-serif:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif:             "Georgia", Cambria, Times New Roman, Times, serif;
+
+$font-s:    0.75rem;
+$font-m:    1rem;
+$font-l:    1.25rem;

@@ -1,0 +1,25 @@
+@import 'assets/styles/common/variables';
+
+.Header{
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-s $space-m;
+    border-bottom: 1px solid $border-color;
+
+    .Header__logo{
+        flex-basis: 20%;
+        img{
+            max-width: 120px;
+        }
+    }
+
+    .Header__title{
+        flex-basis: 40%;
+        font-size: 1rem;
+        text-align: center;
+    }
+}

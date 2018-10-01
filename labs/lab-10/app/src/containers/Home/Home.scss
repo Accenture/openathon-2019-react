@@ -1,0 +1,21 @@
+@import 'assets/styles/common/variables';
+
+.Home {
+    .Home__list {
+        display: flex;
+    }
+
+    .Home__services,
+    .Home__innovation {
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+
+    .Home__services {
+        padding-right: $space-m;
+    }
+
+    .Home__innovation {
+        padding-left: $space-m;
+    }
+}

@@ -1,0 +1,104 @@
+@import 'assets/styles/common/variables';
+
+.Menu{
+    display: flex;
+    flex: 0 1 auto;
+    flex-basis: 40%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    .Menu__button{
+        position: relative;
+        width: 20px;
+        height: 16px;
+        margin-left: $space-s;
+        border: 0;
+        border-top: 3px solid $text-color;
+        border-bottom: 3px solid $text-color;
+        background: transparent;
+        cursor: pointer;
+        outline: 0;
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 3px;
+            background: $text-color;
+            transform: translate(-50%, -50%);
+            transition: transform ease-in-out .15s;
+        }
+
+        &--expanded{
+            border-color: transparent;
+
+            &:before {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:after {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
+
+    }
+
+    nav{
+        animation: fadeIn 1s;
+
+        ul{
+            margin: 0;
+
+            li{
+                position: relative;
+                float: left;
+                margin: 0 $space-s;
+                list-style: none;
+                line-height: 36px;
+                text-align: center;
+
+                &:after{
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 0%;
+                    height: 2px;
+                    margin: auto;
+                    background-color: $main-color;
+                    transition: width 0.4s ease-in-out;
+                }
+
+                &:hover{
+                    color: $main-color;
+
+                    &:after{
+                        width: 100%;
+                    }
+
+                    a{
+                        color: $main-color;
+                    }
+                }
+
+                a{
+                    color: $text-color;
+                    text-decoration: none;
+                    transition: color 0.4s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}

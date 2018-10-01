@@ -1,0 +1,41 @@
+@import 'assets/styles/common/variables';
+
+.Innovation{
+
+    .Innovation__header {
+        text-align: left;
+    }
+
+    .Innovation__content {
+        display: flex;
+
+        .Innovation__list {
+            flex-basis: 25%;
+            max-width: 25%;
+
+            .List .ListBasic {
+
+                .ListBasic--grid{
+                    grid-template-columns: auto auto;
+                }
+            }
+        }
+
+        .Innovation__detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-basis: 75%;
+            max-width: 75%;
+            margin-left: $space-l;
+            padding: $space-m;
+            background-color: rgba($light-gray-alt, 0.5);
+
+            &--empty{
+                p{
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
