@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-- [Installing React Router](#installing-react-router)
-- [Adding a Router Component](#adding-a-router-component)
-- [React Navigation: Links, Switch and Routes](#react-navigation:-links,-switches-and-routes)
-- [Creating a custom 404 NotFound Page ](#creating-a-custom-404-notfound-page)
+* [Installing React Router](#installing-react-router)
+* [Adding a Router Component](#adding-a-router-component)
+* [React Navigation: Links, Switch and Routes](#react-navigation:-links,-switches-and-routes)
+* [Creating a custom 404 NotFound Page ](#creating-a-custom-404-notfound-page)
 
 ## Installing React Router
 
@@ -29,9 +29,13 @@ npm install react-router-dom --save
 ## Adding a Router Component
 
 At the core of every React Router application should be a **router**
-component.  Also, you need to determine which type of router to use.
+component. Also, you need to determine which type of router to use.
 For web projects that need to handle dynamic requests `BrowserRouter`
 is the most suitable.
+
+BrowserRouter is a wrapper for your application that uses the HTML5
+history API (pushState, replaceState and the popstate event) to keep
+your UI in sync with the URL of the browser.
 
 1. Import `BrowserRouter` from `react-router-dom` in your App
    controller:
@@ -39,7 +43,7 @@ is the most suitable.
     ```javascript
     /* App.jsx */
 
-    import { BrowserRouter as Router } from "react-router-dom";
+    import { BrowserRouter } from "react-router-dom";
     ```
 
 2. Wrap the App render with your imported `<BrowserRouter>`:
@@ -101,10 +105,24 @@ is the most suitable.
     export default Main;
     ```
 
+    Create an `index.js` file and import/export your component:
+
+    ```javascript
+    /* src\containers\index.js */
+
+    import Main from './Main/Main';
+
+    export {
+        Main,
+    };
+    ```
+
 2. Create an empty `Main.scss` file and add the following styles:
 
     ```css
     /* Main.scss */
+
+    @import 'assets/styles/common/variables';
 
     .Main {
         padding: 2.5rem 0;
@@ -246,6 +264,10 @@ string or a location object.
     ```javascript
     /* Menu.jsx */
 
+    import { Link } from 'react-router-dom'
+
+    ...
+
     <nav>
         <ul>
             <li><Link to="/">Home</Link></li>
@@ -345,7 +367,7 @@ Now, what happens if a user hits a route that is not defined?  Let’s
 set up a 404 route and component that will return if the route is not
 found.
 
-1. Create a new `NotFound` folder in `scr/containers`directory.
+1. Create a new `NotFound` folder in `scr/containers` directory.
 
 2. Create a `NotFound.jsx` and a `NotFound.scss` files:
 
@@ -406,6 +428,17 @@ found.
 
     ```diff
     /* Main.jsx */
+
+    import {
+        Home,
+    +   NotFound,
+        Services,
+        Innovation,
+        Guestbook
+    } from "../../containers";
+
+    ...
+
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/services" component={Services} />

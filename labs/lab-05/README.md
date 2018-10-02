@@ -57,7 +57,18 @@
     > and the [Javascript _map()_
     > function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 
-2. Import and export your new component in `src/components/index.js`:
+2. Create a new `Info.scss` file and add some styles to align the text
+   to the left:
+
+    ```scss
+    /*Info.scss*/
+
+    .Info {
+        text-align: left;
+    }
+    ```
+
+3. Import and export your new component in `src/components/index.js`:
 
     ```javascript
     import Footer from './Footer/Footer';
@@ -77,7 +88,7 @@
     };
     ```
 
-3. In Home page, use the `Fetch` component to get the data from the
+4. In Home page, use the `Fetch` component to get the data from the
    `general` endpoint in your JSON Server:
 
     ```javascript
@@ -122,7 +133,7 @@
         ...
     ```
 
-3. Add a title _'About Accenture'_ to your `Info` component and assign
+5. Add a title _'About Accenture'_ to your `Info` component and assign
    a title attribute to the component in your Home:
 
     ```javascript
@@ -147,7 +158,7 @@
     ...
     ```
 
-4. Add some DefaultProps and PropTypes to check data type into your
+6. Add some DefaultProps and PropTypes to check data type into your
    Info component:
 
     ```javascript
@@ -174,18 +185,7 @@
     ...
     ```
 
-5. Create a new `Info.scss` file and add some styles to align the text
-   to the left:
-
-    ```scss
-    /*Info.scss*/
-
-    .Info {
-        text-align: left;
-    }
-    ```
-
-6. Stop the current job in the terminal and run again `npm start`.
+7. Stop the current job in the terminal and run again `npm start`.
 
 ## Rendering Multiple Components
 
@@ -195,9 +195,10 @@ array.  Usually you would render lists inside a component, which
 accepts an array of data and outputs an unordered list of elements.
 
 1. Create a ListBasic Component in `src/components` directory that
-   conditionally renders a title and accepts an array of data.  Use
-   the the JavaScript `map()` function to render each item in the list
-   that should contain a name, a description and an image source:
+   conditionally renders a title and accepts an array of data. Use
+   the the JavaScript `map()` function to iterate through the returned
+   data and render each item in the list that should contain a name,
+   a description and an image source:
 
     ```javascript
     /* ListBasic.jsx */
@@ -267,9 +268,9 @@ accepts an array of data and outputs an unordered list of elements.
     render() {
         return (
             <div className="Home" location={this.props.location}>
-
-            ...
-
+                <div className="Home__info">
+                    ...
+                </div>
                 <div className="Home__list">
                     <div className="Home__services">
                         <Fetch path={'services'} options={FETCH_OPTIONS}>
@@ -451,6 +452,9 @@ accepts an array of data and outputs an unordered list of elements.
     > Learn more about [Lists and Keys in
     > React](https://reactjs.org/docs/lists-and-keys.html)
 
+    > Know more about the [includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) 
+    method.
+
 6. Add some styles to `ListBasic.scss` using Flex and Grid CSS
    modules:
 
@@ -518,7 +522,7 @@ accepts an array of data and outputs an unordered list of elements.
     ```
 
 7. Finally, add other styles to customize your Home page in
-   `Home.scss`:
+   `Home.scss` and import generates .css file into `Home.jsx`:
 
     ```scss
     /* Home.scss */
@@ -544,6 +548,12 @@ accepts an array of data and outputs an unordered list of elements.
             padding-left: $space-m;
         }
     }
+    ```
+
+    ```javascript
+    /* Home.jsx */
+
+    import './Home.css';
     ```
 
 8. Stop the current job in the terminal and check the results in your

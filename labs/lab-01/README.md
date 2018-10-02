@@ -169,7 +169,7 @@ previous jobs by pressing_ `Ctrl + C`.
 1. Create a new `index.scss` file in `scr/assets/styles` to include
    thee generic styles for your application.
 
-2. Run `npm sass:watch` in your terminal.
+2. Run `npm run sass:watch` in your terminal.
 
 3. Add the following rules to your `index.scss`:
 
@@ -202,6 +202,17 @@ previous jobs by pressing_ `Ctrl + C`.
    changes.  The watcher will overrides `App.css`.  Since `App.js`
    still imports `App.css`, the styles become a part of your
    application.
+
+   >Note: **_Watching newly created files_**. If you create a new .scss
+   file inside the watched directory `src`, the new file never gets
+   compiled. To make it work, you need to restart the job and save
+   again your new scss file.
+   >
+   >This is a known issue of the `node-sass` package and it's planned to
+   be patched in the next release 5.
+   >
+   >As an alternative, you can install the `chokibar` package to watch
+   your scss files.
 
 You can now make some changes in `App.scss` and the `App.css` file
 will be regenerated.
@@ -276,7 +287,11 @@ editor, there are some extra steps you can follow:
     }
     ```
 
-    Now your editor should report the linting warnings.
+Now your editor should report the linting warnings. To verify that
+it's working, go to the `App.js` file and create an ESLint error
+into line 8 by adding: `<div></div>`. A red underline will appear
+and a new error message is displayed on mouse over: _Parsing error: 
+Adjacent JSX elements must be wrapped in an enclosing tag_.
 
 > This feature is available with `react-scripts@0.2.0` and higher.  It
 > only works with npm 3 or higher.  More information about the [ESLint

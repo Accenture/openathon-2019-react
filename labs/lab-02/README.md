@@ -52,6 +52,15 @@ component files inside.
 
     import React from 'react';
     ```
+
+> Note: If your project is running during the next steps,
+sometimes you will find errors in your application or in your browser
+console. It's also applicable to the next Labs. **Do not worry**, they
+should disappear once you reach the end of each section. You can
+also review them to get some extra information and clues about
+the next steps you need to do to fix them. Consider this errors as a
+powerful learning source!
+
 ### Create a Component Class
 
 To create a new Header component you can use ES6 classes and extend
@@ -132,7 +141,7 @@ class Header extends React.Component {
             _variables.scss
     ```
 
-2. Add a new `index.scss` file in `src/styles` and import the recently
+2. Into your `index.scss` file in `src/styles`, import the recently
    added files:
 
     ```css
@@ -157,6 +166,8 @@ class Header extends React.Component {
     ```
 
     ```javascript
+    /* Header.jsx */
+
     import './Header.css';
     ```
 
@@ -164,6 +175,9 @@ class Header extends React.Component {
 
     ```scss
     /* Header.scss */
+
+    // Import variables.scss file
+    @import 'assets/styles/common/variables';
 
     .Header{
         display: flex;
@@ -222,8 +236,12 @@ class Header extends React.Component {
     export default Header;
     ```
 
-2. Add a new `index.js` file into your components directory to export
-   the named component:
+2. One of the drawbacks of your components directory structure is that
+importing components requires you to import the fully qualified path. To
+enable shorter import statements, add a new `index.js` file into your
+components directory and export the named component. This will be a common
+pattern in your project that you need to repeat every time you add a
+new component:
 
     ```javascript
     /* src/components/index.js */
@@ -234,6 +252,19 @@ class Header extends React.Component {
         Header
     };
     ```
+
+Now, you can import your Header component in other components of your app
+doing this:
+
+```javascript
+import { Header } from '../../components';
+```
+
+Instead of this:
+
+```javascript
+import { Header } from '../../components/Header/Header';
+```
 
 <br/>
 
@@ -277,16 +308,20 @@ commonly expressed as components.
 Create an App component that renders the new Header component:
 
 1. Move the App folder from `components` directory to a new folder
-   `controllers` and delete the imported logo in the `App.js` file.
+   `controllers`.
 
-2. Change the extension of your `App.js` file to ` App.jsx`.
+2. Change the new route for your App controller in `src\index.js`
+file: `import App from './controllers/App/App'`;
 
-3. Delete unnecessary `App.scss` and `App.css` files and remove the
-   `import './App.css';` in your `App.jsx` file.
+3. Change the extension of your `App.js` file to ` App.jsx`.
 
-4. Add `import { Header } from '../../components'`.
+4. Delete unnecessary `App.scss` and `App.css` files and remove the
+   `import './App.css';` in your `App.jsx` file and delete the
+   imported logo.
 
-5. Add your Header component inside the render method.
+5. Add `import { Header } from '../../components'` in `App.jsx`.
+
+6. Add your Header component inside the render method.
 
     ```javascript
     /* App.jsx */
@@ -330,7 +365,6 @@ In the same way, we can split components into smaller components.
     /* Menu.jsx */
 
     import React from 'react';
-    import './Menu.css';
 
     class Menu extends React.Component {
         render() {
@@ -374,7 +408,6 @@ In the same way, we can split components into smaller components.
 
     import React from 'react';
     import { Menu } from '../../components'
-    import './Header.css';
 
     class Header extends React.Component {
         render() {
@@ -411,10 +444,7 @@ one component to another.  This information is known as **props**.
         <div className="App">
             <Header logo="https://www.accenture.com/t20180820T081710Z__w__/us-en/_acnmedia/Accenture/Dev/Redesign/Acc_Logo_Black_Purple_RGB.PNG"/>
             <p className="Main">
-            Main content
-            </p>
-            <p className="Main">
-            Main content
+                Main content
             </p>
         </div>
         );
@@ -561,6 +591,10 @@ on DOM elements, with two syntactic differences:
         ...
     ```
 
+    Test to change the initial state `expandedmenu` to `false`
+    and the menu will be hidden by default. Change again the value
+    to true.
+
     > Learn more about [Conditional Rendering in
     > React](https://reactjs.org/docs/conditional-rendering.html).
 
@@ -597,8 +631,23 @@ on DOM elements, with two syntactic differences:
     }
     ```
 
-6. To prevent that the `Header__title` moves on Menu collapsing,
-   assign a default width to each Header component styles:
+6. Import the new `Header.css` file into your Header component
+and the new `Menu.css` in your Menu component:
+
+    ```javascript
+    /* Header.jsx */
+
+    import './Header.css';
+    ```
+
+    ```javascript
+    /* Menu.jsx */
+
+    import './Menu.css';
+    ```
+
+7. To prevent that the `Header__title` moves on Menu collapsing,
+   assign a default width to each Header component:
 
     ```diff
     /* Menu.scss */
@@ -613,25 +662,28 @@ on DOM elements, with two syntactic differences:
     ```
 
     ```diff
-        /* Header.scss */
-            &__logo{
-    +           flex-basis: 20%;
-                img{
-                    max-width: 150px;
-                }
-            }
+    /* Header.scss */
 
-            &__title{
-    +            flex-basis: 40%;
-                 font-size: 1rem;
-    -            text-align: left
-    +            text-align: center;
+        .Header__logo{
+    +       flex-basis: 20%;
+            img{
+                max-width: 120px;
             }
+        }
+
+        .Header__title{
+    +       flex-basis: 40%;
+            font-size: 1rem;
+    -       text-align: left;
+    +       text-align: center;
+        }
+
+        ...
     ```
 
-7. Add a `className="Menu__button"` to your button in `Menu.jsx` file
+8. Add a `className="Menu__button"` to your button in `Menu.jsx` file
    and a conditional class `Menu__button--expanded` checking the
-   _expandedMenu_ state:
+   _expandedMenu_ state. Remove the label `Menu`:
 
     ```javascript
     /* Menu.jsx */
@@ -641,7 +693,7 @@ on DOM elements, with two syntactic differences:
     />
     ```
 
-8. Include some styles in `Menu.scss`:
+9. Include some additional styles in `Menu.scss`:
 
     ```scss
     /* Menu.scss */
@@ -685,8 +737,8 @@ on DOM elements, with two syntactic differences:
     }
     ```
 
-9. Finally, include some styles in your `Menu.scss` file to animate
-   your menu:
+10. Finally, include some styles in your `Menu.scss` file to animate 
+your menu:
 
     ```scss
     /* Menu.scss */
@@ -817,6 +869,41 @@ parent component.
 
 To assign a value to a specific prop, use the special `defaultProps`
 property.
+
+Suppose that you want to define your `Footer__info` text as a prop
+`footerInfo` that could change.
+
+```javascript
+/* Footer.jsx */
+render() {
+    return (
+    <div className="Footer">
+        <p className="Footer__info">
+            {this.props.footerInfo}
+        </p>
+    </div>
+    );
+}
+```
+
+In `App.jsx` we are not passing currently a prop to our Footer
+component:
+
+```javascript
+/* App.jsx */
+
+render() {
+    return(
+        ...
+        <Footer />
+        ...
+    )
+}
+```
+
+To avoid an error in your application, you can define a default value
+to this prop.
+
 
 1. Add a default prop to your Footer component. _To improve the
    readability, you can define a `defaultProps` constant at the

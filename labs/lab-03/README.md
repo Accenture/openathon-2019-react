@@ -164,7 +164,9 @@ component to the App or another component.
 
         componentDidMount() {}
 
-        render() {}
+        render() {
+            return;
+        }
     }
 
     export default Fetch;
@@ -215,7 +217,8 @@ fetch(path, options);
 
 1. Use **Async/Await** or **Javascript Promises** to resolve the
    asynchronous response. When the data is fetched successfully, store
-   it in the local state with React’s `this.setState()` method.
+   it in the local state with React’s `this.setState()` method. Replace
+   the empty `fetchData` method with:
 
     ```javascript
     /* Fetch.jsx */
@@ -308,8 +311,9 @@ fetch(path, options);
 
 ### Using Fetch Component
 
-You can retrieve the logo url from the fake REST API json-server.  To
-do this:
+Using your Fetch component in `App.jsx' you can retrieve the logo url
+from the fake REST API json-server and pass it to the Header as a
+`logo` prop.
 
 1. Add the Fetch component into the App render method and replace the
    logo attribute with the `data.logo` returned:
@@ -581,6 +585,16 @@ occurs retrieving data.
     }
     ```
 
+To check the new Notification component, you can remove the
+`general` endpoint from the `api.json` file. Save the changes
+and reload the page. A notification error will appear. Restore
+the deleted endpoint.
+
+Now, if you stop the execution of the App adding a breakpoint
+at the line 31 in `Fetch.jsx` file via Chrome DevTools, after
+resume the first script execution, the Loader is rendered.
+
+
 ## Validating data types: PropTypes
 
 **React PropTypes** are a good way to help you catch bugs by
@@ -624,10 +638,23 @@ CustomComponent.propTypes = {
     ...
 
     Header.propTypes = {
-        logo: propTypes.string,
+        logo: propTypes.string
     }
 
     ```
+
+Now, change the value of the logo in your `api.json` file by a number.
+Save and refresh your app. An error appears in the browser console:
+
+``` javascript
+index.js:2178 Warning: Failed prop type: Invalid prop `logo` of type `number` supplied to `Header`, expected `string`.
+    in Header (at App.jsx:27)
+    in Fetch (at App.jsx:14)
+    in div (at App.jsx:13)
+    in App (at src/index.js:7)
+```
+
+Restore the previous value.
 
 Complex Data Types:
 

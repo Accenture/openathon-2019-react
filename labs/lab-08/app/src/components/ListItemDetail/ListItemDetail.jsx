@@ -62,8 +62,8 @@ class ListItemDetail extends React.PureComponent {
 
 ListItemDetail.defaultProps = defaultProps;
 
-ListItemDetail.PropTypes = {
-    data: PropTypes.arrayOf(PropTypes.string).isRequired,
+ListItemDetail.propTypes = {
+    data: PropTypes.objectOf(PropTypes.string).isRequired,
     fields: PropTypes.arrayOf(PropTypes.string),
     layout: PropTypes.oneOf(['list', 'grid'])
 }
