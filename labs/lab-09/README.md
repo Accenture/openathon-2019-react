@@ -15,8 +15,8 @@ To persist the new entry into your mocked data, pass the new entry object as _da
     ```javascript
     /* FetchWrapper.jsx */
 
-    import React from 'react'
-    import Request from '../Fetch/Fetch'
+    import React from 'react';
+    import Request from '../Fetch/Fetch';
 
     const FetchWrapper = (method) => {
         return (props) => (
@@ -26,7 +26,7 @@ To persist the new entry into your mocked data, pass the new entry object as _da
         )
     }
 
-    export default FetchWrapper
+    export default FetchWrapper;
     ```
 
 2. Import the new component in `src\services\api\index.jsx` and export as three new components _Get_, _Post_, and _Delete_ using FetchWrapper with different methods:
@@ -35,7 +35,7 @@ To persist the new entry into your mocked data, pass the new entry object as _da
     /* index.js */
 
     import Fetch from './Fetch/Fetch';
-    import FetchWrapper from './FetchWrapper/FetchWrapper'
+    import FetchWrapper from './FetchWrapper/FetchWrapper';
     const Delete = FetchWrapper('delete');
     const Get = FetchWrapper('get');
     const Post = FetchWrapper('post');
@@ -56,7 +56,7 @@ To persist the new entry into your mocked data, pass the new entry object as _da
     "guestbook": [],
     ```
 
-4. Refactor your Fetch component including  `getRequestConfig` and `onReload` methods to allow the user fetch data when he _calls_ an action:
+4. Refactor your Fetch component including `getRequestConfig` and `onReload` methods to allow the user fetch data when he _calls_ an action:
 
     ```javascript
     /* Fetch.jsx */
@@ -145,7 +145,7 @@ To persist the new entry into your mocked data, pass the new entry object as _da
     export default Fetch;
     ```
 
-5. Refactor the Guestbook container using the new Get component: 
+5. Refactor the Guestbook container using the new Get component:
 
     ```javascript
     import React from 'react';
@@ -233,7 +233,120 @@ To persist the new entry into your mocked data, pass the new entry object as _da
 
     ```
 
-6. Refactor the Form component using `onReload`:
+6. Reactor `Header.jsx`, `Home.jsx`, `Services.jsx` and `Innovation.jsx` using the Get component and adding `fetchAfterMount` property:
+
+    ```javascript
+    /* Header.jsx */
+    import { Get } from '../../services/api';
+
+    ...
+
+    class Header extends React.Component {
+        render() {
+            return (
+                <div className="Header">
+                    <div className="Header__logo">
+                        {
+                        <Get url="general" fetchAfterMount>
+                        ...
+                        </Get>
+                        }
+                    </div>
+                    <h1 className="Header__title">II OPENATHON Custom Open Cloud</h1>
+                    <Menu />
+                </div>
+            );
+        }
+    }
+    ```
+
+    ```javascript
+    /* Home.jsx */
+
+    import { Get } from '../../services/api';
+
+    ...
+
+    class Home extends React.Component {
+        render() {
+            return (
+                <div className="Home" location={this.props.location}>
+                    <div className="Home__info">
+                        <Get url="general" method="get" fetchAfterMount>
+                        ...
+                        </Get>
+                    </div>
+                    <div className="Home__list">
+                        <div className="Home__services">
+                            <Get url="services" fetchAfterMount>
+                                ...
+                            </Get>
+                        </div>
+                        <div className="Home__innovation">
+                            <Get url="innovation" fetchAfterMount>
+                                ...
+                            </Get>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
+    ```
+
+    ```javascript
+    /* Services.jsx */
+
+    import { Get } from '../../services/api';
+
+    ...
+
+    class Services extends React.Component {
+        render() {
+            const match = this.props.match;
+            return (
+                <div className="Services" location={this.props.location}>
+                    <header className="Services__header">
+                        <h1>Services</h1>
+                    </header>
+                    <div className="Services__container">
+                        <Get url="services" fetchAfterMount>
+                        ...
+                        </Get>
+                    </div>
+                </div>
+            );
+        }
+    }
+    ```
+
+    ```javascript
+    /* Innovation.jsx */
+
+    import { Get } from '../../services/api';
+
+    ...
+
+    class Innovation extends React.Component {
+        render() {
+            const match = this.props.match;
+            return (
+                <div className="Innovation" location={this.props.location}>
+                    <header className="Innovation__header">
+                        <h1>Innovation</h1>
+                    </header>
+                    <section className="Innovation__container">
+                        <Get url="innovation" fetchAfterMount>
+                        ...
+                        </Get>
+                    </section>
+                </div>
+            );
+        }
+    }
+    ```
+
+7. Refactor the Form component using `onReload`:
 
     ```javascript
     /* Form.jsx */
@@ -275,9 +388,7 @@ To persist the new entry into your mocked data, pass the new entry object as _da
             e.preventDefault();
             if(submitForm && {}.toString.call(submitForm) === '[object Function]') {
                 const entry = {};
-                this.state.fields.map(field => {
-                    return entry[field.metadata.label.toLowerCase()] = field.value;
-                });
+                this.state.fields.map(field => entry[field.metadata.label.toLowerCase()] = field.value);
                 submitForm({data: entry});
             } else {
                 const formValues = this.state.fields.reduce((result, field) => {
@@ -286,9 +397,7 @@ To persist the new entry into your mocked data, pass the new entry object as _da
                 }, '');
                 alert('A new form was submitted\n' + formValues);
             }
-            const resetFields = this.state.fields.map(field => {
-                return Object.assign({}, field, {value: ''})
-            });
+            const resetFields = this.state.fields.map(field => Object.assign({}, field, {value: ''}));
             this.setState({ fields: resetFields });
         }
 
@@ -300,32 +409,31 @@ To persist the new entry into your mocked data, pass the new entry object as _da
                             <h3>{this.props.title}</h3>
                         </header>
                     }
-                    <form>
-                        {this.state.fields.map((field) => {
-                            if (field.id === '1') {
-                                return (
-                                    <div key={`input-${field.id}`} className="Form__row">
-                                        <label>{field.metadata.label}</label>
-                                        <input type="text" id={field.id} value={field.value} onChange={this.handleChange} required />
-                                    </div>
-                                );
-                            } else if (field.id === '2') {
-                                return (
-                                    <div key={`input-${field.id}`} className="Form__row">
-                                        <label>{field.metadata.label}</label>
-                                        <textarea id={field.id} value={field.value} onChange={this.handleChange} required />
-                                    </div>
-                                );
-                            } else {
-                                return null;
-                            }
-                        })}
-                        <Post url={this.props.requestUrl} fetchAfterMount={false}>
-                            {({ data, loading, error, onReload }) => {
-                                return (
+                    <Post url={this.props.requestUrl} fetchAfterMount={false}>
+                        {({ data, loading, error, onReload }) => {
+                            return (
+                                <form onSubmit={(e) => this.handleSubmit(e, onReload)}>
+                                    {this.state.fields.map((field) => {
+                                        if (field.id === '1') {
+                                            return (
+                                                <div key={`input-${field.id}`} className="Form__row">
+                                                    <label>{field.metadata.label}</label>
+                                                    <input type="text" id={field.id} value={field.value} onChange={this.handleChange} required />
+                                                </div>
+                                            );
+                                        } else if (field.id === '2') {
+                                            return (
+                                                <div key={`input-${field.id}`} className="Form__row">
+                                                    <label>{field.metadata.label}</label>
+                                                    <textarea id={field.id} value={field.value} onChange={this.handleChange} required />
+                                                </div>
+                                            );
+                                        } else {
+                                            return null;
+                                        }
+                                    })}
                                     <section className="Form__submit">
-                                        <button className="Form__button"
-                                            onClick={(e) => this.handleSubmit(e, onReload)}>
+                                        <button className="Form__button" type="submit">
                                             Save Entry
                                         </button>
                                         {error &&
@@ -340,11 +448,10 @@ To persist the new entry into your mocked data, pass the new entry object as _da
                                             <span className="Form__message--success">Data Saved</span>
                                         }
                                     </section>
-                                );
-                            }}
-                        </Post>
-                    </form>
-
+                                </form>
+                            );
+                        }}
+                    </Post>
                 </div>
                 );
         }
@@ -357,7 +464,7 @@ To persist the new entry into your mocked data, pass the new entry object as _da
     }
 
     export default Form;
+
     ```
 
-
-[< Prev](../lab-08) | [Home Page](../..)
+[< Prev](../lab-08) | [Next >](../lab-testing)

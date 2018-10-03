@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-- [Creating a new React App](#creating-a-new-react-app)
-- [Folder Structure](#folder-structure)
-- [Adding a CSS Preprocessor Structure](#adding-a-CSS-preprocessor)
-- [Displaying ESLint Output in the Editor](#displaying-eslint-output-in-the-editor)
+* [Creating a new React App](#creating-a-new-react-app)
+* [Folder Structure](#folder-structure)
+* [Adding a CSS Preprocessor Structure](#adding-a-CSS-preprocessor)
+* [Displaying ESLint Output in the Editor](#displaying-eslint-output-in-the-editor)
 
 ## Creating a new React App
 
@@ -50,7 +50,7 @@ Inside the newly created project (`name-of-app`), you can run some
 built-in commands.
 
 To **run the application** in development mode, execute `npm start`.
-In your browser, open http://localhost:3000 to view your running react
+In your browser, open <http://localhost:3000> to view your running react
 application.
 
 The page will automatically reload if you make changes to the code.
@@ -66,7 +66,7 @@ members to quickly get onboard.
 
 After creation, your project should look like this:
 
-```
+```bash
 app/
   README.md
   node_modules/
@@ -92,7 +92,7 @@ filenames**:
 We are going to delete and rename the other files, to get the
 following folder structure:
 
-```
+```bash
 my-app/
   README.md
   node_modules/
@@ -163,7 +163,7 @@ To use a different preprocessor, replace the `sass:watch` and the
 `sass:build` commands with what's required for your preprocessor of
 choice.
 
-_Before running new commands, remember to stop the ejecution of
+_Before running new commands, remember to stop the execution of
 previous jobs by pressing_ `Ctrl + C`.
 
 1. Create a new `index.scss` file in `scr/assets/styles` to include
@@ -195,7 +195,7 @@ previous jobs by pressing_ `Ctrl + C`.
 
     import './assets/styles/index.css';
     ```
-	
+
    Now, create a new file called `App.scss` in your
    `src/components/App` directory, copy and paste all the content from
    the old `App.css` file to the new `App.scss` file and save the
@@ -203,16 +203,16 @@ previous jobs by pressing_ `Ctrl + C`.
    still imports `App.css`, the styles become a part of your
    application.
 
-   >Note: **_Watching newly created files_**. If you create a new .scss
-   file inside the watched directory `src`, the new file never gets
-   compiled. To make it work, you need to restart the job and save
-   again your new scss file.
+   > Note: **_Watching newly created files_**. If you create a new .scss
+   > file inside the watched directory `src`, the new file never gets
+   > compiled. To make it work, you need to restart the job and save
+   > again your new scss file.
    >
-   >This is a known issue of the `node-sass` package and it's planned to
-   be patched in the next release 5.
+   > This is a known issue of the `node-sass` package and it's planned to
+   > be patched in the next release 5.
    >
-   >As an alternative, you can install the `chokibar` package to watch
-   your scss files.
+   > As an alternative, you can install the `chokibar` package to watch
+   > your scss files.
 
 You can now make some changes in `App.scss` and the `App.css` file
 will be regenerated.
@@ -221,7 +221,7 @@ will be regenerated.
 
 The usual way to run multiple commands concurrently is the following:
 
-```
+```sh
 npm run <script01> && npm run <script02>
 ```
 
@@ -255,7 +255,7 @@ Now, stop the previous job in your terminal and run:
     npm start
 
 Make some changes in your `App.scss` and save the file.  Your app will
-be automatically reloaded and all the changes are visibles in the
+be automatically reloaded and all the changes are visible in the
 browser.  _Test it by adding a `color:red` property to the `.App`
 class and saving the changes.  After checking that this is working
 properly, remove this property and save again.
@@ -290,13 +290,13 @@ editor, there are some extra steps you can follow:
 Now your editor should report the linting warnings. To verify that
 it's working, go to the `App.js` file and create an ESLint error
 into line 8 by adding: `<div></div>`. A red underline will appear
-and a new error message is displayed on mouse over: _Parsing error: 
+and a new error message is displayed on mouse over: _Parsing error:
 Adjacent JSX elements must be wrapped in an enclosing tag_.
 
 > This feature is available with `react-scripts@0.2.0` and higher.  It
 > only works with npm 3 or higher.  More information about the [ESLint
 > package in Create React App][eslint-package].
-
+>
 > Learn more about [ESLint].
 
 [< Prev](../lab-00) | [Next >](../lab-02)

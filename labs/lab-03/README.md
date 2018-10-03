@@ -2,16 +2,16 @@
 
 ## Table of Contents
 
-- [Getting a full fake REST API with json-server](#getting-a-full-fake-rest-api-with-json-server)
-- [Fetching Data: Part 1](#fetching-data:-part-1)
-- [React Lifecycle Methods](#react-lifecycle-methods)
-- [Fetching Data: Part 2](#fetching-data:-part-2)
-- [Validating Data Types: PropTypes](#validating-data-types:-proptypes)
+* [Getting a full fake REST API with json-server](#getting-a-full-fake-rest-api-with-json-server)
+* [Fetching Data: Part 1](#fetching-data:-part-1)
+* [React Lifecycle Methods](#react-lifecycle-methods)
+* [Fetching Data: Part 2](#fetching-data:-part-2)
+* [Validating Data Types: PropTypes](#validating-data-types:-proptypes)
 
 ## Getting a full fake REST API with json-server
 
 JSON Server is a Node Module that you can use to create a demo REST
-Json webservice in less than a minute.  All you need is a JSON file
+Json web service in less than a minute.  All you need is a JSON file
 for sample data.
 
 [View JSON server repository](https://github.com/typicode/json-server)
@@ -48,7 +48,7 @@ replacing the following lines:
 },
 ```
 
-Run `npm start` and go to http://localhost:3001/general to inspect the
+Run `npm start` and go to <http://localhost:3001/general> to inspect the
 returned data from the `/general` endpoint.
 
 > Note: It’s common to serve the front-end and back-end of your app in
@@ -64,14 +64,15 @@ returned data from the `/general` endpoint.
 >```
 >
 > You should make them like this:
-> 
+>
 >```javascript
 >fetch('endpoint').then()
 >```
 >
 > But to prevent future issues in your application due to some routes
 > match with your server endpoints, skip this step and store your
-> server host as a global variable [Fetching Data: Part 2]().
+> server host as a global variable [Fetching Data: Part 2]
+> (#fetching-data:-part-2).
 
 ## Fetching Data: Part 1
 
@@ -181,8 +182,8 @@ component to the App or another component.
     const API_HOST = 'http://localhost:3001/';
     ```
 
-Alternativelly, you can add [Custom Environment
-Variables](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables).
+    Alternatively, you can add [Custom Environment
+    Variables](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables).
 
 3. Create a `index.js` file in `src/services/api` to export your Fetch
    component:
@@ -289,8 +290,8 @@ fetch(path, options);
 
     * The data won’t be loaded until after the initial render and
       reminds you to set up initial state properly.
-    
-	* Let you handle the case where the data to be rendered is empty.
+
+    * Let you handle the case where the data to be rendered is empty.
 
 3. Finally, return the children elements (`this.props.children`) into
    the render method:
@@ -311,7 +312,7 @@ fetch(path, options);
 
 ### Using Fetch Component
 
-Using your Fetch component in `App.jsx' you can retrieve the logo url
+Using your Fetch component in `App.jsx` you can retrieve the logo url
 from the fake REST API json-server and pass it to the Header as a
 `logo` prop.
 
@@ -594,7 +595,6 @@ Now, if you stop the execution of the App adding a breakpoint
 at the line 31 in `Fetch.jsx` file via Chrome DevTools, after
 resume the first script execution, the Loader is rendered.
 
-
 ## Validating data types: PropTypes
 
 **React PropTypes** are a good way to help you catch bugs by
@@ -611,6 +611,7 @@ The first step to use PropTypes is to import the library into your component:
 ```js
 import PropTypes from 'prop-types';
 ```
+
 PropTypes exports a range of validators that can be used to make sure the data you receive is valid.
 
 You can declare that a prop is a specific JS type. By default, this

@@ -451,9 +451,9 @@ accepts an array of data and outputs an unordered list of elements.
 
     > Learn more about [Lists and Keys in
     > React](https://reactjs.org/docs/lists-and-keys.html)
-
-    > Know more about the [includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) 
-    method.
+    >
+    > Know more about the [includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+    > method.
 
 6. Add some styles to `ListBasic.scss` using Flex and Grid CSS
    modules:

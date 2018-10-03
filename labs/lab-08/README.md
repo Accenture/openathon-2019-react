@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
-- [Fetch API _versus_ Axios Library](#fetch-api-versus-axios-library)
-- [Using Axios](#using-axios)
-- [Refactoring Fetch Component](#refactoring-fetch-component)
+* [Fetch API _versus_ Axios Library](#fetch-api-versus-axios-library)
+* [Using Axios](#using-axios)
+* [Refactoring Fetch Component](#refactoring-fetch-component)
 
 ## Fetch API _versus_ Axios Library
 
@@ -52,7 +52,6 @@ native fetch API to request data.
     npm install axios
     ```
 
-    <br/> 
 2. Open your Fetch component and import axios:
 
     ```javascript
@@ -92,7 +91,7 @@ To allow the `Fetch` component to handle different request methods
 `fetchData` and the `render` functions of your component:
 
 1. Remove the `API_HOST` constant and declare some default props in
-the `Fetch.jsx` file:
+   the `Fetch.jsx` file:
 
     ```javascript
     /* Fetch.jsx */
@@ -111,13 +110,13 @@ the `Fetch.jsx` file:
 
     Fetch.defaultProps = defaultProps;
     ```
-    
+
 2. Refactor the `fetchData()` method using axios config options and
-check if the `fetchAfterMount` prop is true before call to the fetch
-method.  This prop will allow to your `Fetch` component to request
-data only when it's required and not always in `componentDidMount()`.
-To achieve this, you need also refactor the `render` of the component
-to pass the `fetchData` method in the children props:
+   check if the `fetchAfterMount` prop is true before call to the fetch
+   method.  This prop will allow to your `Fetch` component to request
+   data only when it's required and not always in `componentDidMount()`.
+   To achieve this, you need also refactor the `render` of the component
+   to pass the `fetchData` method in the children props:
 
     ```javascript
     /* Fetch.jsx */
@@ -152,23 +151,23 @@ to pass the `fetchData` method in the children props:
         });
     }
     ```
-    
+
 3. Set the `propType` of the `url` prop to `string` and `required`:
 
     ```javascript
     import PropTypes from 'prop-types';
 
     ...
-    
+
     Fetch.propTypes = {
         url: PropTypes.string.isRequired
     }
     ```
-    
+
 4. Wherever your are using the Fetch component —`Header.jsx`,
-`Home.jsx`, `Services.jsx` and `Innovation.jsx`—, delete the
-`FETCH_OPTIONS` constant and set the url and the method to the
-component:
+   `Home.jsx`, `Services.jsx` and `Innovation.jsx`—, delete the
+   `FETCH_OPTIONS` constant and set the url and the method to the
+   component:
 
     ```javascript
     /* Home.jsx */

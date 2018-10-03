@@ -2,40 +2,38 @@
 
 ## Table of Contents
 
-- [Using Nested Routes to display the details of a selected item](#displaying-details-of-a-selected-item)
-
-<br/>
+* [Using Nested Routes to display the details of a selected item](#displaying-details-of-a-selected-item)
 
 ## Using Nested Routes to display the details of a selected item
 
 At this point, your project offers a few _Routes_ based on the current
-path your’re on.  Each Route takes in a path and a component.  When
+path your are on. Each Route takes in a path and a component. When
 your app’s current location matches the path, the component will be
-rendered.  This is a solid start to discuss how to handle nested
+rendered. This is a solid start to discuss how to handle nested
 routing in a React web application.
 
 Suppose you pretend that visiting `/services` displays a list of
-services.  Clicking on any service keeps our list of services on the
-page, but also displays details on the selected service.  This should
+services. Clicking on any service keeps our list of services on the
+page, but also displays details on the selected service. This should
 be updated by the URL, that should have changed to a nested route:
 `/services/:serviceId`.
 
 To create nested routes, we need to have a better understanding of how
-`Route` works.  There are 3 **_ways to render_** something with a
+`Route` works. There are 3 **_ways to render_** something with a
 Route. Each is useful in different circumstances:
 
-* Component.  A React component to render only when the location
-  matches.  It will be rendered with route props. When you use
+* Component. A React component to render only when the location
+  matches. It will be rendered with route props. When you use
   component the router uses `React.createElement` to create a new
   `React` element from the given component.
 
-* Render.  This allows for convenient inline rendering and wrapping
-  without the undesired remounting.  Instead of having a new `React`
+* Render. This allows for convenient inline rendering and wrapping
+  without the undesired remounting. Instead of having a new `React`
   element, you can pass in a function to be called when the location
   matches.
 
-* Children.  It works exactly like render except that it gets called
-  whether there is a match or not.  The children render prop receives
+* Children. It works exactly like render except that it gets called
+  whether there is a match or not. The children render prop receives
   all the same route props as the component and render methods, except
   when a route fails to match the URL, then match is `null`.
 
@@ -374,8 +372,8 @@ Let’s start creating a Services page.
                                         {this.props.fields.includes('internal_link') && this.props.url &&
                                             <Link className="ListBasic__link--internal"
                                                 to={`${this.props.url}${item.id}`}>
-												<i className="ListBasic__link__icon"></i>
-											</Link>
+                                                <i className="ListBasic__link__icon"></i>
+                                            </Link>
                                         }
                                         {this.props.fields.includes('image') &&
                                             <div className="ListBasic__image">
@@ -531,7 +529,7 @@ Let’s start creating a Services page.
 
 Repeat all the previous steps to create an Innovation page that
 contains a list of Innovation services using the existing `ListBasic`
-and `ListItemetail` components:
+and `ListItemDetail` components:
 
 ```javascript
 /* Innovation.jsx */

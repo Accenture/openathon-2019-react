@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './Menu.css';
 
 class Menu extends React.Component {
@@ -21,10 +22,10 @@ class Menu extends React.Component {
                 {this.state.expandedMenu &&
                     <nav>
                         <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#services">Services</a></li>
-                            <li><a href="#innovation">Innovation</a></li>
-                            <li><a href="#guestbook">Guestbook</a></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/services">Services</Link></li>
+                            <li><Link to="/innovation">Innovation</Link></li>
+                            <li><Link to="/guestbook">Guestbook</Link></li>
                         </ul>
                     </nav>
                 }

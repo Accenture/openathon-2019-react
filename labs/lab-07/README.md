@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [React Controlled Components](#react-controlled-components)
+* [React Controlled Components](#react-controlled-components)
 
 ## React Controlled Components
 
@@ -196,7 +196,7 @@ _controlled component_.
 
 ### Handling Input values and Form submit
 
-1. Add a `handlechange()` function to your `Form` component to update
+1. Add a `handleChange()` function to your `Form` component to update
    the `fields` state with the new value for each one:
 
     ```javascript
@@ -242,12 +242,12 @@ _controlled component_.
     ```
 
 3. In your `Guestbook.jsx`file add a new `submitForm()` method to push
-the new entry values. In the `render()`method add a new `submitForm`
-prop to the `Form` component:
+   the new entry values. In the `render()`method add a new `submitForm`
+   prop to the `Form` component:
 
     ```javascript
     /* Guestbook.jsx */
-    
+
     submitForm(newEntry) {
         const entries = this.state.entries;
         entries.push(newEntry);

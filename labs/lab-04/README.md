@@ -5,7 +5,7 @@
 * [Installing React Router](#installing-react-router)
 * [Adding a Router Component](#adding-a-router-component)
 * [React Navigation: Links, Switch and Routes](#react-navigation:-links,-switches-and-routes)
-* [Creating a custom 404 NotFound Page ](#creating-a-custom-404-notfound-page)
+* [Creating a custom 404 NotFound Page](#creating-a-custom-404-notfound-page)
 
 ## Installing React Router
 
@@ -172,7 +172,7 @@ your UI in sync with the URL of the browser.
     }
     ```
 
-**Refactoring** in React is a common proccess to maintain a clean code
+**Refactoring** in React is a common process to maintain a clean code
 and improve the quality of your project, identifying reusable pieces
 of components and changing the design without modifying the end result
 of the application and how it is working.
@@ -251,7 +251,7 @@ of the application and how it is working.
 
 ## React Navigation: Links, Switches and Routes
 
-React Router provides a `Link` component to render an accesible
+React Router provides a `Link` component to render an accessible
 navigation around the application.  Wherever you render a `<Link>`, an
 anchor `<a>` will appear in the DOM.
 
@@ -329,7 +329,7 @@ string or a location object.
     ```
 
 4. Render the content for each page using **Switch** and **Routes**
-   from React Router inside of your Main controler.  The `Switch`
+   from React Router inside of your Main controller.  The `Switch`
    component renders the first `Route` or `Redirect` that matches the
    location.  On the other hand, the Route component, perhaps the most
    important in React Router, is responsible to render other
@@ -449,6 +449,6 @@ found.
     ```
 
 Now, if you navigate to some route that has not been defined
-(http://localhost:3000/example), your 404 NotFound page will appear.
+<http://localhost:3000/example>, your 404 NotFound page will appear.
 
 [< Prev](../lab-03) | [Next >](../lab-05)

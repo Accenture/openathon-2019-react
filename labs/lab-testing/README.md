@@ -112,16 +112,6 @@ $ npm install --save-dev jest
 
 Notice how we instruct both to put Jest in the devDependencies part of the `package.json file`, so that it will only be installed in the development environment and not in production.
 
-Also we need to add this line to the scripts part of our `package.json` file:
-
-```json
-{
-  "scripts": {
-    "test": "jest"
-  }
-}
-```
-
 ### Enzyme Installation
 We also will use **Enzyme** that is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
 
@@ -131,7 +121,7 @@ $ npm i --save-dev enzyme enzyme-adapter-react-16
 
 
 ## Creating my first Unit Test
-Create `Menu.test.js` file in the same folder as `Menu.js`. This file will be used to write the different tests that Jest is going to execute for us.
+Create `Menu.test.js` file in the same folder as `Menu.jsx` (in our project, `source/components/Menu`). This file will be used to write the different tests that Jest is going to execute for us.
 
 Add the next code where the main point is to import our Menu component `import Menu from './Menu';` and remember that **a unit test _tests_ an isolated portion of code, not the application**.
 
@@ -181,6 +171,8 @@ You can see that all *.test.js* files have been executed by Jest (currently only
 Addition
     ✓ knows that 2 and 3 make 5 (1ms)
 ```
+
+> In case you receive an error message, check if you have another test file already in the project: Find a file named **App.test.js** in Visual Studio Code using `cmd ⌘ + p` (Mac) or `ctrl + p` (Windows) and delete it.
 
 In our dummy test code, Jest lets us use `describe` and `it` to nest tests as we need to. How much nesting you use is up to the requirements but a best practise is to nest in a way that **all the descriptive strings passed to _describe_ and _it_ read almost as a sentence**. This way the test describes itself!
 
@@ -273,4 +265,5 @@ This case is simple, we test two possible options but think on more complex case
 To sum up, those are very simple tests but it's the way to start with. Another test could be to check that not only the state is changed but also all menu links are rendered and in the way (styles for example) you expect to be rendered.
 
 > Do you want to learn more? Start with [Jest - Getting Started](https://jestjs.io/docs/en/getting-started)
+
 

@@ -1,8 +1,8 @@
 # II Openathon Custom Open Cloud
 
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/IIopenathon_customopencloud.png">
+![II Openathon Custom Open Cloud](https://github.com/Albarian/openathonFY19/raw/master/resources/images/IIopenathon_customopencloud.png "II Openathon Custom Open Cloud")
 
-You are welcome to a new **Openathon** edition organised for the
+You are welcome to a new **Openathon** edition organized for the
 **Accenture Technology Custom Open Cloud community** where, once
 again, we will have the opportunity to discover, in a practical way,
 the possibilities offered by the different architectures and leading
@@ -19,7 +19,7 @@ our own components while learning how to manage their life cycle, the
 management of props and the JSX syntax while exercising our knowledge
 of JavaScript (ES6).
 
-# What we are going to do
+## What we are going to do
 
 We will learn how to develop a web application using React, playing
 with **props**, **JSX**, **Virtual DOM**, **components**, routing,
@@ -30,26 +30,25 @@ inheritance**.
 
 The web application will consist on a Main and two detail pages:
 
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/web%20map.png" width="315">
+![Web Map](https://github.com/Albarian/openathonFY19/raw/master/resources/images/web%20map.png "Web Map")
 
 The main page of the application will have this structure:
 
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/main%20page%20mockup.png" width="756">
+![Mockup](https://github.com/Albarian/openathonFY19/raw/master/resources/images/main%20page%20mockup.png "Mockup")
 
-The main page is a modularised page that takes advantage of many
-reausable components, whose hierarchy can be seen in the following
+The main page is a modularized page that takes advantage of many
+reusable components, whose hierarchy can be seen in the following
 picture:
 
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20use.png" width="608">
+![Components Use](https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20use.png "Components Use")
 
 To provide data to the page we will also use a mocked REST API
 endpoint emulating the [Accenture
 site](https://www.accenture.com/us-en/company) data services:
 
-<img src="https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20and%20API.png" width="456">
+![Components and API](https://github.com/Albarian/openathonFY19/raw/master/resources/images/components%20and%20API.png "Components and API")
 
-
-# Openathon Labs
+## Openathon Labs
 
 This edition of the Openathon is divided in the following labs:
 
@@ -69,8 +68,7 @@ This edition of the Openathon is divided in the following labs:
 
 \* Optional Labs for further learning
 
-
-# Prerequisites
+## Prerequisites
 
 1. Install **Visual Studio Code** for your operating system:
 
@@ -94,8 +92,8 @@ This edition of the Openathon is divided in the following labs:
 
 3. Install **webpack**
 
-	```sh
-    $ npm install webpack -g
+    ```sh
+    npm install webpack -g
     ```
 
     **webpack** is a module bundler.  Its main purpose is to bundle
@@ -103,10 +101,10 @@ This edition of the Openathon is divided in the following labs:
     transforming, bundling, or packaging.  [More
     info](https://webpack.js.org/).
 
-4. Install ***json-server***
+4. Install **json-server**
 
     ```sh
-    $ npm install json-server -g
+    npm install json-server -g
     ```
 
     **JSON Server** is a Node module that can be used to create demo

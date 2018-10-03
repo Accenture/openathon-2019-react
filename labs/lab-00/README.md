@@ -3,9 +3,9 @@
 
 ## Table of Contents
 
-- [What is JavaScript](#what-is-javascript)
-- [React. A JavaScript library for building user interfaces](#react.-a-javascript-library-for-building-user-interfaces)
-- [Resources](#resources)
+* [What is JavaScript](#what-is-javascript)
+* [React. A JavaScript library for building user interfaces](#react.-a-javascript-library-for-building-user-interfaces)
+* [Resources](#resources)
 
 ## What is JavaScript
 
@@ -71,17 +71,17 @@ applications ([Node.js](https://nodejs.org/),
 
 ![React logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png)
 
-> React = Components + Virtual Dom + JSX + Props & State. 
+> React = Components + Virtual Dom + JSX + Props & State.
 
-**React** is a modern open-source web development toolkit built by Facebook. 
-React is a declarative, efficient, and flexible JavaScript library for 
-building user interfaces. It lets you compose complex UIs from small 
+**React** is a modern open-source web development toolkit built by Facebook.
+React is a declarative, efficient, and flexible JavaScript library for
+building user interfaces. It lets you compose complex UIs from small
 and isolated pieces of code called *components*.
 
-Dividing web applications up into **components** is a central idea to 
-creating applications with React. Instead of a gigantic monolith of 
-a web page, you will generally consider the individual pieces that 
-make up an application and divide it up into smaller pieces that 
+Dividing web applications up into **components** is a central idea to
+creating applications with React. Instead of a gigantic monolith of
+a web page, you will generally consider the individual pieces that
+make up an application and divide it up into smaller pieces that
 are much easier to develop, debug, and to generally think about.
 
 ### Main Characteristics of React
@@ -99,7 +99,7 @@ are much easier to develop, debug, and to generally think about.
     behavior is defined and a reaction is triggered when one of their
     properties changes.
 
-* **High Performance, thanks to Virtua DOM**
+* **High Performance, thanks to Virtual DOM**
 
     When processing changes, React compares the **Virtual DOM** with
     the DOM to sync and reconcile changes.  As a result, the DOM is

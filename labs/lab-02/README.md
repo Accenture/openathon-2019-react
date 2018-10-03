@@ -2,12 +2,12 @@
 
 ## Table of Contents
 
-- [Creating your first React Component](#creating-your-first-react-component)
-- [Composing Components](#composing-components)
-- [Components and Props](#components-and-props)
-- [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
-- [Stateless Components _versus_ Pure Components](#stateless-components-versus-pure-components)
-- [Adding Default Props](#adding-default-props)
+* [Creating your first React Component](#creating-your-first-react-component)
+* [Composing Components](#composing-components)
+* [Components and Props](#components-and-props)
+* [State Management and Event Handling in Components](#state-management-and-event-handling-in-components)
+* [Stateless Components _versus_ Pure Components](#stateless-components-versus-pure-components)
+* [Adding Default Props](#adding-default-props)
 
 ## Creating your first React Component
 
@@ -18,7 +18,7 @@ As a general rule, keep components inside the dedicated components
 directory.  Create a new folder for each component and place all the
 component files inside.
 
-**Naming conventions**
+### Naming conventions
 
 * Extensions: Use `.jsx` extension for React components.
 * Filename: Use `PascalCase` for filenames (e.g.: `ListDetail.jsx`).
@@ -28,7 +28,7 @@ component files inside.
 1. Create a new Header folder in components directory and place a new
    `Header.jsx` file inside:
 
-    ```
+    ```bash
     app/
     src/
         components/
@@ -130,7 +130,7 @@ class Header extends React.Component {
    the contents from the same directory in the `lab-02` repository and
    paste in your project.
 
-    ```
+    ```bash
     app/
     src/
         assets/
@@ -155,7 +155,7 @@ class Header extends React.Component {
 3. Add a new `Header.scss` file to your component folder and import
    the processed `.css` file in our component:
 
-    ```
+    ```bash
     app/
     src/
         components/
@@ -237,11 +237,11 @@ class Header extends React.Component {
     ```
 
 2. One of the drawbacks of your components directory structure is that
-importing components requires you to import the fully qualified path. To
-enable shorter import statements, add a new `index.js` file into your
-components directory and export the named component. This will be a common
-pattern in your project that you need to repeat every time you add a
-new component:
+   importing components requires you to import the fully qualified path. To
+   enable shorter import statements, add a new `index.js` file into your
+   components directory and export the named component. This will be a common
+   pattern in your project that you need to repeat every time you add a
+   new component:
 
     ```javascript
     /* src/components/index.js */
@@ -266,8 +266,6 @@ Instead of this:
 import { Header } from '../../components/Header/Header';
 ```
 
-<br/>
-
 ### How to render your Component
 
 Ensure that your `public/index.html` page contains an empty `<div
@@ -289,14 +287,14 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 The `react-dom` package provides DOM-specific methods that can be used
 at the top level of your app.  The last line of code finds the `<div>`
-in your `ìndex.html` and then displays your App React component inside
+in your `index.html` and then displays your App React component inside
 of it.
 
 > Learn more about the [ReactDom
 > package](https://reactjs.org/docs/react-dom.html).
 
 Finally, save all the changes and check it in your browser.  Run `npm
-start` if the proyect is not running currently.
+start` if the project is not running currently.
 
 ## Composing Components
 
@@ -311,9 +309,9 @@ Create an App component that renders the new Header component:
    `controllers`.
 
 2. Change the new route for your App controller in `src\index.js`
-file: `import App from './controllers/App/App'`;
+   file: `import App from './controllers/App/App'`;
 
-3. Change the extension of your `App.js` file to ` App.jsx`.
+3. Change the extension of your `App.js` file to `App.jsx`.
 
 4. Delete unnecessary `App.scss` and `App.css` files and remove the
    `import './App.css';` in your `App.jsx` file and delete the
@@ -452,7 +450,7 @@ one component to another.  This information is known as **props**.
     ```
 
     This prop will be received by our Header component and can be
-    acceses via `this.props.<propName>`:
+    accesses via `this.props.<propName>`:
 
 2. Add your prop value in the `Header.jsx` render method:
 
@@ -632,7 +630,7 @@ on DOM elements, with two syntactic differences:
     ```
 
 6. Import the new `Header.css` file into your Header component
-and the new `Menu.css` in your Menu component:
+   and the new `Menu.css` in your Menu component:
 
     ```javascript
     /* Header.jsx */
@@ -737,8 +735,8 @@ and the new `Menu.css` in your Menu component:
     }
     ```
 
-10. Finally, include some styles in your `Menu.scss` file to animate 
-your menu:
+10. Finally, include some styles in your `Menu.scss` file to animate
+    your menu:
 
     ```scss
     /* Menu.scss */
@@ -799,6 +797,7 @@ your menu:
     }
 
     ```
+
 ## Stateless Components _versus_ Pure Components
 
 A **Stateless Component** is declared as a function that has no state
@@ -903,7 +902,6 @@ render() {
 
 To avoid an error in your application, you can define a default value
 to this prop.
-
 
 1. Add a default prop to your Footer component. _To improve the
    readability, you can define a `defaultProps` constant at the
