@@ -1,5 +1,5 @@
-import React from 'react'
-import Request from '../Fetch/Fetch'
+import React from 'react';
+import Request from '../Fetch/Fetch';
 
 const FetchWrapper = (method) => {
   return (props) => (
@@ -9,4 +9,4 @@ const FetchWrapper = (method) => {
   )
 }
 
-export default FetchWrapper
+export default FetchWrapper;

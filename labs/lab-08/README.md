@@ -58,7 +58,7 @@ native fetch API to request data.
     ```javascript
     /* Fetch.jsx */
 
-    import React from 'react';
+    import axios from 'axios';
     ```
 
 3. Refactor your `fetchData()` method using `axios.get()`:
@@ -156,6 +156,10 @@ to pass the `fetchData` method in the children props:
 3. Set the `propType` of the `url` prop to `string` and `required`:
 
     ```javascript
+    import PropTypes from 'prop-types';
+
+    ...
+    
     Fetch.propTypes = {
         url: PropTypes.string.isRequired
     }

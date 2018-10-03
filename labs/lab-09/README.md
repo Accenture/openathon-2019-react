@@ -358,3 +358,6 @@ To persist the new entry into your mocked data, pass the new entry object as _da
 
     export default Form;
     ```
+
+
+[< Prev](../lab-08) | [Home Page](../..)

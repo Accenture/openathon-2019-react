@@ -66,23 +66,23 @@ _controlled component_.
                         {this.state.fields.map((field) => {
                             if (field.id === '1') {
                                 return (
-                                    <div className="Form__row">
+                                    <div key={`input-${field.id}`} className="Form__row">
                                         <label>{field.metadata.label}</label>
-                                        <input type="text" id={field.id} value={field.value} onChange={this.handleChange} />
+                                        <input type="text" id={field.id} value={field.value} onChange={this.handleChange} required />
                                     </div>
                                 );
                             } else if (field.id === '2') {
                                 return (
-                                    <div className="Form__row">
+                                    <div key={`input-${field.id}`} className="Form__row">
                                         <label>{field.metadata.label}</label>
-                                        <textarea id={field.id} value={field.value} onChange={this.handleChange} />
+                                        <textarea id={field.id} value={field.value} onChange={this.handleChange} required />
                                     </div>
                                 );
                             } else {
                                 return null;
                             }
                         })}
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Save Entry"/>
                     </form>
                 </div>
             );
@@ -165,6 +165,8 @@ _controlled component_.
 6. Add some styles to your `Guestbook` component:
 
     ```scss
+    /* Guestbook.scss */
+
     @import 'assets/styles/common/variables';
 
     .Guestbook{
@@ -223,9 +225,7 @@ _controlled component_.
         event.preventDefault();
         if(this.props.submitForm && {}.toString.call(this.props.submitForm) === '[object Function]') {
             const entry = {};
-            this.state.fields.map(field => {
-                entry[field.metadata.label] = field.value;
-            });
+            this.state.fields.map(field => entry[field.metadata.label] = field.value);
             this.props.submitForm(entry);
         } else {
             const formValues = this.state.fields.reduce((result, field) => {
@@ -284,7 +284,9 @@ prop to the `Form` component:
                     <section>
                         {this.state.entries.map((entry, i) => {
                             return(
-                                <article className="Guestbook__entry">
+                                <article key={`entry-${i}`}
+                                    className="Guestbook__entry"
+                                >
                                     {Object.keys(entry).map(key => {
                                         return (
                                         <p key={`entry-${i}-${key}`}>{entry[key]}</p>

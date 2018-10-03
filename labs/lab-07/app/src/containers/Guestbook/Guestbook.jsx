@@ -37,7 +37,9 @@ class Guestbook extends React.Component {
                         <section>
                             {this.state.entries.map((entry, i) => {
                                 return(
-                                    <article className="Guestbook__entry">
+                                    <article key={`entry-${i}`}
+                                        className="Guestbook__entry"
+                                    >
                                         {Object.keys(entry).map(key => {
                                             return (
                                             <p key={`entry-${i}-${key}`}>{entry[key]}</p>

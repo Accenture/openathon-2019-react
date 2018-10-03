@@ -65,7 +65,6 @@ This edition of the Openathon is divided in the following labs:
 | [Lab 07](/labs/lab-07)              | Form Components in React                   |
 | [Lab 08](/labs/lab-08)*             | Integrating Axios Library                  |
 | [Lab 09](/labs/lab-09)*             | Persisting data in your JSON Server        |
-| [Lab 10](/labs/lab-10)*             | Using third-party React Components         |
 | [Lab Testing](/labs/lab-testing)*   | React Unit Testing                         |
 
 \* Optional Labs for further learning
