@@ -14,37 +14,35 @@ created a node module **create-react-app** to generate a boilerplate
 version of a React application.
 
 > **You’ll need to have Node >= 6 on your local development machine**
-> (but it’s not required on the server).  You can use [nvm]
+> (but it’s not required on the server). You can use [nvm]
 > (macOS/Linux) or [nvm-windows] to easily switch Node versions
 > between different projects.
-
-To create a new app, you may choose one of the following methods:
 
 [nvm]: https://github.com/creationix/nvm#installation
 [nvm-windows]: https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows
 
-### npx
+To create a new app, choose a new empty directory for your project,
+open it in your terminal and run:
 
-```sh
-npx create-react-app <name-of-app>
+```shell
+npx create-react-app --scripts-version=react-scripts@1.x <name-of-app>
 ```
 
-> [npx] comes with npm 5.2+ and higher, see [instructions for older
-> npm versions][npm-older].
+> _[npx] comes with npm 5.2+ and higher, see [instructions for older
+> npm versions][npm-older]_.
+
+Create React App 2.0 has been released last monday, including new
+features and performance improvements: Babel 7, webpack 4, and Jest 23.
+However, updating them manually and making them work well together takes
+a lot of effort. Because the resources for this II Openathon has been
+designed previously, you will work with the 1.1.5 release launched in
+August 24.
+
+> More information about
+> [Create React App](https://github.com/facebook/create-react-app/)
 
 [npx]: https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
 [npm-older]: https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f
-
-### npm
-
-```sh
-npm init react-app <name-of-app>
-```
-
-`npm init <initializer>` is available in npm 6+*
-
-> More information about
-> [create-react-app](https://github.com/facebook/create-react-app/)
 
 Inside the newly created project (`name-of-app`), you can run some
 built-in commands.
