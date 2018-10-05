@@ -4,7 +4,7 @@
 
 * [Installing React Router](#installing-react-router)
 * [Adding a Router Component](#adding-a-router-component)
-* [React Navigation: Links, Switch and Routes](#react-navigation:-links,-switches-and-routes)
+* [React Navigation: Links, Switches and Routes](#react-navigation-links-switches-and-routes)
 * [Creating a custom 404 NotFound Page](#creating-a-custom-404-notfound-page)
 
 ## Installing React Router
