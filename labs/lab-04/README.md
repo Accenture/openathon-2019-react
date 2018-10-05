@@ -57,10 +57,21 @@ your UI in sync with the URL of the browser.
                 <BrowserRouter>
                     <div className="App__root">
                         <Fetch path={'general'} fetchOptions={FETCH_OPTIONS}>
-                            {({ data }) => {
+                            {({ data, loading, error }) => {
+                                if (error) {
+                                    return (
+                                        <Notification type="error"
+                                            message= {error.message}
+                                        />
+                                    );
+                                }
+                                if (loading) {
+                                    return <Loader />;
+                                }
                                 if (data && data.logo) {
                                     return <Header logo={data.logo} />
                                 }
+                                return <Loader />;
                             }}
                         </Fetch>
                         <div className="Main">

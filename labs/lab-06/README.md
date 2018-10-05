@@ -336,7 +336,40 @@ Let’s start creating a Services page.
     export default Services;
     ```
 
-6. Add a new `internal_link` field into the ListBasic component to
+6. Add some new styles to the `Services.scss`file:
+
+    ```scss
+    /* Services.scss */
+
+    .Services{
+
+        .Services__content{
+            display: flex;
+
+            ...
+
+            .Services__detail{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-basis: 75%;
+                max-width: 75%;
+                margin-left: $space-l;
+                padding: $space-m;
+                background-color: rgba($light-gray-alt, 0.5);
+
+                &--empty{
+                    p{
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+
+    }
+    ```
+
+7. Add a new `internal_link` field into the ListBasic component to
    render a `Link` to each `ListItemDetail` based on the matched URL:
 
     ```javascript
@@ -416,7 +449,7 @@ Let’s start creating a Services page.
     export default ListBasic;
     ```
 
-7. Add some styles in `ListBasic.scss` to the new link classes:
+8. Add some styles in `ListBasic.scss` to the new link classes:
 
     ```scss
     /* ListBasic.scss */

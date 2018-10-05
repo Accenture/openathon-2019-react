@@ -18,7 +18,7 @@ what happens in that form on subsequent user input.  An input form
 element whose value is controlled by React in this way is called a
 _controlled component_.
 
-### Creating a new From Component
+### Creating a new Form Component
 
 1. Create a Form component in `src/components` directory.  Define a
    `fields` state with two inputs: a text input for `Name` and a
@@ -275,33 +275,38 @@ _controlled component_.
 
     render() {
         return (
-            ...
-            {this.state.entries.length > 0 ?
-                <div className="Guestbook__entries">
-                    <header>
-                        <h3>Guestbook Entries</h3>
-                    </header>
-                    <section>
-                        {this.state.entries.map((entry, i) => {
-                            return(
-                                <article key={`entry-${i}`}
-                                    className="Guestbook__entry"
-                                >
-                                    {Object.keys(entry).map(key => {
-                                        return (
-                                        <p key={`entry-${i}-${key}`}>{entry[key]}</p>
-                                        );
-                                    })}
-                                </article>
-                            );
-                        })}
-                    </section>
-                </div>
-                : <div className="Guestbook__entries Guestbook__entries--empty">
-                    <p>No entries yet</p>
-                </div>
-            }
-            ...
+            <div className="Guestbook" location={this.props.location}>
+                ...
+                <section className="Guestbook__content">
+                    ...
+
+                    {this.state.entries.length > 0 ?
+                        <div className="Guestbook__entries">
+                            <header>
+                                <h3>Guestbook Entries</h3>
+                            </header>
+                            <section>
+                                {this.state.entries.map((entry, i) => {
+                                    return(
+                                        <article key={`entry-${i}`}
+                                            className="Guestbook__entry"
+                                        >
+                                            {Object.keys(entry).map(key => {
+                                                return (
+                                                <p key={`entry-${i}-${key}`}>{entry[key]}</p>
+                                                );
+                                            })}
+                                        </article>
+                                    );
+                                })}
+                            </section>
+                        </div>
+                        : <div className="Guestbook__entries Guestbook__entries--empty">
+                            <p>No entries yet</p>
+                        </div>
+                    }
+                </section>
+            </div>
         );
     }
     ```

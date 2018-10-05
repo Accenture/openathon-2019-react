@@ -64,21 +64,24 @@ members to quickly get onboard.
 
 After creation, your project should look like this:
 
-```bash
-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
+```text
+my-app
+├── README.md
+├── node_modules
+├── package.json
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    └── registerServiceWorker.js
 ```
 
 For the project to build, **these files must exist with exact
@@ -90,28 +93,28 @@ filenames**:
 We are going to delete and rename the other files, to get the
 following folder structure:
 
-```bash
+```text
 my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    assets/
-      images/
-        logo.svg
-      styles/
-        index.css
-    components/
-      App/
-        App.css
-        App.js
-        App.test.js
-    services/
-      registerServiceWorker.js
-    index.js
+├── README.md
+├── node_modules/
+├── package.json
+└── public/
+    ├── index.html
+    └──favicon.ico
+└── src/
+    └── assets/
+        └── images/
+            └── logo.svg
+        └── styles/
+            └── index.css
+    └── components/
+        └── App/
+            ├── App.css
+            ├── App.js
+            └── App.test.js
+    └── services/
+        └── registerServiceWorker.js
+    └── index.js
 ```
 
 Don't forget to update the path for the imported files in `App.js` and

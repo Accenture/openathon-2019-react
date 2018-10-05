@@ -167,15 +167,51 @@ To allow the `Fetch` component to handle different request methods
 4. Wherever your are using the Fetch component —`Header.jsx`,
    `Home.jsx`, `Services.jsx` and `Innovation.jsx`—, delete the
    `FETCH_OPTIONS` constant and set the url and the method to the
-   component:
+   component depending on the endpoint you need to call:
+
+    ```javascript
+    /* Header.jsx */
+
+    <Fetch url="general" method="get">
+    ...
+    </Fetch>
+    ```
 
     ```javascript
     /* Home.jsx */
 
-    <Fetch url="general" method="get">
+    <div className="Home__info">
+        <Fetch url="general" method="get">
+            ...
+        </Fetch>
+    </div>
+    <div className="Home__list">
+        <div className="Home__services">
+            <Fetch url="services" method="get">
+                ...
+            </Fetch>
+        </div>
+        <div className="Home__innovation">
+            <Fetch url="innovation" method="get">
+                ...
+            </Fetch>
+        </div>
+    </div>
+    ```
 
+    ```javascript
+    /* Services.jsx */
+
+    <Fetch url="services" method="get">
     ...
+    </Fetch>
+    ```
 
+    ```javascript
+    /* Innovation.jsx */
+
+    <Fetch url="innovation" method="get">
+    ...
     </Fetch>
     ```
 

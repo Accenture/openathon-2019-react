@@ -92,16 +92,20 @@ This edition of the Openathon is divided in the following labs:
 
 3. Install **webpack**
 
+    Open your terminal or command prompt and run:
+
     ```sh
     npm install webpack -g
     ```
 
-    **webpack** is a module bundler.  Its main purpose is to bundle
+    **webpack** is a module bundler. Its main purpose is to bundle
     JavaScript files for usage in a browser, yet it is also capable of
-    transforming, bundling, or packaging.  [More
+    transforming, bundling, or packaging. [More
     info](https://webpack.js.org/).
 
 4. Install **json-server**
+
+    Open your terminal or command prompt and run:
 
     ```sh
     npm install json-server -g
@@ -109,10 +113,9 @@ This edition of the Openathon is divided in the following labs:
 
     **JSON Server** is a Node module that can be used to create demo
     REST web services in a few minutes using a JSON file to provide
-    sample data.
+    sample data. We will configure it later.
 
-    [Click here](https://github.com/typicode/json-server) to download
-    and install.
+    [Click here](https://github.com/typicode/json-server) to know more.
 
 5. Download and install **React Developer Tools**
 

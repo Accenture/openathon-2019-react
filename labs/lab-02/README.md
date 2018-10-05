@@ -28,12 +28,12 @@ component files inside.
 1. Create a new Header folder in components directory and place a new
    `Header.jsx` file inside:
 
-    ```bash
+    ```text
     app/
-    src/
-        components/
-        Header/
-            Header.jsx
+    └── src/
+        └── components/
+            └── Header/
+                └── Header.jsx
     ```
 
 > JSX is a syntax extension for JavaScript.  It was written to be used
@@ -130,15 +130,15 @@ class Header extends React.Component {
    the contents from the same directory in the `lab-02` repository and
    paste in your project.
 
-    ```bash
+    ```text
     app/
-    src/
-        assets/
-        styles/
-            common/
-            _normalize.scss
-            _typography.scss
-            _variables.scss
+    └── src/
+        └── assets/
+            └── styles/
+                └── common/
+                    ├── _normalize.scss
+                    ├── _typography.scss
+                    └── _variables.scss
     ```
 
 2. Into your `index.scss` file in `src/styles`, import the recently
@@ -157,12 +157,12 @@ class Header extends React.Component {
 
     ```bash
     app/
-    src/
-        components/
-        Header/
-            Header.jsx
-            Header.scss
-            + Header.css
+    └── src/
+        └── components/
+            └── Header/
+                ├── Header.jsx
+                ├── Header.scss
+                └── + Header.css
     ```
 
     ```javascript
@@ -412,9 +412,9 @@ In the same way, we can split components into smaller components.
             return (
                 <div className="Header">
                     <div className="Header__logo">
-                    <img alt="Accenture Logo"
-                        src={this.props.logo}
-                    />
+                        <img alt="Accenture Logo"
+                            src="https://www.accenture.com/t20180820T081710Z__w__/us-en/_acnmedia/Accenture/Dev/Redesign/Acc_Logo_Black_Purple_RGB.PNG"
+                        />
                     </div>
                     <h1 className="Header__title">II OPENATHON Custom Open Cloud</h1>
                     <Menu />
@@ -600,6 +600,9 @@ on DOM elements, with two syntactic differences:
 
     ```scss
     /* Header.scss */
+
+    @import 'assets/styles/common/variables';
+
     .Menu{
         display: flex;
         flex: 0 1 auto;

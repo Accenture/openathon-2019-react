@@ -255,16 +255,15 @@ fetch(path, options);
     fetchData() {
         this.setState({ loading: true });
         fetch(`${API_HOST}${this.props.path}`, this.props.options)
-            .then(response => response.json())
-            .then(
-                (data) => {
-                    this.setState({data});
-                },
-                (error) => {
-                    this.setState({error});
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error trying to fetch data...');
                 }
-            this.setState({ loading: false });
-            )
+            })
+            .then(data => this.setState({ data, loading: false }))
+            .catch(error => this.setState({ error, loading: false }));
     }
 
     ...
