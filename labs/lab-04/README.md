@@ -144,6 +144,12 @@ your UI in sync with the URL of the browser.
 
 3. In `App.jsx`, remove the `Main` div and replace it by the new Main
    component:
+   
+   ```javascript
+     /* App.jsx */
+     
+   import { Main } from '../../containers';
+   ```
 
     ```diff
     /* App.jsx */
