@@ -9,7 +9,7 @@
 
 ## What is JavaScript
 
-![JS logo](https://raw.githubusercontent.com/Albarian/openathonFY19/master/resources/images/jsLogo.png)
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" width="175"></a>&nbsp;
 
 **JavaScript** is one of the most important **programming languages**
 of all time, not simply because of its
